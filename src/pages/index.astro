@@ -1,11 +1,36 @@
 ---
-import Welcome from '../components/Welcome.astro';
+// src/pages/index.astro
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Navbar from '../components/layout/Navbar.astro';
+import Hero from '../components/sections/Hero.astro';
+import Projects from '../components/sections/Projects.astro';
+import Footer from '../components/layout/Footer.astro';
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Luis Sagnay | Software Engineering">
+	<Navbar />
+	<main>
+		<Hero />
+		<Projects />
+		</main>
+	<Footer />
 </Layout>
+
+<script>
+	import { gsap } from "gsap";
+	import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+	gsap.registerPlugin(ScrollTrigger);
+
+	// Reemplazo de AOS con GSAP
+	gsap.from(".animate-on-scroll", {
+		opacity: 0,
+		y: 50,
+		duration: 0.6,
+		stagger: 0.2,
+		scrollTrigger: {
+			trigger: "main",
+			start: "top 80%",
+		}
+	});
+</script>
