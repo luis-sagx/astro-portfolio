@@ -1,1 +1,89 @@
-<p>Navbar</p>
+---
+import ThemeToggle from "../ThemeToggle.astro";
+
+const links = [
+  { href: "#start", label: "Home" },
+  { href: "#projects", label: "Projects" },
+  { href: "#about-me", label: "About Me" },
+  { href: "#contact", label: "Contact" },
+];
+---
+
+<nav class="sticky top-0 z-50 shadow-lg bg-emerald-600 dark:bg-gray-800 transition-colors duration-300">
+  <div class="flex items-center justify-between max-w-6xl px-6 py-4 mx-auto">
+    <a href="/" class="text-xl font-bold text-white font-display">Luis Sagnay</a>
+
+    <div class="flex items-center gap-4">
+      <div class="md:hidden">
+        <ThemeToggle />
+      </div>
+      
+      <button id="menu-btn" class="text-white md:hidden p-2 focus:outline-none" aria-label="Menu">
+        <svg id="menu-icon-svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path id="path-top" d="M4 6h16" class="transition-all duration-300 origin-center"></path>
+          <path id="path-mid" d="M4 12h16" class="transition-all duration-300"></path>
+          <path id="path-bot" d="M4 18h16" class="transition-all duration-300 origin-center"></path>
+        </svg>
+      </button>
+    </div>
+
+    <ul id="menu-items" 
+        class="absolute md:static top-full left-0 w-full md:w-auto 
+               flex flex-col md:flex-row gap-4 md:gap-8 px-6 py-0 md:py-0
+               bg-emerald-600 dark:bg-gray-800 md:bg-transparent
+               max-h-0 opacity-0 overflow-hidden md:max-h-screen md:opacity-100 md:visible
+               transition-all duration-500 ease-in-out">
+      {links.map(link => (
+        <li class="py-2 md:py-0">
+          <a href={link.href} class="nav-link relative text-white font-semibold group block">
+            {link.label}
+            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-white dark:bg-emerald-400 transition-all duration-300 group-hover:w-full"></span>
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <div class="hidden md:block">
+      <ThemeToggle />
+    </div>
+  </div>
+</nav>
+
+<script>
+  const btn = document.getElementById('menu-btn');
+  const menu = document.getElementById('menu-items');
+  const pathTop = document.getElementById('path-top');
+  const pathMid = document.getElementById('path-mid');
+  const pathBot = document.getElementById('path-bot');
+  const links = document.querySelectorAll('.nav-link');
+
+  let isOpen = false;
+
+  const toggleMenu = () => {
+    isOpen = !isOpen;
+    
+    // Animación del contenedor del menú
+    if (isOpen) {
+      menu?.classList.replace('max-h-0', 'max-h-[400px]');
+      menu?.classList.replace('opacity-0', 'opacity-100');
+      menu?.classList.add('py-6');
+      
+      // Transformar hamburguesa en X
+      pathTop?.setAttribute('d', 'M6 18L18 6');
+      pathMid?.setAttribute('opacity', '0');
+      pathBot?.setAttribute('d', 'M6 6l12 12');
+    } else {
+      menu?.classList.replace('max-h-[400px]', 'max-h-0');
+      menu?.classList.replace('opacity-100', 'opacity-0');
+      menu?.classList.remove('py-6');
+      
+      // Transformar X en hamburguesa
+      pathTop?.setAttribute('d', 'M4 6h16');
+      pathMid?.setAttribute('opacity', '1');
+      pathBot?.setAttribute('d', 'M4 18h16');
+    }
+  };
+
+  btn?.addEventListener('click', toggleMenu);
+  links.forEach(l => l.addEventListener('click', () => { if(isOpen) toggleMenu(); }));
+</script>
