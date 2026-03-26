@@ -1,1 +1,103 @@
-<p>Hero</p>
+---
+import { PERSONAL_INFO } from "../../data/constants/personal-info";
+import HeroBackground from "./hero/HeroBackground.astro";
+import HeroProfileImage from "./hero/HeroProfileImage.astro";
+import HeroActions from "./hero/HeroActions.astro";
+import HeroSocialLinks from "./hero/HeroSocialLinks.astro";
+
+const fullName = `${PERSONAL_INFO.firstname} ${PERSONAL_INFO.lastname}`;
+---
+<section
+  id="start"
+  class="relative flex items-center justify-center min-h-screen px-6 py-20 overflow-hidden bg-linear-to-br from-gray-100 via-emerald-50/40 to-teal-50/50 dark:from-gray-950 dark:via-emerald-950/20 dark:to-teal-950/30"
+>
+  <HeroBackground />
+
+  <div class="relative max-w-6xl mx-auto">
+    <div class="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+      <HeroProfileImage imageUrl={PERSONAL_INFO.imageUrl} fullName={fullName} />
+
+      <!-- Content -->
+      <div
+        class="order-2 space-y-6 text-center lg:text-left lg:order-1"
+        data-aos="fade-right"
+        data-aos-delay="100"
+      >
+        <!-- Greeting -->
+        <div class="inline-block">
+          <span
+            class="text-lg font-semibold tracking-wide text-emerald-600 dark:text-emerald-400"
+            ><i class="fas fa-hand-paper"></i> Hello, I'm</span
+          >
+        </div>
+
+        <h1
+          class="text-5xl font-bold leading-tight text-gray-900 lg:text-6xl xl:text-7xl dark:text-white font-display"
+        >
+          {PERSONAL_INFO.firstname}
+          <span
+            class="text-transparent bg-linear-to-r from-emerald-600 to-teal-600 dark:from-emerald-400 dark:to-teal-400 bg-clip-text"
+          >
+            {PERSONAL_INFO.lastname}
+          </span>
+        </h1>
+
+        <h2
+          class="text-2xl font-semibold text-gray-700 lg:text-3xl dark:text-gray-300 font-display"
+        >
+          {PERSONAL_INFO.profession}
+        </h2>
+
+        <!-- Specializations -->
+        <div class="flex flex-wrap justify-center gap-3 lg:justify-start">
+          {PERSONAL_INFO.interests.map((interest) => (
+            <span
+              class="px-4 py-2 font-mono text-sm font-medium text-teal-700 bg-teal-100 border border-teal-300 rounded-full dark:bg-teal-900/30 dark:text-teal-300 dark:border-teal-800"
+            >
+              {interest}
+            </span>
+          ))}
+        </div>
+
+        <!-- Description -->
+        <p
+          class="max-w-2xl text-lg leading-relaxed text-gray-600 dark:text-gray-400"
+        >
+          {PERSONAL_INFO.bio[0]}
+          <span class="font-semibold text-emerald-600 dark:text-emerald-400"
+            >{PERSONAL_INFO.bio[1]}</span
+          > {PERSONAL_INFO.bio[2]}
+        </p>
+
+        <HeroActions resumeUrl={PERSONAL_INFO.resumeUrl ?? "assets/resume/Luis_Sagnay_CV.pdf"} />
+
+        <HeroSocialLinks />
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div
+      class="absolute transform -translate-x-1/2 bottom-8 left-1/2 animate-bounce"
+    >
+      <a
+        href="#projects"
+        aria-label="Scroll down to projects section"
+        class="text-gray-400 transition-colors dark:text-gray-600 hover:text-emerald-600 dark:hover:text-emerald-400"
+      >
+        <svg
+          class="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M19 14l-7 7m0 0l-7-7m7 7V3"
+          ></path>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
