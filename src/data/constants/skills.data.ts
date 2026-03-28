@@ -3,7 +3,7 @@ import type { SkillCategory } from '../models/portfolio.model'
 export const SKILL_CATEGORIES: SkillCategory[] = [
   {
     title: 'Programming Languages',
-    icon: 'fa-solid fa-code',
+    icon: 'code',
     skills: [
       { name: 'Java' },
       { name: 'JavaScript' },
@@ -15,7 +15,7 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
 
   {
     title: 'Frontend',
-    icon: 'fa-solid fa-desktop',
+    icon: 'desktop',
     skills: [
       { name: 'Angular' },
       { name: 'React' },
@@ -25,7 +25,7 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
   },
   {
     title: 'Backend',
-    icon: 'fa-solid fa-server',
+    icon: 'server',
     skills: [
       { name: 'Node.js' },
       { name: 'Spring Boot' },
@@ -36,7 +36,7 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
 
   {
     title: 'Databases',
-    icon: 'fa-solid fa-database',
+    icon: 'database',
     skills: [
       { name: 'MongoDB' },
       { name: 'SQL Server' },
@@ -47,7 +47,7 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
   },
   {
     title: 'Tools & DevOps',
-    icon: 'fa-solid fa-wrench',
+    icon: 'wrench',
     skills: [
       { name: 'Git' },
       { name: 'Docker' },

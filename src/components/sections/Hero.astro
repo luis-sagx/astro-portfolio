@@ -4,6 +4,7 @@ import HeroBackground from "./hero/HeroBackground.astro";
 import HeroProfileImage from "./hero/HeroProfileImage.astro";
 import HeroActions from "./hero/HeroActions.astro";
 import HeroSocialLinks from "./hero/HeroSocialLinks.astro";
+import Icon from "../ui/Icon.astro";
 
 const fullName = `${PERSONAL_INFO.firstname} ${PERSONAL_INFO.lastname}`;
 ---
@@ -20,14 +21,14 @@ const fullName = `${PERSONAL_INFO.firstname} ${PERSONAL_INFO.lastname}`;
       <!-- Content -->
       <div
         class="order-2 space-y-6 text-center lg:text-left lg:order-1"
-        data-aos="fade-right"
-        data-aos-delay="100"
+        data-animate="fade-right"
+        data-delay="0.1"
       >
         <!-- Greeting -->
         <div class="inline-block">
           <span
-            class="text-lg font-semibold tracking-wide text-emerald-600 dark:text-emerald-400"
-            ><i class="fas fa-hand-paper"></i> Hello, I'm</span
+            class="text-lg font-semibold tracking-wide text-emerald-600 dark:text-emerald-400 flex items-center gap-2"
+            ><Icon name="hand" className="w-5 h-5" /> Hello, I'm</span
           >
         </div>
 
@@ -69,7 +70,7 @@ const fullName = `${PERSONAL_INFO.firstname} ${PERSONAL_INFO.lastname}`;
           > {PERSONAL_INFO.bio[2]}
         </p>
 
-        <HeroActions resumeUrl={PERSONAL_INFO.resumeUrl ?? "assets/resume/Luis_Sagnay_CV.pdf"} />
+        <HeroActions resumeUrl={PERSONAL_INFO.resumeUrl ?? "/assets/cv/Luis_Sagnay_CV.pdf"} />
 
         <HeroSocialLinks />
       </div>

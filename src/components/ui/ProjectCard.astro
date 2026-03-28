@@ -1,0 +1,112 @@
+---
+import Icon from './Icon.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  github?: string;
+  link?: string;
+  tags?: string[];
+  highlights?: string[];
+}
+
+const { title, description, image, github, link, tags = [], highlights = [] } = Astro.props;
+
+const avifImage = image ? image.replace('.webp', '.avif') : undefined;
+const pngImage = image ? image.replace('.webp', '.png') : undefined;
+---
+
+<article
+  class="relative flex flex-col h-full overflow-hidden transition-all duration-500 bg-white border shadow-lg border-gray-200/80 group dark:bg-gray-900 rounded-2xl dark:border-gray-800 hover:border-emerald-500/50 dark:hover:border-emerald-500/50 hover:shadow-2xl hover:shadow-emerald-500/10 dark:hover:shadow-emerald-500/20"
+>
+  <div class="relative h-56 overflow-hidden bg-linear-to-br from-emerald-100 to-teal-100 dark:from-emerald-950/40 dark:to-teal-950/40">
+    {image ? (
+      <picture>
+        {avifImage && <source srcset={avifImage} type="image/avif" />}
+        <source srcset={image} type="image/webp" />
+        <img
+          src={pngImage ?? image}
+          alt={title}
+          loading="lazy"
+          decoding="async"
+          class="object-cover w-full h-full transition-all duration-500 group-hover:scale-105"
+        />
+      </picture>
+    ) : (
+      <div class="flex items-center justify-center w-full h-full">
+        <div class="flex items-center justify-center w-24 h-24 transition-transform duration-500 transform rounded-2xl bg-linear-to-br from-emerald-500 to-teal-500 group-hover:rotate-12">
+          <Icon name="code" className="w-12 h-12 text-white" />
+        </div>
+      </div>
+    )}
+
+    <div class="absolute inset-0 transition-opacity duration-500 opacity-0 bg-linear-to-t from-gray-900/60 via-transparent to-transparent group-hover:opacity-100"></div>
+
+    <div class="absolute top-4 right-4 px-3 py-1.5 bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm rounded-full text-xs font-semibold text-emerald-600 dark:text-emerald-400 shadow-lg border border-emerald-200 dark:border-emerald-800 flex items-center gap-1">
+      <Icon name="rocket" className="w-3.5 h-3.5" />
+      <span>Project</span>
+    </div>
+  </div>
+
+  <div class="flex flex-col flex-1 p-6">
+    <h3 class="mb-3 text-xl font-bold text-gray-900 transition-colors duration-300 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 line-clamp-2 font-display">
+      {title}
+    </h3>
+
+    <p class="flex-1 mb-4 leading-relaxed text-gray-600 dark:text-gray-400 line-clamp-3">
+      {description}
+    </p>
+
+    {highlights.length > 0 && (
+      <ul class="mb-4 space-y-2">
+        {highlights.map((highlight) => (
+          <li class="flex items-start gap-2 text-sm text-gray-700 dark:text-gray-300">
+            <Icon name="check" className="w-4 h-4 mt-0.5 text-emerald-600 dark:text-emerald-400" />
+            <span>{highlight}</span>
+          </li>
+        ))}
+      </ul>
+    )}
+
+    {tags.length > 0 && (
+      <div class="flex flex-wrap gap-2 mb-6">
+        {tags.map((tag) => (
+          <span class="px-3 py-1 font-mono text-xs font-medium border rounded-lg bg-emerald-50 dark:bg-emerald-950/30 text-emerald-700 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800/50">
+            {tag}
+          </span>
+        ))}
+      </div>
+    )}
+
+    <div class="flex gap-3 pt-4 border-t border-gray-100 dark:border-gray-800">
+      {github && (
+        <a
+          href={github}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 bg-linear-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+          aria-label={`View ${title} code on GitHub`}
+        >
+          <Icon name="github" className="w-4 h-4" />
+          <span>Code</span>
+        </a>
+      )}
+      {link && link !== github && (
+        <a
+          href={link}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex items-center justify-center px-4 py-2.5 border border-emerald-300 dark:border-emerald-700 text-emerald-700 dark:text-emerald-300 rounded-xl hover:bg-emerald-50 dark:hover:bg-emerald-900/20 transition-colors"
+          aria-label={`Open ${title}`}
+        >
+          <Icon name="external" className="w-4 h-4" />
+        </a>
+      )}
+    </div>
+  </div>
+
+  <div
+    class="absolute top-0 right-0 w-32 h-32 transition-opacity duration-500 rounded-bl-full opacity-0 bg-linear-to-br from-emerald-500/0 via-emerald-500/5 to-teal-500/10 dark:from-emerald-500/0 dark:via-emerald-500/10 dark:to-teal-500/20 group-hover:opacity-100"
+  ></div>
+</article>

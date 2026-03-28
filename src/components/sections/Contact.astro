@@ -1,0 +1,119 @@
+---
+import { CONTACT_INFO } from '../../data/constants';
+import Icon from '../ui/Icon.astro';
+
+const socialBrandStyles: Record<string, string> = {
+  LinkedIn: 'bg-linear-to-br from-blue-500 to-blue-600',
+  GitHub: 'bg-linear-to-br from-gray-700 to-gray-800 dark:from-gray-800 dark:to-gray-900',
+};
+
+const socialIconMap: Record<string, 'linkedin' | 'github'> = {
+  linkedin: 'linkedin',
+  github: 'github',
+};
+
+const socialLinks = CONTACT_INFO.socialLinks.filter((social) =>
+  ['LinkedIn', 'GitHub'].includes(social.platform),
+);
+---
+
+<section id="contact" class="px-6 py-20 bg-gray-100 dark:bg-gray-950">
+  <div class="max-w-6xl mx-auto">
+    <div class="mb-16 text-center" data-animate="fade-down">
+      <div class="inline-block mb-4">
+        <span class="text-sm font-semibold tracking-wider uppercase text-emerald-600 dark:text-emerald-400">Let's Connect</span>
+      </div>
+      <h2 class="mb-4 text-4xl font-bold text-gray-900 lg:text-5xl dark:text-white font-display">
+        Get In
+        <span class="text-transparent bg-linear-to-r from-emerald-600 to-teal-600 dark:from-emerald-400 dark:to-teal-400 bg-clip-text">Touch</span>
+      </h2>
+    </div>
+
+    <div class="grid items-start gap-12 lg:grid-cols-2">
+      <div class="space-y-6" data-animate="fade-right" data-delay="0.1">
+        <div class="p-8 text-white shadow-2xl bg-linear-to-br from-emerald-500 to-teal-600 rounded-2xl ring-1 ring-emerald-500/20">
+          <h3 class="flex items-center gap-3 mb-6 text-2xl font-bold">
+            <Icon name="paper-plane" className="w-6 h-6" />
+            Contact Information
+          </h3>
+
+          <div class="space-y-6">
+            <div class="flex items-start gap-4">
+              <div class="flex items-center justify-center shrink-0 w-12 h-12 rounded-xl bg-white/20 backdrop-blur-sm">
+                <Icon name="mail" className="w-5 h-5" />
+              </div>
+              <div>
+                <p class="mb-1 text-sm text-white/80">Email</p>
+                <a href={`mailto:${CONTACT_INFO.email}`} class="font-semibold text-white hover:underline">{CONTACT_INFO.email}</a>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <div class="flex items-center justify-center shrink-0 w-12 h-12 rounded-xl bg-white/20 backdrop-blur-sm">
+                <Icon name="phone" className="w-5 h-5" />
+              </div>
+              <div>
+                <p class="mb-1 text-sm text-white/80">Phone</p>
+                <a href={`tel:${CONTACT_INFO.phone.replace(/\s+/g, '')}`} class="font-semibold text-white hover:underline">{CONTACT_INFO.phone}</a>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <div class="flex items-center justify-center shrink-0 w-12 h-12 rounded-xl bg-white/20 backdrop-blur-sm">
+                <Icon name="location" className="w-5 h-5" />
+              </div>
+              <div>
+                <p class="mb-1 text-sm text-white/80">Location</p>
+                <p class="font-semibold text-white">{CONTACT_INFO.location}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="space-y-6" data-animate="fade-left" data-delay="0.2">
+        <div class="px-8 py-6 bg-white border shadow-md border-gray-200/60 dark:bg-gray-900 rounded-2xl dark:border-gray-800">
+          <h3 class="flex items-center gap-3 mb-6 text-2xl font-bold text-gray-900 dark:text-white">
+            <Icon name="share" className="w-6 h-6 text-emerald-600 dark:text-emerald-400" />
+            Connect With Me
+          </h3>
+
+          <div class="grid grid-cols-2 gap-4">
+            {socialLinks.map((social) => (
+              <a
+                href={social.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={social.ariaLabel}
+                class={`relative px-6 py-4 overflow-hidden text-white transition-all duration-300 group rounded-xl hover:shadow-2xl hover:scale-105 ${socialBrandStyles[social.platform] ?? 'bg-linear-to-br from-emerald-500 to-teal-600'}`}
+              >
+                <div class="relative z-10 flex items-center justify-center gap-3">
+                  <Icon name={socialIconMap[social.icon] ?? 'github'} className="w-7 h-7" />
+                  <p class="hidden font-semibold md:block">{social.platform}</p>
+                </div>
+                <div class="absolute inset-0 transition-colors bg-white/0 group-hover:bg-white/10"></div>
+              </a>
+            ))}
+          </div>
+        </div>
+
+        <div class="px-8 py-6 text-white shadow-xl bg-linear-to-r from-emerald-500 to-teal-600 rounded-2xl">
+          <div class="flex items-center justify-between gap-4">
+            <div>
+              <h4 class="mb-2 text-xl font-bold">Download My CV</h4>
+              <p class="text-sm text-white/90">Get a complete overview of my experience</p>
+            </div>
+            <a
+              href="/assets/cv/Luis_Sagnay_CV.pdf"
+              download="Luis_Sagnay_CV.pdf"
+              aria-label="Download my CV"
+              class="flex items-center justify-center w-16 h-16 transition-transform bg-white rounded-full shadow-lg text-emerald-600 hover:scale-110"
+            >
+              <Icon name="download" className="w-8 h-8" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

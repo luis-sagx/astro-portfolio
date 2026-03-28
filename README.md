@@ -1,46 +1,37 @@
-# Astro Starter Kit: Basics
+# Luis Sagnay Portfolio (Astro)
 
-```sh
-bun create astro@latest -- --template basics
+Portafolio migrado de Angular a Astro con foco en rendimiento:
+
+- Runtime principal en Astro (contenido estático + mínima hidratación)
+- Gestor de paquetes: **Bun** (únicamente)
+- Animaciones: **GSAP + ScrollTrigger** (reemplaza AOS)
+- Íconos: **SVG inline reutilizables** (reemplaza Font Awesome)
+- Tailwind CSS para estilos utilitarios
+
+## Requisitos
+
+- Bun `>=1.1.0`
+
+## Comandos
+
+```bash
+bun install
+bun run dev
+bun run build
+bun run preview
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Estructura relevante
 
-## 🚀 Project Structure
+- `src/pages/index.astro`: composición de secciones + animaciones GSAP
+- `src/components/sections`: Hero, Projects, About, Contact
+- `src/components/ui`: Icon, ProjectCard, SkillTag
+- `src/data/constants`: contenido del portafolio
+- `public/assets`: imágenes y CV
 
-Inside of your Astro project, you'll see the following folders and files:
+## Notas de optimización aplicadas
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
-```
-
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `bun install`             | Installs dependencies                            |
-| `bun dev`             | Starts local dev server at `localhost:4321`      |
-| `bun build`           | Build your production site to `./dist/`          |
-| `bun preview`         | Preview your build locally, before deploying     |
-| `bun astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `bun astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- Reemplazo de `data-aos` por atributos semánticos `data-animate` y script GSAP único
+- Render estático por defecto (sin framework runtime en cliente)
+- Uso de `<picture>` con `avif/webp` para proyectos
+- Eliminación de dependencia de íconos externos

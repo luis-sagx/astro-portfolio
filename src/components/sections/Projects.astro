@@ -1,1 +1,34 @@
-<p>Projects</p>
+---
+import { PROJECTS } from '../../data/constants';
+import ProjectCard from '../ui/ProjectCard.astro';
+---
+
+<section id="projects" class="px-6 py-20 bg-gray-100 dark:bg-gray-950">
+	<div class="mx-auto max-w-7xl">
+		<div class="mb-16 text-center" data-animate="fade-down">
+			<div class="inline-block mb-4">
+				<span class="text-sm font-semibold tracking-wider uppercase text-emerald-600 dark:text-emerald-400">Portfolio</span>
+			</div>
+			<h2 class="mb-4 text-4xl font-bold text-gray-900 lg:text-5xl dark:text-white font-display">
+				Featured
+				<span class="text-transparent bg-linear-to-r from-emerald-600 to-teal-600 dark:from-emerald-400 dark:to-teal-400 bg-clip-text">Projects</span>
+			</h2>
+		</div>
+
+		<div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+			{PROJECTS.map((project, index) => (
+				<div data-animate="zoom" data-delay={String((index % 3) * 0.08)}>
+					<ProjectCard
+						title={project.title}
+						description={project.description}
+						image={project.image}
+						github={project.githubUrl}
+						link={project.link}
+						tags={project.technologies}
+						highlights={project.highlights}
+					/>
+				</div>
+			))}
+		</div>
+	</div>
+</section>

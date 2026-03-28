@@ -1,0 +1,91 @@
+---
+type IconName =
+  | 'menu'
+  | 'close'
+  | 'hand'
+  | 'download'
+  | 'mail'
+  | 'arrow-down'
+  | 'github'
+  | 'linkedin'
+  | 'code'
+  | 'desktop'
+  | 'server'
+  | 'database'
+  | 'wrench'
+  | 'graduation'
+  | 'language'
+  | 'heart'
+  | 'soccer'
+  | 'dumbbell'
+  | 'book'
+  | 'certificate'
+  | 'external'
+  | 'rocket'
+  | 'check'
+  | 'paper-plane'
+  | 'phone'
+  | 'location'
+  | 'share';
+
+interface Props {
+  name: IconName;
+  className?: string;
+}
+
+const { name, className = 'w-5 h-5' } = Astro.props;
+
+const pathByName: Record<IconName, string> = {
+  menu: 'M4 6h16M4 12h16M4 18h16',
+  close: 'm6 6 12 12M6 18 18 6',
+  hand: 'M9 11V5a1 1 0 1 1 2 0v6m0 0V4a1 1 0 1 1 2 0v7m-2 0a1 1 0 1 1 2 0v1m-2-1a1 1 0 1 1 2 0v1m-6-1a1 1 0 0 0-1 1v1a5 5 0 0 0 10 0v-2a1 1 0 1 0-2 0',
+  download: 'M12 3v12m0 0 4-4m-4 4-4-4M5 21h14',
+  mail: 'M3 7.5 9.75 12a3.3 3.3 0 0 0 4.5 0L21 7.5M5 19h14a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2Z',
+  'arrow-down': 'm19 14-7 7m0 0-7-7m7 7V3',
+  github:
+    'M12 .5C5.65.5.5 5.72.5 12.15c0 5.15 3.34 9.52 7.97 11.06.58.11.8-.25.8-.57 0-.28-.02-1.22-.02-2.22-3.24.7-3.92-1.37-3.92-1.37-.52-1.3-1.28-1.65-1.28-1.65-1.04-.7.08-.7.08-.7 1.16.08 1.76 1.16 1.76 1.16 1.02 1.74 2.68 1.24 3.34.94.1-.74.4-1.24.72-1.52-2.58-.3-5.3-1.27-5.3-5.73 0-1.27.46-2.3 1.2-3.1-.12-.3-.52-1.5.12-3.12 0 0 .98-.3 3.2 1.18a11.2 11.2 0 0 1 5.82 0c2.22-1.48 3.2-1.18 3.2-1.18.64 1.62.24 2.82.12 3.12.74.8 1.2 1.83 1.2 3.1 0 4.47-2.72 5.42-5.32 5.72.42.36.78 1.04.78 2.1 0 1.52-.02 2.74-.02 3.12 0 .32.22.7.82.58a11.68 11.68 0 0 0 7.95-11.06C23.5 5.72 18.35.5 12 .5Z',
+  linkedin:
+    'M4.98 3.5a2.5 2.5 0 1 0 0 5.001A2.5 2.5 0 0 0 4.98 3.5ZM3 9h4v12H3V9Zm7 0h3.8v1.64h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.53c0-1.32-.02-3.02-1.84-3.02-1.85 0-2.14 1.44-2.14 2.92V21h-4V9Z',
+  code: 'M9.4 16.6 4.8 12l4.6-4.6M14.6 7.4 19.2 12l-4.6 4.6',
+  desktop: 'M4 5h16v10H4zM9 19h6M12 15v4',
+  server: 'M4 6h16v4H4zM4 14h16v4H4zM8 8h.01M8 16h.01',
+  database: 'M12 4c-4.4 0-8 1.3-8 3v10c0 1.7 3.6 3 8 3s8-1.3 8-3V7c0-1.7-3.6-3-8-3Zm0 6c-4.4 0-8-1.3-8-3m16 5c0 1.7-3.6 3-8 3s-8-1.3-8-3m16 5c0 1.7-3.6 3-8 3s-8-1.3-8-3',
+  wrench: 'M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4L15 12l-3-3 2.7-2.7Z',
+  graduation: 'm2 9 10-5 10 5-10 5L2 9Zm4 3v4l6 3 6-3v-4',
+  language: 'M12 3v18M4 7h16M4 17h16M6 12h12',
+  heart: 'M12 20s-7-4.4-9-8.5C1.6 8.3 4 5 7.3 5c2 0 3.2 1.1 4.7 2.8C13.5 6.1 14.7 5 16.7 5 20 5 22.4 8.3 21 11.5 19 15.6 12 20 12 20Z',
+  soccer: 'M12 2 4 6v6l8 10 8-10V6l-8-4Zm0 4 3 2-1 3h-4L9 8l3-2Zm-5 4 2 2-1 3-3-1v-4l2 0Zm10 0 2 0v4l-3 1-1-3 2-2ZM12 18l-2-2 1-3h2l1 3-2 2Z',
+  dumbbell: 'M2 10h2v4H2zM5 9h2v6H5zM8 11h8v2H8zM17 9h2v6h-2zM20 10h2v4h-2z',
+  book: 'M5 4h9a3 3 0 0 1 3 3v11H8a3 3 0 0 0-3 3V4Zm0 0H4v17h1m3-3h12',
+  certificate: 'M12 3 4 7v6c0 4.4 3.1 8.4 8 9 4.9-.6 8-4.6 8-9V7l-8-4Zm0 6a3 3 0 1 1 0 6 3 3 0 0 1 0-6Z',
+  external: 'M14 4h6v6M20 4l-9 9M5 8v11h11',
+  rocket: 'M12 3c2 2 4 5 4 8l3 3-2 2-3-3c-3 0-6-2-8-4 0-3 2-6 6-6Zm-5 14 3-1-2 2-1 3-2-2 2-2Zm9-7a1 1 0 1 1 0 2 1 1 0 0 1 0-2Z',
+  check: 'm5 12 4 4 10-10',
+  'paper-plane': 'm3 11 17-8-4 18-4-7-9-3Z',
+  phone: 'M6.6 3h3l1 4-2 2a15 15 0 0 0 6.8 6.8l2-2 4 1v3a2 2 0 0 1-2 2C11.8 21.4 2.6 12.2 2.6 5a2 2 0 0 1 2-2Z',
+  location: 'M12 21s7-5.2 7-11a7 7 0 1 0-14 0c0 5.8 7 11 7 11Zm0-8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z',
+  share: 'M18 8a3 3 0 1 0-2.8-4h-6.4a3 3 0 1 0 0 2h6.4A3 3 0 0 0 18 8ZM6 14a3 3 0 1 0 2.8 4h6.4a3 3 0 1 0 0-2H8.8A3 3 0 0 0 6 14Z',
+};
+
+const filledIcons = new Set<IconName>(['github', 'linkedin']);
+const isFilled = filledIcons.has(name);
+---
+
+{isFilled ? (
+  <svg class={className} viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
+    <path d={pathByName[name]} />
+  </svg>
+) : (
+  <svg
+    class={className}
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path d={pathByName[name]} />
+  </svg>
+)}
