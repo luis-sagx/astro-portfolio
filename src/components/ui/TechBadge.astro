@@ -35,7 +35,6 @@ const slugMap: Record<string, string> = {
   'Vercel': 'vercel',
   'Bootstrap': 'bootstrap',
   'Material Design 3': 'googlematerial',
-  'AI Google Studio': 'googleai',
 };
 
 const colorMap: Record<string, string> = {
@@ -68,7 +67,6 @@ const colorMap: Record<string, string> = {
   'Vercel': '000000',
   'Bootstrap': '7952B3',
   'Material Design 3': '757575',
-  'AI Google Studio': '4285F4',
 };
 
 const slug = slugMap[name] || name.toLowerCase().replace(/\s+/g, '-').replace(/#/g, 'sharp');
@@ -81,5 +79,5 @@ const badgeUrl = `https://img.shields.io/badge/${encodeURIComponent(name)}-${col
   alt={name}
   loading="lazy"
   decoding="async"
-  class="h-8 inline-block align-middle"
+  class="inline-block h-8 align-middle"
 />

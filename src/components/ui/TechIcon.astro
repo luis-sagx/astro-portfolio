@@ -15,7 +15,7 @@ const slugMap: Record<string, string> = {
   'React': 'react',
   'Tailwind CSS': 'tailwindcss',
   'Flutter': 'flutter',
-  'Node.js': 'nodejs',
+  'Node.js': 'node',
   'Spring Boot': 'springboot',
   'Flask': 'flask',
   'ASP.NET Core': 'dotnet',
@@ -38,14 +38,45 @@ const slugMap: Record<string, string> = {
   'AI Google Studio': 'googleai',
 };
 
+const colorMap: Record<string, string> = {
+  'Java': '#007396',
+  'JavaScript': '#F7DF1E',
+  'TypeScript': '#3178C6',
+  'Python': '#3776AB',
+  'C#': '#239120',
+  'Angular': '#DD0031',
+  'React': '#61DAFB',
+  'Tailwind CSS': '#06B6D4',
+  'Flutter': '#02569B',
+  'Node.js': '#339933',
+  'Spring Boot': '#6DB33F',
+  'Flask': '#000000',
+  'ASP.NET Core': '#512BD4',
+  'MongoDB': '#47A248',
+  'SQL Server': '#CC2927',
+  'PostgreSQL': '#4169E1',
+  'MySQL': '#4479A1',
+  'Firebase': '#FFCA28',
+  'Git': '#F05032',
+  'Docker': '#2496ED',
+  'Linux': '#FCC624',
+  'Postman': '#FF6C37',
+  'Express': '#000000',
+  'HTML': '#E34F26',
+  'CSS': '#1572B6',
+  'Vite': '#646CFF',
+  'Vercel': '#000000',
+  'Bootstrap': '#7952B3',
+  'Material Design 3': '#757575',
+  'AI Google Studio': '#4285F4',
+};
+
 const slug = slugMap[name] || name.toLowerCase().replace(/\s+/g, '-').replace(/#/g, 'sharp');
+const color = colorMap[name] || '#6DB33F';
 const iconUrl = `https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/${slug}.svg`;
 ---
 
-<img
-  src={iconUrl}
-  alt={name}
-  loading="lazy"
-  decoding="async"
-  class="w-5 h-5"
-/>
+<div 
+  class="w-5 h-5 inline-block"
+  style={`background-color: ${color}; mask-image: url('${iconUrl}'); -webkit-mask-image: url('${iconUrl}'); mask-size: contain; -webkit-mask-size: contain; mask-repeat: no-repeat; -webkit-mask-repeat: no-repeat;`}
+></div>

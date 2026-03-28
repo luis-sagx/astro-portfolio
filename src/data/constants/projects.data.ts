@@ -20,12 +20,7 @@ export const PROJECTS: Project[] = [
     title: 'Sagx UP - Financial Control',
     description:
       'Mobile application for personal financial management, including AI Assistant.',
-    technologies: [
-      'Flutter',
-      'Firebase',
-      'AI Google Studio',
-      'Material Design 3',
-    ],
+    technologies: ['Flutter', 'Firebase', 'Material Design 3'],
     link: 'https://github.com/luis-sagx/sagx-up',
     githubUrl: 'https://github.com/luis-sagx/sagx-up',
     highlights: [
