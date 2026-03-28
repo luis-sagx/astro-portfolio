@@ -1,5 +1,6 @@
 ---
 import Icon from './Icon.astro';
+import TechIcon from './TechIcon.astro';
 
 interface Props {
   title: string;
@@ -15,6 +16,43 @@ const { title, description, image, github, link, tags = [], highlights = [] } = 
 
 const avifImage = image ? image.replace('.webp', '.avif') : undefined;
 const pngImage = image ? image.replace('.webp', '.png') : undefined;
+
+const slugMap: Record<string, string> = {
+  'Java': 'java',
+  'JavaScript': 'javascript',
+  'TypeScript': 'typescript',
+  'Python': 'python',
+  'C#': 'csharp',
+  'Angular': 'angular',
+  'React': 'react',
+  'Tailwind CSS': 'tailwindcss',
+  'Flutter': 'flutter',
+  'Node.js': 'nodejs',
+  'Spring Boot': 'springboot',
+  'Flask': 'flask',
+  'ASP.NET Core': 'dotnet',
+  'MongoDB': 'mongodb',
+  'SQL Server': 'microsoftsqlserver',
+  'PostgreSQL': 'postgresql',
+  'MySQL': 'mysql',
+  'Firebase': 'firebase',
+  'Git': 'git',
+  'Docker': 'docker',
+  'Linux': 'linux',
+  'Postman': 'postman',
+  'Express': 'express',
+  'HTML': 'html5',
+  'CSS': 'css3',
+  'Vite': 'vite',
+  'Vercel': 'vercel',
+  'Bootstrap': 'bootstrap',
+  'Material Design 3': 'materialdesign',
+  'AI Google Studio': 'googleai',
+};
+
+const mainTech = tags[0];
+const mainTechSlug = mainTech ? (slugMap[mainTech] || mainTech.toLowerCase().replace(/\s+/g, '-').replace(/#/g, 'sharp')) : null;
+const iconUrl = mainTechSlug ? `https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/${mainTechSlug}.svg` : null;
 ---
 
 <article
@@ -72,9 +110,7 @@ const pngImage = image ? image.replace('.webp', '.png') : undefined;
     {tags.length > 0 && (
       <div class="flex flex-wrap gap-2 mb-6">
         {tags.map((tag) => (
-          <span class="px-3 py-1 font-mono text-xs font-medium border rounded-lg bg-emerald-50 dark:bg-emerald-950/30 text-emerald-700 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800/50">
-            {tag}
-          </span>
+          <TechIcon name={tag} />
         ))}
       </div>
     )}

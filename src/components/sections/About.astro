@@ -6,7 +6,7 @@ import {
   SKILL_CATEGORIES,
 } from '../../data/constants';
 import Icon from '../ui/Icon.astro';
-import SkillTag from '../ui/SkillTag.astro';
+import TechBadge from '../ui/TechBadge.astro';
 
 const categoryIconMap: Record<string, 'code' | 'desktop' | 'server' | 'database' | 'wrench'> = {
   code: 'code',
@@ -47,7 +47,7 @@ const categoryIconMap: Record<string, 'code' | 'desktop' | 'server' | 'database'
             </div>
             <div class="flex flex-wrap gap-2">
               {category.skills.map((skill) => (
-                <SkillTag name={skill.name} />
+                <TechBadge name={skill.name} />
               ))}
             </div>
           </div>
