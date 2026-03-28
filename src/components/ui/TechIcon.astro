@@ -1,0 +1,51 @@
+---
+interface Props {
+  name: string;
+}
+
+const { name } = Astro.props;
+
+const slugMap: Record<string, string> = {
+  'Java': 'java',
+  'JavaScript': 'javascript',
+  'TypeScript': 'typescript',
+  'Python': 'python',
+  'C#': 'csharp',
+  'Angular': 'angular',
+  'React': 'react',
+  'Tailwind CSS': 'tailwindcss',
+  'Flutter': 'flutter',
+  'Node.js': 'nodejs',
+  'Spring Boot': 'springboot',
+  'Flask': 'flask',
+  'ASP.NET Core': 'dotnet',
+  'MongoDB': 'mongodb',
+  'SQL Server': 'microsoftsqlserver',
+  'PostgreSQL': 'postgresql',
+  'MySQL': 'mysql',
+  'Firebase': 'firebase',
+  'Git': 'git',
+  'Docker': 'docker',
+  'Linux': 'linux',
+  'Postman': 'postman',
+  'Express': 'express',
+  'HTML': 'html5',
+  'CSS': 'css3',
+  'Vite': 'vite',
+  'Vercel': 'vercel',
+  'Bootstrap': 'bootstrap',
+  'Material Design 3': 'materialdesign',
+  'AI Google Studio': 'googleai',
+};
+
+const slug = slugMap[name] || name.toLowerCase().replace(/\s+/g, '-').replace(/#/g, 'sharp');
+const iconUrl = `https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/${slug}.svg`;
+---
+
+<img
+  src={iconUrl}
+  alt={name}
+  loading="lazy"
+  decoding="async"
+  class="w-5 h-5"
+/>
