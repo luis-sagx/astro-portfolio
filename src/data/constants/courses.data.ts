@@ -13,7 +13,7 @@ export const COURSES: Course[] = [
     provider: 'Cisco Networking Academy',
     certificateUrl:
       'https://www.credly.com/badges/c7ca2164-f09b-4998-a049-390d36a8a7d5/public_url',
-    icon: 'cisco-networking-academy',
+    icon: 'cisco',
   },
   {
     title: 'React y TypeScript',
@@ -24,7 +24,7 @@ export const COURSES: Course[] = [
   },
   {
     title: 'Foundational C# with Microsoft',
-    provider: 'FreeCodeCamp',
+    provider: 'freecodecamp',
     certificateUrl:
       'https://freecodecamp.org/certification/luis-sagx/foundational-c-sharp-with-microsoft',
     icon: 'freecodecamp',
@@ -34,13 +34,13 @@ export const COURSES: Course[] = [
     provider: 'Cisco Networking Academy',
     certificateUrl:
       'https://www.credly.com/badges/c627c2f0-6a1c-44af-a1fa-de4fc49d1e6f/public_url',
-    icon: 'cisco-networking-academy',
+    icon: 'cisco',
   },
   {
     title: 'Artificial Intelligence Fundamentals',
     provider: 'IBM SkillsBuild',
     certificateUrl:
       'https://www.credly.com/badges/6967e5d5-ea63-4457-b535-4171a2f37db4/public_url',
-    icon: 'ibm-skillsbuild',
+    icon: 'ibm',
   },
 ]

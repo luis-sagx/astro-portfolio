@@ -12,8 +12,7 @@ const TECH_ALIASES: Record<string, string> = {
   typescript: 'typescript',
   csharp: 'csharp',
   aspnetcore: 'aspnetcore',
-  materialdesign3: 'materialdesign3',
-  aigooglestudio: 'aigooglestudio',
+  materialdesign3: 'materialdesign',
 }
 
 const TECH_ICON_MAP: Record<string, string> = {
@@ -52,7 +51,6 @@ const TECH_ICON_MAP: Record<string, string> = {
 
 const TECH_ASSET_SLUG_MAP: Record<string, string> = {
   materialdesign3: 'materialdesign3',
-  aigooglestudio: 'aigooglestudio',
 }
 
 export const resolveTechKey = (name: string) => {
