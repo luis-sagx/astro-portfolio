@@ -6,9 +6,10 @@ interface Props {
   name: string;
   size?: number;
   className?: string;
+  forceWhite?: boolean;
 }
 
-const { name, size = 20, className = '' } = Astro.props;
+const { name, size = 20, className = '', forceWhite = false } = Astro.props;
 
 const techIcon = resolveTechIcon(name);
 const techSlug = resolveTechAssetSlug(name);
@@ -32,10 +33,14 @@ const fallbackText = name
   .join('')
   .slice(0, 2)
   .toUpperCase();
+
+const whiteFilterStyle = forceWhite
+  ? 'filter: brightness(0) saturate(100%) invert(100%);'
+  : undefined;
 ---
 
 {techIcon ? (
-  <span class={`inline-flex items-center justify-center ${className}`}>
+  <span class={`inline-flex items-center justify-center ${className}`} style={whiteFilterStyle}>
     <Icon name={techIcon} size={size} />
   </span>
 ) : localIconUrl ? (
@@ -43,6 +48,7 @@ const fallbackText = name
     src={localIconUrl}
     alt={`${name} icon`}
     class={`inline-block object-contain ${className}`}
+    style={whiteFilterStyle}
     width={size}
     height={size}
     loading="lazy"

@@ -6,6 +6,8 @@ import HeroActions from "./hero/HeroActions.astro";
 import HeroSocialLinks from "./hero/HeroSocialLinks.astro";
 import Icon from "../ui/Icon.astro";
 
+import { Hand, ArrowBigDownDashIcon } from "@lucide/astro";
+
 const fullName = `${PERSONAL_INFO.firstname} ${PERSONAL_INFO.lastname}`;
 ---
 <section
@@ -27,8 +29,8 @@ const fullName = `${PERSONAL_INFO.firstname} ${PERSONAL_INFO.lastname}`;
         <!-- Greeting -->
         <div class="inline-block">
           <span
-            class="text-lg font-semibold tracking-wide text-emerald-600 dark:text-emerald-400 flex items-center gap-2"
-            ><Icon name="hand" className="w-5 h-5" /> Hello, I'm</span
+            class="flex items-center gap-2 text-lg font-semibold tracking-wide text-emerald-600 dark:text-emerald-400"
+            ><Hand /> Hello, I'm</span
           >
         </div>
 
@@ -70,7 +72,7 @@ const fullName = `${PERSONAL_INFO.firstname} ${PERSONAL_INFO.lastname}`;
           > {PERSONAL_INFO.bio[2]}
         </p>
 
-        <HeroActions resumeUrl={PERSONAL_INFO.resumeUrl ?? "/assets/cv/Luis_Sagnay_CV.pdf"} />
+        <HeroActions resumeUrl={PERSONAL_INFO.resumeUrl ?? "/cv/Luis_Sagnay_CV.pdf"} />
 
         <HeroSocialLinks />
       </div>
@@ -85,19 +87,8 @@ const fullName = `${PERSONAL_INFO.firstname} ${PERSONAL_INFO.lastname}`;
         aria-label="Scroll down to projects section"
         class="text-gray-400 transition-colors dark:text-gray-600 hover:text-emerald-600 dark:hover:text-emerald-400"
       >
-        <svg
-          class="w-6 h-6"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M19 14l-7 7m0 0l-7-7m7 7V3"
-          ></path>
-        </svg>
+        
+        <ArrowBigDownDashIcon class="w-6 h-6" />
       </a>
     </div>
   </div>
