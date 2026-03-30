@@ -15,6 +15,40 @@ const categoryIconMap: Record<string, 'code' | 'desktop' | 'server' | 'database'
   database: 'database',
   wrench: 'wrench',
 };
+
+const providerIcons = import.meta.glob('../../assets/icons/providers/*.svg', {
+  eager: true,
+  query: '?url',
+  import: 'default',
+}) as Record<string, string>;
+
+const providerIconMap = Object.fromEntries(
+  Object.entries(providerIcons).map(([path, url]) => {
+    const slug = path.split('/').pop()?.replace('.svg', '') ?? '';
+    return [slug.toLowerCase(), url];
+  }),
+);
+
+const getProviderInitials = (provider: string) =>
+  provider
+    .split(/\s+/)
+    .map((word) => word[0])
+    .join('')
+    .slice(0, 2)
+    .toUpperCase();
+
+const coursesWithIcons = COURSES.map((course) => {
+  const slug = (course.icon || course.provider)
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+
+  return {
+    ...course,
+    providerIcon: providerIconMap[slug],
+    providerInitials: getProviderInitials(course.provider),
+  };
+});
 ---
 
 <section
@@ -129,21 +163,25 @@ const categoryIconMap: Record<string, 'code' | 'desktop' | 'server' | 'database'
         <h3 class="text-2xl font-bold text-gray-900 dark:text-white font-display">Certifications</h3>
       </div>
       <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {COURSES.map((course) => (
+        {coursesWithIcons.map((course) => (
           <a
             href={course.certificateUrl}
             target="_blank"
             rel="noopener noreferrer"
             class="flex items-center gap-4 p-4 transition-all duration-200 border shadow-sm bg-white/80 border-gray-200/60 rounded-xl dark:bg-gray-900 dark:border-gray-800/50 hover:border-emerald-300 dark:hover:border-emerald-700 group hover:shadow-md"
           >
-            {course.icon && (
+            {course.providerIcon ? (
               <img
-                src={course.icon}
+                src={course.providerIcon}
                 alt={`${course.provider} logo`}
                 class="object-contain w-10 h-10 rounded-lg dark:bg-gray-100 p-0.5 shrink-0"
                 loading="lazy"
                 decoding="async"
               />
+            ) : (
+              <span class="inline-flex items-center justify-center w-10 h-10 text-xs font-bold text-emerald-700 rounded-lg shrink-0 bg-emerald-100 dark:bg-emerald-900/40 dark:text-emerald-300">
+                {course.providerInitials}
+              </span>
             )}
             <div class="flex-1 min-w-0">
               <p class="text-sm font-semibold text-gray-800 truncate transition-colors dark:text-gray-200 group-hover:text-emerald-600 dark:group-hover:text-emerald-400">{course.title}</p>
