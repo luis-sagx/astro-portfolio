@@ -13,26 +13,21 @@ interface Props {
 }
 
 const { title, description, image, github, link, tags = [], highlights = [] } = Astro.props;
-
-const avifImage = image ? image.replace('.webp', '.avif') : undefined;
 ---
 
 <article
   class="relative flex flex-col h-full overflow-hidden transition-all duration-500 bg-white border shadow-lg border-gray-200/80 group dark:bg-gray-900 rounded-2xl dark:border-gray-800 hover:border-emerald-500/50 dark:hover:border-emerald-500/50 hover:shadow-2xl hover:shadow-emerald-500/10 dark:hover:shadow-emerald-500/20"
 >
   <div class="relative h-56 overflow-hidden bg-linear-to-br from-emerald-100 to-teal-100 dark:from-emerald-950/40 dark:to-teal-950/40">
+    
     {image ? (
-      <picture>
-        {avifImage && <source srcset={avifImage} type="image/avif" />}
-        <source srcset={image} type="image/webp" />
-        <img
-          src={image}
-          alt={title}
-          loading="lazy"
-          decoding="async"
-          class="object-contain w-full h-full transition-all duration-500 group-hover:scale-105"
-        />
-      </picture>
+      <img
+        src={image}
+        alt={title}
+        loading="lazy"
+        decoding="async"
+        class="object-contain w-full h-full transition-all duration-500 group-hover:scale-105"
+      />
     ) : (
       <div class="flex items-center justify-center w-full h-full">
         <div class="flex items-center justify-center w-24 h-24 transition-transform duration-500 transform rounded-2xl bg-linear-to-br from-emerald-500 to-teal-500 group-hover:rotate-12">
@@ -79,7 +74,6 @@ const avifImage = image ? image.replace('.webp', '.avif') : undefined;
       )}
     </div>
 
-
     <div class="flex gap-3 pt-4 border-t border-gray-100 dark:border-gray-800">
       {github && (
         <a
@@ -93,6 +87,7 @@ const avifImage = image ? image.replace('.webp', '.avif') : undefined;
           <span>Code</span>
         </a>
       )}
+
       {link && link !== github && (
         <a
           href={link}
