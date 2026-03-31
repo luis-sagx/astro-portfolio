@@ -12,7 +12,6 @@ export const PROJECTS: Project[] = [
     highlights: [
       'Comprehensive unit and integration testing',
       'Stress testing for performance optimization',
-      'Security testing to ensure data protection',
     ],
   },
   {
@@ -25,7 +24,6 @@ export const PROJECTS: Project[] = [
     githubUrl: 'https://github.com/luis-sagx/sagx-up',
     highlights: [
       'AI-driven financial insights',
-      'Real-time expense tracking',
       'User-friendly mobile interface',
     ],
   },
@@ -46,7 +44,6 @@ export const PROJECTS: Project[] = [
     githubUrl: 'https://github.com/luis-sagx/Sureno.git',
     highlights: [
       'Full-stack e-commerce solution',
-      'Real-time inventory management',
       'Administrative dashboard for order tracking',
     ],
   },
@@ -65,11 +62,7 @@ export const PROJECTS: Project[] = [
     ],
     link: 'https://github.com/MateoJa54/carta.git',
     githubUrl: 'https://github.com/MateoJa54/carta.git',
-    highlights: [
-      'Interactive UI for children',
-      'Voice message integration',
-      'Email automation',
-    ],
+    highlights: ['Interactive UI for children', 'Email automation'],
   },
   {
     image: 'img/hospital.webp',
@@ -88,8 +81,7 @@ export const PROJECTS: Project[] = [
     githubUrl: 'https://github.com/Teo344/Sistema_Gestion_Hospitalaria.git',
     highlights: [
       'Complete CRUD operations',
-      'Appointment scheduling system',
-      'Application of stored procedures for data integrity',
+      'Application of stored procedures',
     ],
   },
   {
@@ -101,7 +93,6 @@ export const PROJECTS: Project[] = [
     link: 'https://github.com/luis-sagx/expense-control.git',
     githubUrl: 'https://github.com/luis-sagx/expense-control.git',
     highlights: [
-      'Intuitive user interface',
       'Real-time expense tracking',
       'Data visualization with charts',
     ],
