@@ -37,13 +37,13 @@ const NAV_ITEMS = [
     <!-- Menu -->
     <ul
       data-mobile-menu
-      class="absolute left-0 z-40 flex-col hidden w-full gap-8 px-6 py-4 font-bold text-white transition-all duration-300 ease-in-out md:flex-row md:flex md:static top-16 md:w-auto bg-emerald-600 dark:bg-gray-800 md:bg-transparent md:dark:bg-transparent md:p-0"
+      class="absolute left-0 z-40 flex-col hidden w-full gap-3 px-6 py-4 font-bold text-white transition-all duration-300 ease-in-out md:flex-row md:gap-8 md:flex md:static top-16 md:w-auto bg-emerald-600 dark:bg-gray-800 md:bg-transparent md:dark:bg-transparent md:p-0"
     >
       {NAV_ITEMS.map((item) => (
         <li>
           <a
             href={item.href}
-            class="relative p-2 font-semibold text-white transition-colors duration-300 group nav-link dark:hover:text-emerald-400"
+            class="relative inline-block px-2 py-2 font-semibold text-white transition-colors duration-300 group nav-link dark:hover:text-emerald-400"
           >
             {item.name}
             <span class="absolute bottom-0 left-0 w-0 h-0.5 transition-all duration-300 bg-white dark:bg-emerald-400 group-hover:w-full"></span>
@@ -78,6 +78,7 @@ const NAV_ITEMS = [
     }
 
     menu.classList.toggle("hidden", !open);
+    menu.classList.toggle("flex", open);
     button.setAttribute("aria-expanded", String(open));
   };
 
