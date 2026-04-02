@@ -1,24 +1,18 @@
 ---
 // src/pages/index.astro
-import Layout from '../layouts/Layout.astro';
-import Navbar from '../components/layout/Navbar.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/sections/Hero.astro';
 import Projects from '../components/sections/Projects.astro';
 import About from '../components/sections/About.astro';
 import Contact from '../components/sections/Contact.astro';
-import Footer from '../components/layout/Footer.astro';
 ---
 
-<Layout title="Luis Sagnay | Software Engineering">
-	<Navbar />
-	<main>
-		<Hero />
-		<Projects />
-		<About />
-		<Contact />
-	</main>
-	<Footer />
-</Layout>
+<BaseLayout title="Luis Sagnay | Software Engineering">
+	<Hero />
+	<Projects />
+	<About />
+	<Contact />
+</BaseLayout>
 
 <script>
 	import { gsap } from "gsap";
