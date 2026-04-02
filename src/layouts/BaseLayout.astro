@@ -5,32 +5,97 @@ import '../styles/global.css';
 
 interface Props {
 	title: string;
+	description?: string;
+	image?: string;
+	canonicalURL?: string;
 }
 
-const { title } = Astro.props;
+const {
+	title,
+	description = "Luis Sagnay - Software Engineer | Web & Mobile Developer | Cybersecurity Enthusiast | AI Explorer",
+	image = "/og-image.png",
+	canonicalURL = Astro.url.href,
+} = Astro.props;
+
+const siteTitle = "Luis Sagnay";
+const siteUrl = Astro.site?.origin || 'https://luissagnay.dev';
+
+const jsonLd = {
+	"@context": "https://schema.org",
+	"@type": "Person",
+	"name": "Luis Sagnay",
+	"url": siteUrl,
+	"jobTitle": "Software Engineer",
+	"description": description,
+	"sameAs": [
+		"https://github.com/lsagnay",
+		"https://linkedin.com/in/luis-sagnay"
+	],
+	"knowsAbout": [
+		"JavaScript",
+		"TypeScript",
+		"Python",
+		"Angular",
+		"Node.js",
+		"Flutter",
+		"Cybersecurity"
+	]
+};
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="Luis Sagnay's portfolio..." />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+		<link rel="canonical" href={canonicalURL} />
+
 		<title>{title}</title>
-		
-		<script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-4PXRC9K062"></script>
+		<meta name="description" content={description} />
+
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={canonicalURL} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={`${siteUrl}${image}`} />
+		<meta property="og:site_name" content={siteTitle} />
+
+		<!-- Twitter -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:url" content={canonicalURL} />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={`${siteUrl}${image}`} />
+
+		<!-- Theme Color -->
+		<meta name="theme-color" content="#059669" media="(prefers-color-scheme: light)" />
+		<meta name="theme-color" content="#022c22" media="(prefers-color-scheme: dark)" />
+
+		<!-- Schema.org JSON-LD -->
+		<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+		<!-- Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-4PXRC9K062"></script>
+		<script is:inline>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+			gtag('config', 'G-4PXRC9K062');
+		</script>
+
+		<!-- Theme Script -->
 		<script is:inline>
 			const theme = localStorage.getItem("theme");
-
 			if (theme === "dark") {
-			document.documentElement.classList.add("dark");
-			} else if (theme === "light") {
-			document.documentElement.classList.remove("dark");
-			} else {
-			if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
 				document.documentElement.classList.add("dark");
-			}
+			} else if (theme === "light") {
+				document.documentElement.classList.remove("dark");
+			} else {
+				if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+					document.documentElement.classList.add("dark");
+				}
 			}
 		</script>
 	</head>
