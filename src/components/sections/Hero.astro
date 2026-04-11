@@ -39,7 +39,7 @@ const fullName = `${PERSONAL_INFO.firstname} ${PERSONAL_INFO.lastname}`;
         >
           {PERSONAL_INFO.firstname}
           <span
-            class="text-transparent bg-linear-to-r from-emerald-600 to-teal-600 dark:from-emerald-400 dark:to-teal-400 bg-clip-text"
+            class="text-transparent bg-linear-to-r from-emerald-600 to-teal-600 dark:from-emerald-400 dark:to-teal-400 bg-clip-text gradient-shift"
           >
             {PERSONAL_INFO.lastname}
           </span>
@@ -53,9 +53,11 @@ const fullName = `${PERSONAL_INFO.firstname} ${PERSONAL_INFO.lastname}`;
 
         <!-- Specializations -->
         <div class="flex flex-wrap justify-center gap-3 lg:justify-start">
-          {PERSONAL_INFO.interests.map((interest) => (
+          {PERSONAL_INFO.interests.map((interest, idx) => (
             <span
               class="px-4 py-2 font-mono text-sm font-medium text-teal-700 bg-teal-100 border border-teal-300 rounded-full dark:bg-teal-900/30 dark:text-teal-300 dark:border-teal-800"
+              data-animate="zoom"
+              data-delay={String(0.3 + idx * 0.08)}
             >
               {interest}
             </span>
@@ -80,14 +82,14 @@ const fullName = `${PERSONAL_INFO.firstname} ${PERSONAL_INFO.lastname}`;
 
     <!-- Scroll indicator -->
     <div
-      class="absolute transform -translate-x-1/2 bottom-8 left-1/2 animate-bounce"
+      class="absolute transform -translate-x-1/2 bottom-8 left-1/2 pulse-glow"
     >
       <a
         href="#projects"
         aria-label="Scroll down to projects section"
         class="text-gray-400 transition-colors dark:text-gray-600 hover:text-emerald-600 dark:hover:text-emerald-400"
       >
-        
+
         <ArrowBigDownDashIcon class="w-6 h-6" />
       </a>
     </div>

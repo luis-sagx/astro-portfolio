@@ -12,13 +12,15 @@ const links = CONTACT_INFO.socialLinks.filter((social) =>
 );
 ---
 
-<div class="flex justify-center gap-4 pt-6 lg:justify-start">
-  {links.map((social) => (
+<div class="flex justify-center gap-4 pt-6 lg:justify-start" data-animate="fade-up" data-delay="0.5">
+  {links.map((social, idx) => (
     <a
       href={social.url}
       target="_blank"
       rel="noopener noreferrer"
       aria-label={social.ariaLabel}
+      data-animate="zoom"
+      data-delay={String(0.5 + idx * 0.1)}
       class="flex items-center justify-center w-12 h-12 text-gray-700 transition-all duration-300 bg-gray-200 rounded-full dark:bg-gray-800 dark:text-gray-300 hover:bg-emerald-100 dark:hover:bg-emerald-900/30 hover:text-emerald-600 dark:hover:text-emerald-400 hover:scale-110"
     >
       <Icon name={iconMap[social.icon] ?? 'github'} className="w-5 h-5" />

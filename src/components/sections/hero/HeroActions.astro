@@ -12,18 +12,25 @@ const { resumeUrl } = Astro.props;
   <a
     href={resumeUrl}
     download="Luis_Sagnay_CV.pdf"
-    class="flex items-center justify-center gap-2 px-8 py-4 font-semibold text-white transition-all duration-300 transform shadow-lg group bg-linear-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 rounded-xl hover:shadow-xl hover:-translate-y-1"
+    class="magnetic-btn flex items-center justify-center gap-2 px-8 py-4 font-semibold text-white transition-all duration-300 transform shadow-lg group bg-linear-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 rounded-xl hover:shadow-xl hover:-translate-y-1"
+    data-magnetic
   >
-    Download my CV
-    <Icon name="download" className="w-5 h-5 text-white" />
+    <span class="relative">
+      Download my CV
+    </span>
+    <Icon name="download" className="w-5 h-5 text-white transition-transform group-hover:scale-110" />
+    <div class="absolute inset-0 transition-opacity duration-300 rounded-xl opacity-0 shimmer group-hover:opacity-100 pointer-events-none"></div>
   </a>
 
   <a
     href="#contact"
-    class="flex items-center justify-center gap-2 px-8 py-4 font-semibold transition-all duration-300 transform bg-white border-2 shadow-md dark:bg-gray-800 text-emerald-600 dark:text-emerald-400 rounded-xl border-emerald-600 dark:border-emerald-400 hover:bg-emerald-50 dark:hover:bg-emerald-950/30 hover:shadow-xl hover:-translate-y-1"
+    class="magnetic-btn flex items-center justify-center gap-2 px-8 py-4 font-semibold transition-all duration-300 transform bg-white border-2 shadow-md dark:bg-gray-800 text-emerald-600 dark:text-emerald-400 rounded-xl border-emerald-600 dark:border-emerald-400 hover:bg-emerald-50 dark:hover:bg-emerald-950/30 hover:shadow-xl hover:-translate-y-1"
+    data-magnetic
   >
-    Get in Touch
-    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <span class="relative">
+      Get in Touch
+    </span>
+    <svg class="w-5 h-5 transition-transform group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path
         stroke-linecap="round"
         stroke-linejoin="round"
@@ -33,3 +40,24 @@ const { resumeUrl } = Astro.props;
     </svg>
   </a>
 </div>
+
+<script>
+  // Magnetic button effect
+  const magneticButtons = document.querySelectorAll('[data-magnetic]');
+  
+  magneticButtons.forEach((button: Element) => {
+    const el = button as HTMLElement;
+    
+    el.addEventListener('mousemove', (e: MouseEvent) => {
+      const rect = el.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+      
+      el.style.transform = `translate(${x * 0.15}px, ${y * 0.15}px)`;
+    });
+    
+    el.addEventListener('mouseleave', () => {
+      el.style.transform = 'translate(0, 0)';
+    });
+  });
+</script>

@@ -18,7 +18,7 @@ const { title } = Astro.props;
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
 		<title>{title}</title>
-		
+
 		<script async src="https://www.googletagmanager.com/gtag/js?id=G-4PXRC9K062"></script>
 		<script is:inline>
 			const theme = localStorage.getItem("theme");
@@ -35,10 +35,45 @@ const { title } = Astro.props;
 		</script>
 	</head>
 	<body class="min-h-screen text-gray-950 dark:text-gray-50 bg-gray-50 dark:bg-gray-950">
+		<!-- Scroll Progress Bar -->
+		<div id="scroll-progress" class="scroll-progress-bar"></div>
+		
 		<Navbar />
 		<main>
 			<slot />
 		</main>
 		<Footer />
+
+		<!-- Navbar Scroll Effect -->
+		<script>
+			const navbar = document.getElementById('main-navbar');
+			const scrollProgress = document.getElementById('scroll-progress');
+
+			if (navbar && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+				let lastScroll = 0;
+				
+				window.addEventListener('scroll', () => {
+					const currentScroll = window.scrollY;
+					
+					// Navbar background change on scroll
+					if (currentScroll > 50) {
+						navbar.classList.add('!py-2', 'shadow-xl');
+						navbar.classList.remove('shadow-lg');
+					} else {
+						navbar.classList.remove('!py-2', 'shadow-xl');
+						navbar.classList.add('shadow-lg');
+					}
+					
+					// Update scroll progress bar
+					if (scrollProgress) {
+						const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+						const scrollPercent = (currentScroll / docHeight) * 100;
+						scrollProgress.style.width = scrollPercent + '%';
+					}
+					
+					lastScroll = currentScroll;
+				}, { passive: true });
+			}
+		</script>
 	</body>
 </html>
