@@ -12,13 +12,13 @@ const NAV_ITEMS = [
 
 ---
 
-<nav class="sticky top-0 z-50 shadow-lg bg-emerald-600 dark:bg-gray-800">
+<nav id="main-navbar" class="sticky top-0 z-50 transition-all duration-500 shadow-lg bg-emerald-600 dark:bg-gray-800">
   <div class="flex items-center justify-between max-w-6xl px-6 py-4 mx-auto">
-    
+
     <!-- Logo -->
     <a
       href="/"
-      class="hidden text-xl font-bold text-white transition-colors duration-300 md:block font-display"
+      class="hidden text-xl font-bold text-white transition-all duration-300 md:block font-display"
     >
       Luis Sagnay
     </a>
@@ -31,7 +31,7 @@ const NAV_ITEMS = [
       aria-label="Toggle navigation"
       aria-expanded="false"
     >
-      <Menu />  
+      <Menu />
     </button>
 
     <!-- Menu -->
