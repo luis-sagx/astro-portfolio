@@ -23,37 +23,228 @@ import Contact from '../components/sections/Contact.astro';
 	const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 	if (!reduceMotion) {
-		const items = document.querySelectorAll("[data-animate]");
+		// ==========================================
+		// HERO ANIMATIONS - Staggered entrance
+		// ==========================================
+		
+		// Floating orbs parallax
+		const orbs = document.querySelectorAll('.floating-orb');
+		orbs.forEach((orb, i) => {
+			gsap.to(orb, {
+				y: `random(-30, 30)`,
+				x: `random(-20, 20)`,
+				duration: `random(4, 7)`,
+				repeat: -1,
+				yoyo: true,
+				ease: "sine.inOut",
+				delay: i * 0.3,
+			});
+		});
 
-		items.forEach((element) => {
-			const animation = element.getAttribute("data-animate") ?? "fade-up";
-			const delay = Number(element.getAttribute("data-delay") ?? 0);
-
-			const from = {
-				opacity: 0,
-				y: animation === "fade-down" ? -28 : animation === "zoom" ? 0 : 28,
-				x: animation === "fade-left" ? 28 : animation === "fade-right" ? -28 : 0,
-				scale: animation === "zoom" ? 0.96 : 1,
-			};
-
+		// Hero elements stagger animation
+		const heroSection = document.querySelector('#start');
+		if (heroSection) {
+			const heroElements = heroSection.querySelectorAll('[data-animate]');
 			gsap.fromTo(
-				element,
-				from,
+				heroElements,
+				{ opacity: 0, x: (index: number) => {
+					const el = heroElements[index] as HTMLElement;
+					return (el.getAttribute('data-animate') ?? '').includes('right') ? -40 : (el.getAttribute('data-animate') ?? '').includes('left') ? 40 : 0;
+				}, y: (index: number) => {
+					const el = heroElements[index] as HTMLElement;
+					return (el.getAttribute('data-animate') ?? '').includes('down') ? -40 : (el.getAttribute('data-animate') ?? '').includes('up') ? 40 : 0;
+				} },
 				{
 					opacity: 1,
 					x: 0,
 					y: 0,
+					duration: 0.8,
+					stagger: 0.15,
+					ease: "power3.out",
+					delay: 0.3,
+				}
+			);
+		}
+
+		// Profile image special animation
+		const profileImage = document.querySelector('[data-animate="fade-left"]');
+		if (profileImage) {
+			gsap.fromTo(
+				profileImage,
+				{ opacity: 0, x: 60, scale: 0.9, rotation: -5 },
+				{
+					opacity: 1,
+					x: 0,
 					scale: 1,
-					duration: 0.6,
-					ease: "power2.out",
+					rotation: 0,
+					duration: 1,
+					ease: "power3.out",
+					delay: 0.5,
+				}
+			);
+		}
+
+		// ==========================================
+		// SKILL BADGES - Staggered pop-in on scroll
+		// ==========================================
+
+		const aboutSection = document.querySelector('#about-me');
+		if (aboutSection) {
+			const skillContainers = aboutSection.querySelectorAll('.flex.flex-wrap');
+			skillContainers.forEach((container) => {
+				const badges = container.querySelectorAll('.inline-flex');
+				if (badges.length > 0) {
+					gsap.fromTo(
+						badges,
+						{ opacity: 0, scale: 0.6 },
+						{
+							opacity: 1,
+							scale: 1,
+							duration: 0.35,
+							stagger: 0.03,
+							ease: "back.out(1.7)",
+							scrollTrigger: {
+								trigger: container,
+								start: "top 88%",
+								once: true,
+							},
+						}
+					);
+				}
+			});
+		}
+
+		// ==========================================
+		// SCROLL-TRIGGERED ANIMATIONS
+		// ==========================================
+
+		const items = document.querySelectorAll("[data-animate]");
+
+		items.forEach((element) => {
+			// Skip hero elements (already handled above)
+			if (element.closest('#start')) return;
+
+			const animation = element.getAttribute("data-animate") ?? "fade-up";
+			const delay = Number(element.getAttribute("data-delay") ?? 0);
+
+			let fromVars: any = { opacity: 0 };
+			let toVars: any = { opacity: 1 };
+
+			switch (animation) {
+				case "fade-up":
+					fromVars.y = 50;
+					break;
+				case "fade-down":
+					fromVars.y = -50;
+					break;
+				case "fade-left":
+					fromVars.x = 50;
+					break;
+				case "fade-right":
+					fromVars.x = -50;
+					break;
+				case "zoom":
+					fromVars.scale = 0.9;
+					fromVars.opacity = 0;
+					break;
+				case "scale":
+					fromVars.scale = 0.8;
+					fromVars.opacity = 0;
+					break;
+				default:
+					fromVars.y = 50;
+			}
+
+			gsap.fromTo(
+				element,
+				fromVars,
+				{
+					...toVars,
+					x: 0,
+					y: 0,
+					scale: 1,
+					duration: 0.8,
+					ease: "power3.out",
 					delay,
 					scrollTrigger: {
 						trigger: element,
-						start: "top 86%",
+						start: "top 85%",
+						end: "top 60%",
+						scrub: 0.5,
 						once: true,
 					},
-				},
+				}
 			);
 		});
+
+		// ==========================================
+		// PARALLAX EFFECTS
+		// ==========================================
+		
+		// Hero parallax on scroll
+		const heroContent = document.querySelector('#start > div');
+		if (heroContent) {
+			gsap.to(heroContent, {
+				yPercent: 15,
+				ease: "none",
+				scrollTrigger: {
+					trigger: "#start",
+					start: "top top",
+					end: "bottom top",
+					scrub: true,
+				}
+			});
+		}
+
+		// Section headers pin effect
+		document.querySelectorAll('section > div > [data-animate="fade-down"]').forEach(header => {
+			gsap.fromTo(
+				header,
+				{ scale: 0.95 },
+				{
+					scale: 1,
+					scrollTrigger: {
+						trigger: header,
+						start: "top 90%",
+						end: "top 70%",
+						scrub: true,
+					}
+				}
+			);
+		});
+
+		// ==========================================
+		// SCROLL SPEED-BASED EFFECTS
+		// ==========================================
+		
+		let currentScroll = 0;
+		let targetScroll = 0;
+		let ease = 0.075;
+
+		function animate() {
+			currentScroll += (targetScroll - currentScroll) * ease;
+			requestAnimationFrame(animate);
+		}
+		animate();
+
+		window.addEventListener('scroll', () => {
+			targetScroll = window.scrollY;
+		});
+
+		// ==========================================
+		// SECTION PINNING FOR IMPACT
+		// ==========================================
+		
+		// Pin hero section briefly for dramatic effect
+		const hero = document.querySelector('#start');
+		if (hero && window.innerWidth > 768) {
+			ScrollTrigger.create({
+				trigger: hero,
+				start: "top top",
+				end: "bottom+=10% top",
+				pin: false,
+				scrub: true,
+			});
+		}
 	}
 </script>
