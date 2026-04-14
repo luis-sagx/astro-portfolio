@@ -1,0 +1,184 @@
+---
+import TechIcon from './TechIcon.astro';
+import { resolveTechBadgeColor, shouldUseWhiteBadgeIcon } from '../../utils/tech-icons';
+
+interface Props {
+  name: string;
+  isWide?: boolean;
+  widthUnits?: number;
+}
+
+const { name, isWide = false, widthUnits = 1 } = Astro.props;
+const colors = resolveTechBadgeColor(name);
+const useWhiteIcon = shouldUseWhiteBadgeIcon(name);
+---
+
+<div
+  class={`key-3d ${isWide ? 'key-wide' : ''}`}
+  style={`--bg-color: ${colors.bg}; --fg-color: ${colors.fg}; --key-units: ${isWide ? 2 : widthUnits};`}
+>
+  <div class="key-top">
+    <div class="key-face">
+      <span class="key-icon">
+        <TechIcon name={name} size={22} className="shrink-0" forceWhite={useWhiteIcon} />
+      </span>
+    </div>
+  </div>
+  <div class="key-side"></div>
+  <div class="key-shadow"></div>
+</div>
+
+<style>
+  .key-3d {
+    --key-depth: 10px;
+    --key-radius: 8px;
+    --hover-press-y: 8px;
+    --hover-press-z: 1px;
+    --active-press-y: 10px;
+    --active-press-z: 0px;
+    --key-units: 1;
+    --key-unit-size: 56px;
+    --key-gap: 8px;
+    --bg-color: #3b82f6;
+    --fg-color: #ffffff;
+    --shadow-color: rgba(0, 0, 0, 0.3);
+    
+    position: relative;
+    cursor: pointer;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    isolation: isolate;
+  }
+
+  .key-top {
+    position: relative;
+    z-index: 2;
+    padding: 12px;
+    width: calc((var(--key-unit-size) * var(--key-units)) + (var(--key-gap) * (var(--key-units) - 1)));
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-color);
+    border-radius: var(--key-radius);
+    border: 2px solid rgba(255, 255, 255, 0.25);
+    transform: translateZ(var(--key-depth));
+    transition: all 0.15s ease-out;
+    box-shadow: 
+      0 8px 18px color-mix(in srgb, var(--bg-color) 35%, black),
+      0 0 15px rgba(59, 130, 246, 0.3),
+      inset 0 1px 2px rgba(255, 255, 255, 0.3);
+  }
+
+  .key-face {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .key-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2));
+  }
+
+  .key-side {
+    position: absolute;
+    top: 8px;
+    left: 0;
+    right: 0;
+    bottom: calc(-1 * var(--key-depth) - 1px);
+    background: linear-gradient(
+      to bottom,
+      color-mix(in srgb, var(--bg-color) 88%, white),
+      color-mix(in srgb, var(--bg-color) 66%, black)
+    );
+    border-radius: var(--key-radius);
+    transform: translateZ(0);
+    z-index: 1;
+    box-shadow:
+      inset 0 -1px 0 rgba(0, 0, 0, 0.25),
+      0 6px 14px rgba(0, 0, 0, 0.25);
+    pointer-events: none;
+    transition: bottom 0.15s ease-out;
+  }
+
+  .key-side::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: calc(var(--key-depth) + 2px);
+    border-radius: 0 0 var(--key-radius) var(--key-radius);
+    background: linear-gradient(
+      to bottom,
+      color-mix(in srgb, var(--bg-color) 74%, black),
+      color-mix(in srgb, var(--bg-color) 46%, black)
+    );
+  }
+
+  .key-shadow {
+    position: absolute;
+    top: var(--key-depth);
+    left: 4px;
+    right: 4px;
+    height: 20px;
+    background: radial-gradient(
+      ellipse at center,
+      var(--shadow-color) 0%,
+      transparent 70%
+    );
+    filter: blur(4px);
+    z-index: 0;
+    transform: translateZ(calc(-1 * var(--key-depth)));
+    pointer-events: none;
+  }
+
+  /* Hover effect - key press */
+  .key-3d:hover .key-top {
+    transform: translateZ(var(--hover-press-z)) translateY(var(--hover-press-y));
+    box-shadow: 
+      0 4px 10px color-mix(in srgb, var(--bg-color) 40%, black),
+      0 0 25px rgba(59, 130, 246, 0.5),
+      inset 0 1px 2px rgba(255, 255, 255, 0.3);
+  }
+
+  .key-3d:hover .key-side {
+    bottom: -1px;
+  }
+
+  .key-3d:active .key-top {
+    transform: translateZ(var(--active-press-z)) translateY(var(--active-press-y));
+  }
+
+  .key-3d:active .key-side {
+    bottom: 0;
+  }
+
+  /* Dark mode adjustments */
+  :global(.dark) .key-top {
+    border-color: rgba(255, 255, 255, 0.1);
+    box-shadow:
+      0 0 20px rgba(59, 130, 246, 0.4),
+      inset 0 1px 2px rgba(255, 255, 255, 0.2);
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 640px) {
+    .key-3d {
+      --key-unit-size: 44px;
+      --key-gap: 5px;
+    }
+
+    .key-top {
+      height: 44px;
+      padding: 10px;
+    }
+
+    .key-icon {
+      transform: scale(0.9);
+    }
+  }
+</style>
