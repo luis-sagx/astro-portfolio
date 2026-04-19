@@ -1,6 +1,6 @@
 ---
 import Icon from '../atoms/Icon.astro';
-import TechIcon from '../atoms/TechIcon.astro';
+import Key3D from '../atoms/Key3D.astro';
 
 interface Props {
   title: string;
@@ -64,11 +64,11 @@ const { title, description, image, github, link, tags = [], highlights = [] } = 
       </ul>
     )}
 
-    <div class="flex items-center justify-center p-2 border border-teal-500 rounded-xl dark:bg-teal-900/50 bg-teal-100/50" data-tech-icons>
+    <div class="flex items-center justify-center p-2 border border-teal-500 rounded-xl dark:bg-teal-900/50 bg-teal-100/50">
       {tags.length > 0 && (
-        <div class="flex flex-wrap justify-center gap-4">
+        <div class="flex flex-wrap justify-center gap-1.5">
           {tags.map((tag) => (
-            <TechIcon name={tag} className="js-tech-icon" />
+            <Key3D name={tag} mini />
           ))}
         </div>
       )}
@@ -106,91 +106,3 @@ const { title, description, image, github, link, tags = [], highlights = [] } = 
     class="absolute top-0 right-0 w-32 h-32 transition-opacity duration-500 rounded-bl-full opacity-0 bg-linear-to-br from-emerald-500/0 via-emerald-500/5 to-teal-500/10 dark:from-emerald-500/0 dark:via-emerald-500/10 dark:to-teal-500/20 group-hover:opacity-100"
   ></div>
 </article>
-
-<script>
-  import { gsap } from "gsap";
-
-  // Perfiles: cada posición del array tiene su propia personalidad
-  const profiles = [
-    { yAmp: 3, xAmp: 0, rotAmp: 0,   yDur: 1.8, xDur: 0,   rotDur: 0,   squishX: 0.92, squishDur: 0.9 },
-    { yAmp: 2, xAmp: 3, rotAmp: 8,   yDur: 2.2, xDur: 1.6, rotDur: 2.2, squishX: 0.95, squishDur: 1.1 },
-    { yAmp: 4, xAmp: 0, rotAmp: 0,   yDur: 1.4, xDur: 0,   rotDur: 0,   squishX: 0.88, squishDur: 0.7 },
-    { yAmp: 2, xAmp: 4, rotAmp: 12,  yDur: 2.6, xDur: 2.0, rotDur: 2.6, squishX: 0.96, squishDur: 1.3 },
-    { yAmp: 3, xAmp: 2, rotAmp: -6,  yDur: 2.0, xDur: 1.8, rotDur: 2.0, squishX: 0.93, squishDur: 1.0 },
-    { yAmp: 3, xAmp: 0, rotAmp: 0,   yDur: 1.6, xDur: 0,   rotDur: 0,   squishX: 0.90, squishDur: 0.8 },
-  ];
-
-  function initTechIcons() {
-    document.querySelectorAll("[data-tech-icons]").forEach((container) => {
-      const icons = container.querySelectorAll(".js-tech-icon");
-
-      // Entrada escalonada
-      gsap.fromTo(
-        icons,
-        { opacity: 0, scale: 0.5, y: 16 },
-        {
-          opacity: 1, scale: 1, y: 0,
-          duration: 0.45,
-          stagger: 0.07,
-          ease: "back.out(2)",
-          onComplete: () => startLoops(icons),
-        }
-      );
-    });
-  }
-
-  function startLoops(icons: NodeListOf<Element>) {
-    icons.forEach((icon, i) => {
-      const p = profiles[i % profiles.length];
-      const delay = i * 0.18;
-
-      // Salto vertical con squish al "tocar suelo"
-      gsap.to(icon, {
-        y: -p.yAmp,
-        duration: p.yDur / 2,
-        repeat: -1,
-        yoyo: true,
-        ease: "sine.inOut",
-        delay,
-        onRepeat: () => {
-          gsap.to(icon, {
-            scaleX: 1 / p.squishX,
-            scaleY: p.squishX,
-            duration: p.squishDur * 0.18,
-            yoyo: true,
-            repeat: 1,
-            ease: "power2.inOut",
-            overwrite: false,
-          });
-        },
-      });
-
-      // Deriva horizontal (solo algunos perfiles)
-      if (p.xAmp > 0) {
-        gsap.to(icon, {
-          x: p.xAmp,
-          duration: p.xDur,
-          repeat: -1,
-          yoyo: true,
-          ease: "sine.inOut",
-          delay: delay + 0.3,
-        });
-      }
-
-      // Rotación leve (solo algunos perfiles)
-      if (p.rotAmp !== 0) {
-        gsap.to(icon, {
-          rotation: p.rotAmp,
-          duration: p.rotDur,
-          repeat: -1,
-          yoyo: true,
-          ease: "sine.inOut",
-          delay: delay + 0.1,
-        });
-      }
-    });
-  }
-
-  document.addEventListener("DOMContentLoaded", initTechIcons);
-  document.addEventListener("astro:page-load", initTechIcons);
-</script>
