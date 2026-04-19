@@ -89,7 +89,7 @@ export const PROJECTS: Project[] = [
     title: 'Expense Control',
     description:
       'Web application for managing and tracking personal expenses effectively.',
-    technologies: ['React', 'Typescript', 'Tailwind CSS', 'Vite', 'Vercel'],
+    technologies: ['React', 'Typescript', 'Tailwind CSS', 'Vite'],
     link: 'https://github.com/luis-sagx/expense-control.git',
     githubUrl: 'https://github.com/luis-sagx/expense-control.git',
     highlights: [

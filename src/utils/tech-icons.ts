@@ -35,44 +35,42 @@ const TECH_ICON_MAP: Record<string, string> = {
   html: 'devicon:html5',
   css: 'devicon:css3',
   vite: 'devicon:vitejs',
-  vercel: 'devicon:vercel',
   bootstrap: 'devicon:bootstrap',
   bun: 'devicon:bun',
 }
 
-const TECH_BADGE_COLOR_MAP: Record<string, { bg: string }> = {
-  java: { bg: '#ffb13d' },
-  javascript: { bg: '#323330' },
-  typescript: { bg: '#2148ad' },
-  python: { bg: '#3e7bad' },
-  dart: { bg: '#0175c2' },
-  csharp: { bg: '#2f145e' },
-  angular: { bg: '#400505' },
-  react: { bg: '#20232a' },
-  tailwindcss: { bg: '#0c4a6e' },
-  flutter: { bg: '#c5d2e0' },
-  nodejs: { bg: '#dadbd9' },
-  springboot: { bg: '#1b5e20' },
-  flask: { bg: '#f1f5f9' },
-  aspnetcore: { bg: '#d3c5e0' },
-  mongodb: { bg: '#1b5e20' },
-  sqlserver: { bg: '#18181b' },
-  postgresql: { bg: '#336791' },
-  mysql: { bg: '#0a142e' },
-  firebase: { bg: '#c27a04' },
-  git: { bg: '#1c1c1c' },
-  docker: { bg: '#333' },
-  linux: { bg: '#fcc624' },
-  ubuntu: { bg: '#e95420' },
-  postman: { bg: '#993f1f' },
+const TECH_BADGE_COLOR_MAP: Record<string, { bg: string; border?: string }> = {
+  java: { bg: '#f89820' },
+  javascript: { bg: '#f7df1e' },
+  typescript: { bg: '#3178c6' },
+  python: { bg: '#1e40af' },
+  dart: { bg: '#035fa3' },
+  csharp: { bg: '#3b0764' },
+  angular: { bg: '#1f2937' },
+  react: { bg: '#1f2937' },
+  tailwindcss: { bg: '#083344' },
+  flutter: { bg: '#1e293b' },
+  nodejs: { bg: '#1f2937' },
+  springboot: { bg: '#1b6638' },
+  aspnetcore: { bg: '#1e1b4b' },
+  flask: { bg: '#f8fafc', border: '#e5e7eb' },
+  mongodb: { bg: '#1b6638' },
+  sqlserver: { bg: '#1e293b' },
+  postgresql: { bg: '#1e3a8a' },
+  mysql: { bg: '#f1f5f9', border: '#cbd5f5' },
+  firebase: { bg: '#92400e' },
+  git: { bg: '#111827' },
+  docker: { bg: '#075985' },
+  linux: { bg: '#a16207' },
+  ubuntu: { bg: '#9a3412' },
+  postman: { bg: '#7c2d12' },
   express: { bg: '#f8fafc' },
   html: { bg: '#e34f26' },
   css: { bg: '#1572b6' },
-  vite: { bg: '#646cff' },
-  vercel: { bg: '#fff' },
-  bootstrap: { bg: '#1d1b1f' },
-  bun: { bg: '#000000' },
-  materialdesign: { bg: '#2563eb' },
+  vite: { bg: '#4c1d95' },
+  bootstrap: { bg: '#581c87' },
+  bun: { bg: '#0a0a0a' },
+  materialdesign: { bg: '#0f172a' },
 }
 
 const TECH_ASSET_SLUG_MAP: Record<string, string> = {
@@ -104,7 +102,7 @@ export const resolveTechAssetSlug = (name: string) => {
 
 export const resolveTechBadgeColor = (name: string) => {
   const key = normalizeTechKey(name)
-  return TECH_BADGE_COLOR_MAP[key] ?? { bg: '#374151' }
+  return TECH_BADGE_COLOR_MAP[key] ?? { bg: '#fff' }
 }
 
 export const shouldUseWhiteBadgeIcon = (name: string) => {
