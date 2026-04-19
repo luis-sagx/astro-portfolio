@@ -15,12 +15,11 @@ const colors = resolveTechBadgeColor(name);
 const useWhiteIcon = shouldUseWhiteBadgeIcon(name);
 
 const bgColor = colors.bg;
-const fgColor = colors.fg;
 ---
 
 <div
   class={`key-3d ${isWide ? 'key-wide' : ''} ${mini ? 'key-mini' : ''}`}
-  style={`--bg-color: ${bgColor}; --fg-color: ${fgColor}; --key-units: ${isWide ? 2 : widthUnits};`}
+  style={`--bg-color: ${bgColor}; --key-units: ${isWide ? 2 : widthUnits};`}
 >
   <div class="key-back"></div>
   <div class="key-top">
@@ -37,11 +36,13 @@ const fgColor = colors.fg;
     --key-unit-size: 56px;
     --key-gap: 8px;
     --bg-color: #3b82f6;
-    --fg-color: #ffffff;
     
     position: relative;
     display: inline-block;
     cursor: pointer;
+    pointer-events: auto;
+    z-index: 10;
+    transform-style: preserve-3d;
   }
 
   .key-back {
@@ -67,12 +68,7 @@ const fgColor = colors.fg;
     justify-content: center;
     background: var(--bg-color);
     border-radius: var(--key-radius);
-    border: 2px solid rgba(255, 255, 255, 0.25);
     transition: transform 0.15s ease-out;
-    box-shadow: 
-      0 8px 18px color-mix(in srgb, var(--bg-color) 35%, black),
-      0 0 15px rgba(59, 130, 246, 0.3),
-      inset 0 1px 2px rgba(255, 255, 255, 0.3);
   }
 
   .key-icon {
@@ -87,10 +83,7 @@ const fgColor = colors.fg;
   }
 
   :global(.dark) .key-top {
-    border-color: rgba(255, 255, 255, 0.1);
-    box-shadow:
-      0 0 20px rgba(59, 130, 246, 0.4),
-      inset 0 1px 2px rgba(255, 255, 255, 0.2);
+    /* Border and box-shadow removed */
   }
 
   @media (max-width: 640px) {

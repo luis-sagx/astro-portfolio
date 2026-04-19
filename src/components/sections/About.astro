@@ -115,15 +115,16 @@ const keyboardRows: KeyboardRow[] = keyboardRowConfig
       </div>
 
       <div class="mb-10">
-        <div class="keyboard-base">
-          <div class="keyboard-surface">
+        <div class="flex justify-center p-8 rounded-2xl bg-teal-700/80" style="transform: perspective(1200px) rotateX(14deg) rotateZ(-1.5deg); transform-style: preserve-3d;">
+          <div class="flex flex-col items-center gap-3 p-5 border border-teal-400 rounded-xl bg-teal-800/80 dark:bg-teal-900/80 dark:border-teal-600" style="pointer-events: auto; isolation: isolate;">
             {keyboardRows.map((rowData, rowIdx) => (
               <div
-                class="keyboard-row"
+                class="flex justify-start gap-2"
                 data-animate="fade-up"
                 data-delay={String(0.1 + rowIdx * 0.08)}
+                style="pointer-events: auto; z-index: 1;"
               >
-                {rowData.keys.map((key) => (
+                {rowData.keys.map((key, keyIdx) => (
                   <Key3D name={key.name} widthUnits={key.width} />
                 ))}
               </div>
@@ -133,119 +134,19 @@ const keyboardRows: KeyboardRow[] = keyboardRowConfig
       </div>
 
 <style is:global>
-  .keyboard-base {
-    display: flex;
-    justify-content: center;
-    padding: 44px 34px 34px;
-    background: linear-gradient(
-      145deg,
-      rgba(16, 185, 129, 0.15) 0%,
-      rgba(20, 184, 166, 0.1) 100%
-    );
-    border-radius: 20px;
-    border: 2px solid rgba(16, 185, 129, 0.3);
-    box-shadow: 
-      0 20px 60px rgba(0, 0, 0, 0.15),
-      0 8px 24px rgba(0, 0, 0, 0.1),
-      inset 0 1px 0 rgba(255, 255, 255, 0.4);
-    transform: perspective(1200px) rotateX(14deg) rotateZ(-1.5deg);
-    transform-style: preserve-3d;
-    position: relative;
-  }
-
-  .dark .keyboard-base {
-    background: linear-gradient(
-      145deg,
-      rgba(16, 185, 129, 0.2) 0%,
-      rgba(20, 184, 166, 0.15) 100%
-    );
-    border-color: rgba(16, 185, 129, 0.4);
-    box-shadow: 
-      0 20px 60px rgba(0, 0, 0, 0.4),
-      0 8px 24px rgba(0, 0, 0, 0.3),
-      inset 0 1px 0 rgba(255, 255, 255, 0.2);
-  }
-
-  .keyboard-base::before {
-    content: '';
-    position: absolute;
-    top: 100%;
-    left: 10%;
-    right: 10%;
-    height: 30px;
-    background: radial-gradient(
-      ellipse at center,
-      rgba(0, 0, 0, 0.2) 0%,
-      transparent 70%
-    );
-    filter: blur(8px);
-    transform: translateZ(-50px);
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  .keyboard-surface {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
-    padding: 22px;
-    background: linear-gradient(
-      145deg,
-      rgba(142, 142, 142, 0.08) 0%,
-      rgba(109, 14, 14, 0.03) 100%
-    );
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    position: relative;
-    z-index: 1;
-  }
-
-  .dark .keyboard-surface {
-    background: linear-gradient(
-      145deg,
-      rgba(0, 0, 0, 0.2) 0%,
-      rgba(0, 0, 0, 0.1) 100%
-    );
-    border-color: rgba(255, 255, 255, 0.08);
-  }
-
-  .keyboard-row {
-    display: flex;
-    justify-content: flex-start;
-    gap: 8px;
-    width: max-content;
+  div[style*="perspective"] {
+    overflow: visible !important;
   }
 
   @media (max-width: 768px) {
-    .keyboard-base {
-      padding: 30px 22px 22px;
-      transform: perspective(1200px) rotateX(10deg) rotateZ(-1deg);
-    }
-
-    .keyboard-surface {
-      padding: 16px;
-      gap: 9px;
-    }
-
-    .keyboard-row {
-      gap: 6px;
+    div[style*="perspective"] {
+      transform: perspective(1200px) rotateX(10deg) rotateZ(-1deg) !important;
     }
   }
 
   @media (max-width: 640px) {
-    .keyboard-base {
-      padding: 20px 15px 15px;
-      transform: perspective(1200px) rotateX(6deg);
-    }
-
-    .keyboard-surface {
-      padding: 10px;
-      gap: 6px;
-    }
-
-    .keyboard-row {
-      gap: 5px;
+    div[style*="perspective"] {
+      transform: perspective(1200px) rotateX(6deg) !important;
     }
   }
 </style>

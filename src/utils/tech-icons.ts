@@ -6,15 +6,6 @@ const normalizeTechKey = (value: string) =>
     .replace(/\+/g, 'plus')
     .replace(/[^a-z0-9]/g, '')
 
-const TECH_ALIASES: Record<string, string> = {
-  nodejs: 'nodejs',
-  node: 'nodejs',
-  typescript: 'typescript',
-  csharp: 'csharp',
-  aspnetcore: 'aspnetcore',
-  materialdesign3: 'materialdesign',
-}
-
 const TECH_ICON_MAP: Record<string, string> = {
   java: 'devicon:java',
   javascript: 'devicon:javascript',
@@ -49,75 +40,74 @@ const TECH_ICON_MAP: Record<string, string> = {
   bun: 'devicon:bun',
 }
 
+const TECH_BADGE_COLOR_MAP: Record<string, { bg: string }> = {
+  java: { bg: '#ffb13d' },
+  javascript: { bg: '#323330' },
+  typescript: { bg: '#2148ad' },
+  python: { bg: '#3e7bad' },
+  dart: { bg: '#0175c2' },
+  csharp: { bg: '#2f145e' },
+  angular: { bg: '#400505' },
+  react: { bg: '#20232a' },
+  tailwindcss: { bg: '#0c4a6e' },
+  flutter: { bg: '#c5d2e0' },
+  nodejs: { bg: '#dadbd9' },
+  springboot: { bg: '#1b5e20' },
+  flask: { bg: '#f1f5f9' },
+  aspnetcore: { bg: '#d3c5e0' },
+  mongodb: { bg: '#1b5e20' },
+  sqlserver: { bg: '#18181b' },
+  postgresql: { bg: '#336791' },
+  mysql: { bg: '#0a142e' },
+  firebase: { bg: '#c27a04' },
+  git: { bg: '#1c1c1c' },
+  docker: { bg: '#333' },
+  linux: { bg: '#fcc624' },
+  ubuntu: { bg: '#e95420' },
+  postman: { bg: '#993f1f' },
+  express: { bg: '#f8fafc' },
+  html: { bg: '#e34f26' },
+  css: { bg: '#1572b6' },
+  vite: { bg: '#646cff' },
+  vercel: { bg: '#fff' },
+  bootstrap: { bg: '#1d1b1f' },
+  bun: { bg: '#000000' },
+  materialdesign: { bg: '#2563eb' },
+}
+
 const TECH_ASSET_SLUG_MAP: Record<string, string> = {
-  materialdesign3: 'materialdesign3',
+  materialdesign3: 'materialdesign',
 }
 
-const TECH_BADGE_COLOR_MAP: Record<string, { bg: string; fg: string }> = {
-  java: { bg: '#ffb13d', fg: '#000000' },
-  javascript: { bg: '#323330', fg: '#f7df1e' },
-  typescript: { bg: '#2148ad', fg: '#ffffff' },
-  python: { bg: '#3e7bad', fg: '#ffffff' },
-  dart: { bg: '#0175c2', fg: '#ffffff' },
-  csharp: { bg: '#2f145e', fg: '#ffffff' },
-  angular: { bg: '#400505', fg: '#ffffff' },
-  react: { bg: '#20232a', fg: '#61dafb' },
-  tailwindcss: { bg: '#0c4a6e', fg: '#ffffff' },
-  flutter: { bg: '#c5d2e0', fg: '#000000' },
-  nodejs: { bg: '#dadbd9', fg: '#000000' },
-  springboot: { bg: '#1b5e20', fg: '#ffffff' },
-  flask: { bg: '#f1f5f9', fg: '#000000' },
-  aspnetcore: { bg: '#d3c5e0', fg: '#ffffff' },
-  mongodb: { bg: '#1b5e20', fg: '#ffffff' },
-  sqlserver: { bg: '#18181b', fg: '#ffffff' },
-  postgresql: { bg: '#336791', fg: '#ffffff' },
-  mysql: { bg: '#0a142e', fg: '#ffffff' },
-  firebase: { bg: '#c27a04', fg: '#ffffff' },
-  git: { bg: '#1c1c1c', fg: '#ffffff' },
-  docker: { bg: '#333', fg: '#ffffff' },
-  linux: { bg: '#fcc624', fg: '#111111' },
-  ubuntu: { bg: '#e95420', fg: '#ffffff' },
-  postman: { bg: '#993f1f', fg: '#ffffff' },
-  express: { bg: '#f8fafc', fg: '#000000' },
-  html: { bg: '#e34f26', fg: '#ffffff' },
-  css: { bg: '#1572b6', fg: '#ffffff' },
-  vite: { bg: '#646cff', fg: '#ffffff' },
-  vercel: { bg: '#fff', fg: '#ffffff' },
-  bootstrap: { bg: '#1d1b1f', fg: '#000000' },
-  bun: { bg: '#000000', fg: '#ffffff' },
-  materialdesign: { bg: '#2563eb', fg: '#ffffff' },
-}
+const WH_BADGE_ICONS = new Set([
+  'javascript',
+  'react',
+  'linux',
+  'nodejs',
+  'typescript',
+  'csharp',
+  'postgresql',
+  'firebase',
+  'postman',
+  'docker',
+])
 
-export const resolveTechKey = (name: string) => {
-  const normalized = normalizeTechKey(name)
-  return TECH_ALIASES[normalized] ?? normalized
+export const resolveTechIcon = (name: string) => {
+  const key = normalizeTechKey(name)
+  return TECH_ICON_MAP[key]
 }
-
-export const resolveTechIcon = (name: string) =>
-  TECH_ICON_MAP[resolveTechKey(name)]
 
 export const resolveTechAssetSlug = (name: string) => {
-  const key = resolveTechKey(name)
+  const key = normalizeTechKey(name)
   return TECH_ASSET_SLUG_MAP[key] ?? key
 }
 
 export const resolveTechBadgeColor = (name: string) => {
-  const key = resolveTechKey(name)
-  return TECH_BADGE_COLOR_MAP[key] ?? { bg: '#374151', fg: '#ffffff' }
+  const key = normalizeTechKey(name)
+  return TECH_BADGE_COLOR_MAP[key] ?? { bg: '#374151' }
 }
 
 export const shouldUseWhiteBadgeIcon = (name: string) => {
-  const key = resolveTechKey(name)
-  return ![
-    'javascript',
-    'react',
-    'linux',
-    'nodejs',
-    'typescript',
-    'csharp',
-    'postgresql',
-    'firebase',
-    'postman',
-    'docker',
-  ].includes(key)
+  const key = normalizeTechKey(name)
+  return !WH_BADGE_ICONS.has(key)
 }
