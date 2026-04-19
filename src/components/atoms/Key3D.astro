@@ -10,18 +10,22 @@ interface Props {
 }
 
 const { name, isWide = false, widthUnits = 1, mini = false } = Astro.props;
+
 const colors = resolveTechBadgeColor(name);
 const useWhiteIcon = shouldUseWhiteBadgeIcon(name);
+
+const bgColor = colors.bg;
+const fgColor = colors.fg;
 ---
 
 <div
   class={`key-3d ${isWide ? 'key-wide' : ''} ${mini ? 'key-mini' : ''}`}
-  style={`--bg-color: ${colors.bg}; --fg-color: ${colors.fg}; --key-units: ${isWide ? 2 : widthUnits};`}
+  style={`--bg-color: ${bgColor}; --fg-color: ${fgColor}; --key-units: ${isWide ? 2 : widthUnits};`}
 >
   <div class="key-back"></div>
   <div class="key-top">
     <span class="key-icon">
-      <TechIcon name={name} size={mini ? 16 : 22} className="shrink-0" />
+      <TechIcon name={name} size={mini ? 18 : 22} className="shrink-0" />
     </span>
   </div>
 </div>
@@ -112,18 +116,18 @@ const useWhiteIcon = shouldUseWhiteBadgeIcon(name);
 
   /* Mini variant for cards */
   .key-mini {
-    --key-unit-size: 40px;
-    --key-gap: 4px;
+    --key-unit-size: 38px;
+    --key-gap: 3px;
   }
 
   .key-mini .key-top {
-    height: 40px;
-    padding: 8px;
+    height: 38px;
+    padding: 6px;
   }
 
   .key-mini .key-back {
-    height: 40px;
-    transform: translate(2px, 4px);
+    height: 38px;
+    transform: translate(2px, 3px);
   }
 
   .key-mini .key-icon {
