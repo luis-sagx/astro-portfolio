@@ -10,6 +10,6 @@ export const PERSONAL_INFO: PersonalInfo = {
     'Universidad de las Fuerzas Armadas ESPE.',
     'I am constantly seeking to learn new technologies and take on challenges that help me grow professionally.',
   ],
-  imageUrl: 'img/LuisS.png',
+  imageUrl: 'img/LuisS.webp',
   resumeUrl: 'cv/Luis_Sagnay_CV.pdf',
 }
