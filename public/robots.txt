@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://luis-sagx.xyz/sitemap.xml

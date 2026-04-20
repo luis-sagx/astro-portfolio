@@ -11,12 +11,37 @@ const { title } = Astro.props;
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="Luis Sagnay's portfolio..." />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+		<link rel="canonical" href="https://luis-sagx.xyz" />
+		<meta name="description" content="Luis Sagnay - Software Engineer specializing in Web & Mobile Development, Cybersecurity, and AI. Build performant, accessible, and secure applications." />
+		<meta name="author" content="Luis Sagnay" />
+		<meta name="theme-color" content="#059669" />
+
+		<!-- Open Graph -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="https://luis-sagx.xyz" />
+		<meta property="og:title" content="Luis Sagnay - Software Engineer" />
+		<meta property="og:description" content="Software Engineer specializing in Web & Mobile Development, Cybersecurity, and AI." />
+		<meta property="og:site_name" content="Luis Sagnay Portfolio" />
+
+		<!-- Twitter Card -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:url" content="https://luis-sagx.xyz" />
+		<meta name="twitter:title" content="Luis Sagnay - Software Engineer" />
+		<meta name="twitter:description" content="Software Engineer specializing in Web & Mobile Development, Cybersecurity, and AI." />
+
 		<title>{title}</title>
-		
-		<script async src="https://www.googletagmanager.com/gtag/js?id=G-4PXRC9K062"></script>
+
+		<!-- Google Tag Manager - defer loading -->
+		<script>
+			window.addEventListener('load', () => {
+				const script = document.createElement('script');
+				script.async = true;
+				script.src = 'https://www.googletagmanager.com/gtag/js?id=G-4PXRC9K062';
+				document.head.appendChild(script);
+			});
+		</script>
 		<script is:inline>
 			const theme = localStorage.getItem("theme");
 
