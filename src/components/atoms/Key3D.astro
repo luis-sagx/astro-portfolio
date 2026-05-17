@@ -1,6 +1,6 @@
 ---
-import TechIcon from './TechIcon.astro';
 import { resolveTechBadgeColor, shouldUseWhiteBadgeIcon } from '../../utils/tech-icons';
+import TechIcon from './TechIcon.astro';
 
 interface Props {
   name: string;
@@ -88,22 +88,43 @@ const bgColor = colors.bg;
 
   @media (max-width: 640px) {
     .key-3d {
-      --key-unit-size: 44px;
-      --key-gap: 5px;
+      --key-unit-size: 36px;
+      --key-gap: 1px;
     }
 
     .key-top {
-      height: 44px;
-      padding: 10px;
+      height: 36px;
+      padding: 8px;
     }
 
     .key-back {
-      height: 44px;
-      transform: translate(3px, 3px);
+      height: 36px;
+      transform: translate(2px, 2px);
     }
 
     .key-icon {
-      transform: scale(0.9);
+      transform: scale(0.8);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .key-3d {
+      --key-unit-size: 32px;
+      --key-gap: 1px;
+    }
+
+    .key-top {
+      height: 32px;
+      padding: 6px;
+    }
+
+    .key-back {
+      height: 32px;
+      transform: translate(2px, 2px);
+    }
+
+    .key-icon {
+      transform: scale(0.7);
     }
   }
 
