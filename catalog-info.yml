@@ -1,0 +1,29 @@
+actualiza este yml algo similar a esto:
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: astro-portfolio
+  description: Personal portfolio website built with Astro
+  tags:
+    - astro
+    - website
+    - portfolio
+  links:
+    - url: https://github.com/luis-sagx/astro-portfolio
+      title: Source Code
+      icon: github
+    - url: https://astro-portfolio-esa.pages.dev/
+      title: Live Site
+      icon: globe
+  annotations:
+    # documentation is in this repo
+    backstage.io/techdocs-ref: dir:.
+    github.com/project-slug: luis-sagx/astro-portfolio
+spec:
+  type: website
+  lifecycle: production
+  owner: user:luis-sagx
+  system: personal-website
+  providesApis: []
+  consumesApis: []
+  dependsOn: []
