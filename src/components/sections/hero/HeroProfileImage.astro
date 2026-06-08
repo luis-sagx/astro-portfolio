@@ -14,7 +14,7 @@ const { imageUrl, fullName } = Astro.props;
 >
   <div class="relative group">
     <div
-      class="absolute transition duration-500 rounded-full opacity-50 -inset-0.5 bg-linear-to-r from-emerald-500 to-teal-500 blur-lg group-hover:opacity-75"
+      class="absolute transition duration-500"
     ></div>
 
     <div class="relative">
@@ -24,7 +24,7 @@ const { imageUrl, fullName } = Astro.props;
         width="320"
         height="320"
         fetchpriority="high"
-        class="relative object-cover w-64 h-64 transition duration-500 transform border-4 border-white rounded-full shadow-sm lg:w-80 lg:h-80 dark:border-gray-800 group-hover:scale-105"
+        class="relative object-cover w-64 h-64 transition duration-500 transform rounded-xl lg:w-80 lg:h-80 group-hover:scale-105"
       />
     </div>
   </div>

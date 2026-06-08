@@ -1,18 +1,17 @@
 ---
 import { PERSONAL_INFO } from "../../data/constants/personal-info";
+import HeroActions from "./hero/HeroActions.astro";
 import HeroBackground from "./hero/HeroBackground.astro";
 import HeroProfileImage from "./hero/HeroProfileImage.astro";
-import HeroActions from "./hero/HeroActions.astro";
 import HeroSocialLinks from "./hero/HeroSocialLinks.astro";
-import Icon from "../atoms/Icon.astro";
 
-import { Hand, ArrowBigDownDashIcon } from "@lucide/astro";
+import { ArrowBigDownDashIcon, Hand } from "@lucide/astro";
 
 const fullName = `${PERSONAL_INFO.firstname} ${PERSONAL_INFO.lastname}`;
 ---
 <section
   id="start"
-  class="relative flex items-center justify-center min-h-screen px-6 py-20 overflow-hidden bg-linear-to-br from-gray-100 via-emerald-50/40 to-teal-50/50 dark:from-gray-950 dark:via-emerald-950/20 dark:to-teal-950/30"
+  class="relative flex items-center justify-center min-h-screen px-6 py-20 overflow-hidden bg-linear-to-br from-gray-100 via-red-50/40 to-rose-50/50 dark:from-gray-950 dark:via-red-950/20 dark:to-rose-950/30"
 >
   <HeroBackground />
 
@@ -29,7 +28,7 @@ const fullName = `${PERSONAL_INFO.firstname} ${PERSONAL_INFO.lastname}`;
         <!-- Greeting -->
         <div class="inline-block">
           <span
-            class="flex items-center gap-2 text-lg font-semibold tracking-wide text-emerald-600 dark:text-emerald-400"
+            class="flex items-center gap-2 text-lg font-semibold tracking-wide text-red-600 dark:text-red-400"
             ><Hand /> Hello, I'm</span
           >
         </div>
@@ -39,14 +38,14 @@ const fullName = `${PERSONAL_INFO.firstname} ${PERSONAL_INFO.lastname}`;
         >
           {PERSONAL_INFO.firstname}
           <span
-            class="text-transparent bg-linear-to-r from-emerald-600 to-teal-600 dark:from-emerald-400 dark:to-teal-400 bg-clip-text gradient-shift"
+            class="text-transparent bg-linear-to-r from-red-600 to-rose-600 dark:from-red-400 dark:to-rose-400 bg-clip-text gradient-shift"
           >
             {PERSONAL_INFO.lastname}
           </span>
         </h1>
 
         <h2
-          class="text-2xl font-semibold text-gray-700 lg:text-3xl dark:text-gray-300 font-display"
+          class="text-xl italic text-red-600 lg:text-2xl dark:text-red-400 font-serif"
         >
           {PERSONAL_INFO.profession}
         </h2>
@@ -55,7 +54,7 @@ const fullName = `${PERSONAL_INFO.firstname} ${PERSONAL_INFO.lastname}`;
         <div class="flex flex-wrap justify-center gap-3 lg:justify-start">
           {PERSONAL_INFO.interests.map((interest, idx) => (
             <span
-              class="px-4 py-2 font-mono text-sm font-medium text-teal-700 bg-teal-100 border border-teal-300 rounded-full dark:bg-teal-900/30 dark:text-teal-300 dark:border-teal-800"
+              class="px-4 py-2 font-mono text-sm font-medium text-rose-700 bg-rose-100 border border-rose-300 rounded-full dark:bg-rose-900/30 dark:text-rose-300 dark:border-rose-800"
               data-animate="zoom"
               data-delay={String(0.3 + idx * 0.08)}
             >
@@ -69,7 +68,7 @@ const fullName = `${PERSONAL_INFO.firstname} ${PERSONAL_INFO.lastname}`;
           class="max-w-2xl text-lg leading-relaxed text-gray-600 dark:text-gray-400"
         >
           {PERSONAL_INFO.bio[0]}
-          <span class="font-semibold text-emerald-600 dark:text-emerald-400"
+          <span class="font-semibold text-red-600 dark:text-red-400"
             >{PERSONAL_INFO.bio[1]}</span
           > {PERSONAL_INFO.bio[2]}
         </p>
@@ -87,7 +86,7 @@ const fullName = `${PERSONAL_INFO.firstname} ${PERSONAL_INFO.lastname}`;
       <a
         href="#projects"
         aria-label="Scroll down to projects section"
-        class="text-gray-400 transition-colors dark:text-gray-600 hover:text-emerald-600 dark:hover:text-emerald-400"
+        class="text-gray-400 transition-colors dark:text-gray-600 hover:text-red-600 dark:hover:text-red-400"
       >
 
         <ArrowBigDownDashIcon class="w-6 h-6" />

@@ -16,9 +16,9 @@ const { title, description, image, github, link, tags = [], highlights = [] } = 
 ---
 
 <article
-  class="relative flex flex-col h-full overflow-hidden transition-all duration-500 bg-white border shadow-lg border-gray-200/80 group dark:bg-gray-900 rounded-2xl dark:border-gray-800 hover:border-emerald-500/50 dark:hover:border-emerald-500/50 hover:shadow-2xl hover:shadow-emerald-500/10 dark:hover:shadow-emerald-500/20"
+  class="relative flex flex-col h-full overflow-hidden transition-all duration-500 bg-white border shadow-lg border-gray-200/80 group dark:bg-gray-900 rounded-2xl dark:border-gray-800 hover:border-red-500/50 dark:hover:border-red-500/50 hover:shadow-2xl hover:shadow-red-500/10 dark:hover:shadow-red-500/20"
 >
-  <div class="relative h-56 overflow-hidden bg-linear-to-br from-emerald-100 to-teal-100 dark:from-emerald-950/40 dark:to-teal-950/40">
+  <div class="relative h-56 overflow-hidden bg-linear-to-br from-red-100 to-rose-100 dark:from-red-950/40 dark:to-rose-950/40">
     
     {image ? (
       <img
@@ -30,7 +30,7 @@ const { title, description, image, github, link, tags = [], highlights = [] } = 
       />
     ) : (
       <div class="flex items-center justify-center w-full h-full">
-        <div class="flex items-center justify-center w-24 h-24 transition-transform duration-500 transform rounded-2xl bg-linear-to-br from-emerald-500 to-teal-500 group-hover:rotate-12">
+        <div class="flex items-center justify-center w-24 h-24 transition-transform duration-500 transform rounded-2xl bg-linear-to-br from-red-500 to-rose-500 group-hover:rotate-12">
           <Icon name="code" className="w-12 h-12 text-white" />
         </div>
       </div>
@@ -38,14 +38,14 @@ const { title, description, image, github, link, tags = [], highlights = [] } = 
 
     <div class="absolute inset-0 transition-opacity duration-500 opacity-0 bg-linear-to-t from-gray-900/60 via-transparent to-transparent group-hover:opacity-100"></div>
 
-    <div class="absolute top-4 right-4 px-3 py-1.5 bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm rounded-full text-xs font-semibold text-emerald-600 dark:text-emerald-400 shadow-lg border border-emerald-200 dark:border-emerald-800 flex items-center gap-1">
+    <div class="absolute top-4 right-4 px-3 py-1.5 bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm rounded-full text-xs font-semibold text-red-600 dark:text-red-400 shadow-lg border border-red-200 dark:border-red-800 flex items-center gap-1">
       <Icon name="rocket" className="w-3.5 h-3.5" />
       <span>Project</span>
     </div>
   </div>
 
   <div class="flex flex-col flex-1 p-6">
-    <h3 class="mb-3 text-xl font-bold text-gray-900 transition-colors duration-300 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 line-clamp-2 font-display">
+    <h3 class="mb-3 text-xl font-bold text-gray-900 transition-colors duration-300 dark:text-white group-hover:text-red-600 dark:group-hover:text-red-400 line-clamp-2 font-display">
       {title}
     </h3>
 
@@ -57,16 +57,16 @@ const { title, description, image, github, link, tags = [], highlights = [] } = 
       <ul class="mb-4 space-y-2">
         {highlights.map((highlight) => (
           <li class="flex items-start gap-2 text-sm text-gray-700 dark:text-gray-300">
-            <Icon name="check" className="w-4 h-4 mt-0.5 text-emerald-600 dark:text-emerald-400" />
+            <Icon name="check" className="w-4 h-4 mt-0.5 text-red-600 dark:text-red-400" />
             <span>{highlight}</span>
           </li>
         ))}
       </ul>
     )}
 
-    <div class="flex items-center justify-center p-2 border border-teal-300 dark:border-teal-500 bg-linear-to-r from-emerald-600/80 to-teal-600/80 rounded-xl">
+    <div class="flex items-center justify-center">
       {tags.length > 0 && (
-        <div class="flex flex-wrap justify-center gap-1.5">
+        <div class="flex flex-wrap justify-center gap-2">
           {tags.map((tag) => (
             <Key3D name={tag} mini />
           ))}
@@ -74,13 +74,13 @@ const { title, description, image, github, link, tags = [], highlights = [] } = 
       )}
     </div>
 
-    <div class="flex gap-3 pt-4 border-t border-gray-100 dark:border-gray-800">
+    <div class="flex gap-3 pt-4  border-gray-100 dark:border-gray-800">
       {github && (
         <a
           href={github}
           target="_blank"
           rel="noopener noreferrer"
-          class="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 bg-linear-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+          class="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 bg-linear-to-r from-red-600 to-rose-600 hover:from-red-700 hover:to-rose-700 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
           aria-label={`View ${title} code on GitHub`}
         >
           <Icon name="github" className="w-4 h-4" />
@@ -93,7 +93,7 @@ const { title, description, image, github, link, tags = [], highlights = [] } = 
           href={link}
           target="_blank"
           rel="noopener noreferrer"
-          class="flex items-center justify-center px-4 py-2.5 border border-emerald-300 dark:border-emerald-700 text-emerald-700 dark:text-emerald-300 rounded-xl hover:bg-emerald-50 dark:hover:bg-emerald-900/20 transition-colors"
+          class="flex items-center justify-center px-4 py-2.5 border border-red-300 dark:border-red-700 text-red-700 dark:text-red-300 rounded-xl hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors"
           aria-label={`Open ${title}`}
         >
           <Icon name="external" className="w-4 h-4" />
@@ -103,6 +103,6 @@ const { title, description, image, github, link, tags = [], highlights = [] } = 
   </div>
 
   <div
-    class="absolute top-0 right-0 w-32 h-32 transition-opacity duration-500 rounded-bl-full opacity-0 bg-linear-to-br from-emerald-500/0 via-emerald-500/5 to-teal-500/10 dark:from-emerald-500/0 dark:via-emerald-500/10 dark:to-teal-500/20 group-hover:opacity-100"
+    class="absolute top-0 right-0 w-32 h-32 transition-opacity duration-500 rounded-bl-full opacity-0 bg-linear-to-br from-red-500/0 via-red-500/5 to-rose-500/10 dark:from-red-500/0 dark:via-red-500/10 dark:to-rose-500/20 group-hover:opacity-100"
   ></div>
 </article>
