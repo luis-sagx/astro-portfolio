@@ -7,9 +7,10 @@ export default {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['"Plus Jakarta Sans"', 'system-ui', '-apple-system', 'sans-serif'],
-                display: ['Outfit', '"Plus Jakarta Sans"', 'sans-serif'],
+                sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+                display: ['Inter', 'sans-serif'],
                 mono: ['"JetBrains Mono"', 'monospace'],
+                serif: ['"Instrument Serif"', 'serif'],
             },
         },
     },
