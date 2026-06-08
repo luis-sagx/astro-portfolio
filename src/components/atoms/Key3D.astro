@@ -1,5 +1,5 @@
 ---
-import { resolveTechBadgeColor, getIconColor } from '../../utils/tech-icons';
+import { resolveTechBadgeColor } from '../../utils/tech-icons';
 import TechIcon from './TechIcon.astro';
 
 interface Props {
@@ -7,24 +7,23 @@ interface Props {
   isWide?: boolean;
   widthUnits?: number;
   mini?: boolean;
+  colorOverride?: string;
 }
 
-const { name, isWide = false, widthUnits = 1, mini = false } = Astro.props;
+const { name, isWide = false, widthUnits = 1, mini = false, colorOverride } = Astro.props;
 
-const colors = resolveTechBadgeColor(name);
+const colors = colorOverride ? { bg: colorOverride } : resolveTechBadgeColor(name);
 const bgColor = colors.bg;
-const isDarkIcon = getIconColor(name) === '#1a1a1a';
 ---
 
 <div
-  class={`key-3d ${isWide ? 'key-wide' : ''} ${mini ? 'key-mini' : ''} ${isDarkIcon ? 'key-light-bg' : ''}`}
+  class={`key-3d ${isWide ? 'key-wide' : ''} ${mini ? 'key-mini' : ''}`}
   style={`--bg-color: ${bgColor}; --key-units: ${isWide ? 2 : widthUnits};`}
   data-tech={name}
 >
   <div class="key-back"></div>
   <div class="key-top">
     <span class="key-icon">
-      <span class="key-icon-badge"></span>
       <TechIcon name={name} size={mini ? 16 : 20} className="shrink-0" />
     </span>
   </div>
@@ -82,19 +81,10 @@ const isDarkIcon = getIconColor(name) === '#1a1a1a';
     align-items: center;
     justify-content: center;
     position: relative;
-    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.4));
   }
 
-  .key-icon-badge {
-    position: absolute;
-    inset: -3px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.18);
-    pointer-events: none;
-  }
-
-  .key-light-bg .key-icon-badge {
-    background: rgba(0, 0, 0, 0.18);
+  :global(html.dark) .key-3d {
+    filter: brightness(0.82);
   }
 
   .key-3d:hover .key-top {

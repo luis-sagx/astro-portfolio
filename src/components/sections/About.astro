@@ -46,6 +46,7 @@ const coursesWithIcons = COURSES.map((course) => {
 interface KeyboardKey {
   name: string;
   width: number;
+  color: string;
 }
 
 interface KeyboardRow {
@@ -58,6 +59,10 @@ const keyboardRowConfig = [
   { widths: [1.85, 1, 1, 1, 1, 1.75] },
   { widths: [1.4, 1, 3.8, 1.4] },
 ];
+
+const CENTER_GRAY = '#D1D5DB';
+const EDGE_GRAY = '#9CA3AF';
+const SPACEBAR_YELLOW = '#EAB308';
 
 const allSkills = SKILL_CATEGORIES.flatMap((category) => category.skills);
 const configuredSlots = keyboardRowConfig.reduce((total, row) => total + row.widths.length, 0);
@@ -75,9 +80,16 @@ const keyboardRows: KeyboardRow[] = keyboardRowConfig
       .map((width, keyIndex) => {
         const skill = allSkills[skillCursor++];
         if (!skill) return null;
+        const isEdge = keyIndex === 0 || keyIndex === rowConfig.widths.length - 1;
+        const color = skill.name === 'Linux'
+          ? SPACEBAR_YELLOW
+          : isEdge
+            ? EDGE_GRAY
+            : CENTER_GRAY;
         return {
           name: skill.name,
           width,
+          color,
         };
       })
       .filter((skill): skill is KeyboardKey => skill !== null),
@@ -129,7 +141,7 @@ const keyboardRows: KeyboardRow[] = keyboardRowConfig
                 style="pointer-events: auto; z-index: 1;"
               >
                 {rowData.keys.map((key, keyIdx) => (
-                  <Key3D name={key.name} widthUnits={key.width} />
+                  <Key3D name={key.name} widthUnits={key.width} colorOverride={key.color} />
                 ))}
               </div>
             ))}
