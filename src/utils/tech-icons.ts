@@ -39,6 +39,7 @@ const TECH_ICON_MAP: Record<string, string> = {
   bun: 'devicon:bun',
 }
 
+
 const TECH_BADGE_COLOR_MAP: Record<string, { bg: string; border?: string }> = {
   java: { bg: '#ED8B00' },
   javascript: { bg: '#F7DF1E' },
@@ -71,6 +72,7 @@ const TECH_BADGE_COLOR_MAP: Record<string, { bg: string; border?: string }> = {
   bootstrap: { bg: '#7952B3' },
   bun: { bg: '#FBF0DF' },
   materialdesign: { bg: '#0F172A' },
+  n8n: { bg: '#EA4B71' },
 }
 
 const TECH_ASSET_SLUG_MAP: Record<string, string> = {

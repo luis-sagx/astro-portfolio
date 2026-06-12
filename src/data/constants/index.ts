@@ -9,3 +9,4 @@ export { EDUCATION } from './education.data';
 export { COURSES } from './courses.data';
 export { LANGUAGES } from './languages.data';
 export { PROJECTS } from './projects.data';
+export { EXPERIENCE } from './experience.data';

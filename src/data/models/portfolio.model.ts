@@ -23,7 +23,18 @@ export interface Project {
   link: string
   githubUrl?: string
   liveUrl?: string
-  highlights?: string[] // Key achievements/metrics
+  highlights?: string[]
+}
+
+export interface Experience {
+  company: string
+  role: string
+  period: string
+  status?: string
+  summary: string
+  bullets: string[]
+  technologies: string[]
+  companyUrl?: string
 }
 
 export interface Education {
@@ -59,6 +70,8 @@ export interface PersonalInfo {
   firstname: string
   lastname: string
   profession: string
+  status: string
+  proofLine: string
   interests: string[]
   bio: string[]
   imageUrl: string

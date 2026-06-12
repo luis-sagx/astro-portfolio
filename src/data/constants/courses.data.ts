@@ -1,5 +1,13 @@
 import type { Course } from '../models/portfolio.model'
 
+// To add a certificate: insert at the TOP of COURSES (newest first):
+// {
+//   title: '…',
+//   provider: '…',
+//   year: 2026,
+//   certificateUrl: 'https://…',
+//   icon: 'provider-slug', // must match a file in src/assets/icons/providers/
+// },
 export const COURSES: Course[] = [
   {
     title: 'Curso completo de Linux',
