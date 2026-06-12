@@ -1,0 +1,184 @@
+---
+import { SKILL_CATEGORIES } from '../../data/constants';
+import Key3D from '../atoms/Key3D.astro';
+import SectionHeading from '../molecules/SectionHeading.astro';
+
+interface KeyboardKey {
+  name: string;
+  width: number;
+  tone: 'center' | 'edge' | 'spacebar';
+}
+
+const keyboardRowConfig = [
+  { widths: [1.55, 1, 1, 1, 1, 2.05] },
+  { widths: [1.8, 1, 1, 1, 1, 1.8] },
+  { widths: [1.85, 1, 1, 1, 1, 1.75] },
+  { widths: [1.4, 1, 3.8, 1.4] },
+];
+
+const allSkills = SKILL_CATEGORIES.flatMap((category) => category.skills);
+const configuredSlots = keyboardRowConfig.reduce(
+  (total, row) => total + row.widths.length,
+  0,
+);
+
+if (allSkills.length > configuredSlots) {
+  const extras = allSkills.length - configuredSlots;
+  keyboardRowConfig[keyboardRowConfig.length - 1].widths.push(
+    ...Array(extras).fill(1),
+  );
+}
+
+let skillCursor = 0;
+
+const keyboardRows = keyboardRowConfig
+  .map((rowConfig) => ({
+    keys: rowConfig.widths
+      .map((width, keyIndex) => {
+        const skill = allSkills[skillCursor++];
+        if (!skill) return null;
+        const isEdge = keyIndex === 0 || keyIndex === rowConfig.widths.length - 1;
+        const tone = skill.name === 'Linux' ? 'spacebar' : isEdge ? 'edge' : 'center';
+        return { name: skill.name, width, tone } satisfies KeyboardKey;
+      })
+      .filter((key): key is KeyboardKey => key !== null),
+  }))
+  .filter((row) => row.keys.length > 0);
+---
+
+<section id="stack" class="bg-canvas px-6 py-24 lg:py-32">
+  <div class="mx-auto max-w-6xl">
+    <SectionHeading
+      letter="S"
+      title="Tech stack"
+      sub="Every key is a technology I work with. Hover one."
+    />
+
+    <p
+      id="key-legend"
+      class="mb-6 min-h-[1.5rem] text-center font-mono text-label text-accent"
+      aria-live="polite"
+    >
+    </p>
+
+    <div class="kb-scene" data-animate="fade-up">
+      <div class="kb-board">
+        <div class="kb-plate">
+          {keyboardRows.map((rowData) => (
+            <div class="kb-row">
+              {rowData.keys.map((key) => (
+                <Key3D name={key.name} widthUnits={key.width} tone={key.tone} />
+              ))}
+            </div>
+          ))}
+        </div>
+        <span class="kb-case-front" aria-hidden="true"></span>
+      </div>
+      <span class="kb-shadow" aria-hidden="true"></span>
+      <span class="kb-glow" aria-hidden="true"></span>
+    </div>
+  </div>
+</section>
+
+<style>
+  .kb-scene {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    overflow-x: clip;
+    padding-block: 3rem 4rem;
+    perspective: 1300px;
+  }
+
+  .kb-board {
+    position: relative;
+    transform: rotateX(48deg) rotateZ(-3deg);
+    transform-style: preserve-3d;
+  }
+
+  .kb-plate {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(3px, 0.7vw, 6px);
+    padding: clamp(8px, 1.5vw, 14px);
+    background: var(--sunken);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    transform-style: preserve-3d;
+  }
+
+  .kb-row {
+    display: flex;
+    gap: clamp(3px, 0.7vw, 6px);
+    transform-style: preserve-3d;
+  }
+
+  .kb-case-front {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    height: 16px;
+    transform-origin: top;
+    transform: rotateX(-90deg);
+    background: color-mix(in oklch, var(--sunken) 55%, black);
+    border-radius: 0 0 var(--radius-md) var(--radius-md);
+  }
+
+  .kb-shadow {
+    position: absolute;
+    bottom: 1.25rem;
+    left: 50%;
+    width: min(70%, 640px);
+    height: 36px;
+    transform: translateX(-50%);
+    background: oklch(0 0 0 / 0.28);
+    border-radius: 50%;
+    filter: blur(22px);
+    pointer-events: none;
+  }
+
+  .kb-glow {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 50%;
+    width: min(60%, 560px);
+    height: 30px;
+    transform: translateX(-50%);
+    background: var(--accent);
+    border-radius: 50%;
+    filter: blur(36px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease-out;
+  }
+
+  :global(html.dark) .kb-glow {
+    opacity: 0.22;
+  }
+
+  @media (max-width: 768px) {
+    .kb-board {
+      transform: rotateX(38deg) rotateZ(-2deg);
+    }
+  }
+</style>
+
+<script>
+  const legend = document.getElementById('key-legend');
+
+  document.addEventListener('mouseover', (event) => {
+    const target = event.target;
+    if (!(target instanceof Element)) return;
+    const key = target.closest('[data-tech]');
+    if (!key || !legend) return;
+    legend.textContent = key.getAttribute('data-tech') ?? '';
+  });
+
+  document.addEventListener('mouseout', (event) => {
+    const target = event.target;
+    if (!(target instanceof Element)) return;
+    if (!target.closest('[data-tech]') || !legend) return;
+    legend.textContent = '';
+  });
+</script>

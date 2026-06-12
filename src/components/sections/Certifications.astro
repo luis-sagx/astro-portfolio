@@ -1,0 +1,57 @@
+---
+import { COURSES } from '../../data/constants';
+import CertificationRow from '../molecules/CertificationRow.astro';
+import SectionHeading from '../molecules/SectionHeading.astro';
+
+const VISIBLE_COUNT = 6;
+const visible = COURSES.slice(0, VISIBLE_COUNT);
+const rest = COURSES.slice(VISIBLE_COUNT);
+---
+
+<section id="certifications" class="bg-canvas px-6 py-24 lg:py-32">
+  <div class="mx-auto max-w-6xl">
+    <SectionHeading
+      letter="C"
+      title="Certifications"
+      sub={`${COURSES.length} completed — and counting.`}
+    />
+
+    <ul class="grid border-y border-line md:grid-cols-2 md:gap-x-12" data-animate="fade-up">
+      {visible.map((course) => <CertificationRow course={course} />)}
+    </ul>
+
+    {rest.length > 0 && (
+      <details class="cert-more border-b border-line">
+        <summary class="cursor-pointer py-4 font-mono text-label text-accent">
+          <span class="more-label">Show {rest.length} more ▾</span>
+          <span class="less-label">Show less ▴</span>
+        </summary>
+        <ul class="grid md:grid-cols-2 md:gap-x-12">
+          {rest.map((course) => <CertificationRow course={course} />)}
+        </ul>
+      </details>
+    )}
+  </div>
+</section>
+
+<style>
+  .cert-more summary {
+    list-style: none;
+  }
+
+  .cert-more summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .cert-more .less-label {
+    display: none;
+  }
+
+  .cert-more[open] .more-label {
+    display: none;
+  }
+
+  .cert-more[open] .less-label {
+    display: inline;
+  }
+</style>

@@ -1,303 +1,45 @@
 ---
-import { Award, BookOpen, Code, Dumbbell, Globe, GraduationCap, Heart, Volleyball } from '@lucide/astro';
-import {
-COURSES,
-EDUCATION,
-LANGUAGES,
-SKILL_CATEGORIES,
-} from '../../data/constants';
-import Icon from '../atoms/Icon.astro';
-import Key3D from '../atoms/Key3D.astro';
-
-const providerIcons = import.meta.glob('../../assets/icons/providers/*.svg', {
-  eager: true,
-  query: '?url',
-  import: 'default',
-}) as Record<string, string>;
-
-const providerIconMap = Object.fromEntries(
-  Object.entries(providerIcons).map(([path, url]) => {
-    const slug = path.split('/').pop()?.replace('.svg', '') ?? '';
-    return [slug.toLowerCase(), url];
-  }),
-);
-
-const getProviderInitials = (provider: string) =>
-  provider
-    .split(/\s+/)
-    .map((word) => word[0])
-    .join('')
-    .slice(0, 2)
-    .toUpperCase();
-
-const coursesWithIcons = COURSES.map((course) => {
-  const slug = (course.icon || course.provider)
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-+|-+$/g, '');
-
-  return {
-    ...course,
-    providerIcon: providerIconMap[slug],
-    providerInitials: getProviderInitials(course.provider),
-  };
-});
-
-interface KeyboardKey {
-  name: string;
-  width: number;
-  color: string;
-}
-
-interface KeyboardRow {
-  keys: KeyboardKey[];
-}
-
-const keyboardRowConfig = [
-  { widths: [1.55, 1, 1, 1, 1, 2.05] },
-  { widths: [1.8, 1, 1, 1, 1, 1.8] },
-  { widths: [1.85, 1, 1, 1, 1, 1.75] },
-  { widths: [1.4, 1, 3.8, 1.4] },
-];
-
-const CENTER_GRAY = '#D1D5DB';
-const EDGE_GRAY = '#9CA3AF';
-const SPACEBAR_YELLOW = '#EAB308';
-
-const allSkills = SKILL_CATEGORIES.flatMap((category) => category.skills);
-const configuredSlots = keyboardRowConfig.reduce((total, row) => total + row.widths.length, 0);
-
-if (allSkills.length > configuredSlots) {
-  const extras = allSkills.length - configuredSlots;
-  keyboardRowConfig[keyboardRowConfig.length - 1].widths.push(...Array(extras).fill(1));
-}
-
-let skillCursor = 0;
-
-const keyboardRows: KeyboardRow[] = keyboardRowConfig
-  .map((rowConfig) => ({
-    keys: rowConfig.widths
-      .map((width, keyIndex) => {
-        const skill = allSkills[skillCursor++];
-        if (!skill) return null;
-        const isEdge = keyIndex === 0 || keyIndex === rowConfig.widths.length - 1;
-        const color = skill.name === 'Linux'
-          ? SPACEBAR_YELLOW
-          : isEdge
-            ? EDGE_GRAY
-            : CENTER_GRAY;
-        return {
-          name: skill.name,
-          width,
-          color,
-        };
-      })
-      .filter((skill): skill is KeyboardKey => skill !== null),
-  }))
-  .filter((row) => row.keys.length > 0);
+import { EDUCATION, LANGUAGES } from '../../data/constants';
+import SectionHeading from '../molecules/SectionHeading.astro';
 ---
 
-<section
-  id="about-me"
-  class="relative px-6 py-24 overflow-hidden bg-linear-to-br from-rose-100 via-gray-200/80 to-rose-100/80 dark:from-rose-950/70 dark:via-gray-950 dark:to-red-950/70"
->
-  <!-- Floating decorative elements -->
-  <div class="absolute inset-0 overflow-hidden pointer-events-none">
-    <div class="absolute w-56 h-56 rounded-full top-20 right-32 bg-red-200/15 dark:bg-red-500/5 blur-3xl float-slow"></div>
-    <div class="absolute rounded-full bottom-32 left-20 w-72 h-72 bg-rose-200/15 dark:bg-rose-500/5 blur-3xl float-medium"></div>
-    <div class="absolute w-40 h-40 rounded-full top-1/3 left-1/4 bg-red-100/20 dark:bg-red-600/5 blur-2xl float-fast"></div>
-  </div>
+<section id="about-me" class="bg-canvas px-6 py-24 lg:py-32">
+  <div class="mx-auto max-w-6xl">
+    <SectionHeading letter="A" title="About" />
 
-  <div class="relative max-w-6xl mx-auto">
-    <div class="mb-20 text-center" data-animate="fade-down">
-      <span class="text-sm font-semibold tracking-wider uppercase text-red-600 dark:text-red-400">Get to know me</span>
-      <h2 class="text-4xl font-bold text-gray-900 lg:text-5xl dark:text-white font-display">
-        About
-        <span class="text-transparent bg-linear-to-r from-red-600 to-rose-600 dark:from-red-400 dark:to-rose-400 bg-clip-text">Me</span>
-      </h2>
-      <div class="w-24 h-1 mx-auto mt-4 rounded-full bg-linear-to-r from-red-500 to-rose-500" data-animate="scale" data-delay="0.2"></div>
-    </div>
-
-    <div class="mb-20" data-animate="fade-up" data-delay="0.1">
-        <div class="flex items-center gap-3 mb-10">
-          <div class="flex items-center justify-center w-10 h-10 rounded-lg bg-linear-to-br from-red-500 to-rose-500">
-            <Code class="w-5 h-5 text-white" />
-          </div>
-          <h3 class="text-2xl font-bold text-gray-900 dark:text-white font-display">Technical Skills</h3>
-        </div>
-
-        <div id="key-tooltip" class="mb-4 text-center min-h-[28px]">
-          <span class="text-sm font-medium text-red-600 dark:text-red-400 font-serif italic opacity-0 transition-opacity duration-150">hover a key</span>
-        </div>
-
-      <div class="mb-10">
-        <div class="flex justify-center p-8 rounded-2xl bg-gray-900/95 dark:bg-gray-950 border border-red-500/20" style="transform: perspective(1200px) rotateX(35deg) rotateZ(-6deg); transform-style: preserve-3d;">
-          <div class="flex flex-col items-center gap-3 p-5 border border-red-500/10 rounded-xl bg-gray-800 dark:bg-gray-900" style="pointer-events: auto; isolation: isolate;">
-            {keyboardRows.map((rowData, rowIdx) => (
-              <div
-                class="flex justify-start gap-2"
-                data-animate="fade-up"
-                data-delay={String(0.1 + rowIdx * 0.08)}
-                style="pointer-events: auto; z-index: 1;"
-              >
-                {rowData.keys.map((key, keyIdx) => (
-                  <Key3D name={key.name} widthUnits={key.width} colorOverride={key.color} />
-                ))}
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-<style is:global>
-  div[style*="perspective"] {
-    overflow: visible !important;
-  }
-
-  @media (max-width: 768px) {
-    div[style*="perspective"] {
-      transform: perspective(1200px) rotateX(22deg) rotateZ(-4deg) !important;
-    }
-  }
-
-  @media (max-width: 640px) {
-    div[style*="perspective"] {
-      transform: perspective(1200px) rotateX(14deg) rotateZ(-2deg) !important;
-    }
-  }
-</style>
-    </div>
-
-    <div class="w-16 h-px mx-auto mb-20 bg-linear-to-r from-transparent via-red-400 to-transparent" data-animate="scale" data-delay="0.1"></div>
-
-    <div class="grid gap-12 mb-20 lg:grid-cols-3">
-      <div data-animate="fade-right" data-delay="0.1">
-        <div class="flex items-center gap-3 mb-6">
-          <div class="flex items-center justify-center w-10 h-10 rounded-lg bg-linear-to-br from-red-500 to-rose-500">
-            <GraduationCap class="w-5 h-5 text-white" />
-          </div>
-          <h3 class="text-xl font-bold text-gray-900 dark:text-white font-display">Education</h3>
-        </div>
-        <div class="space-y-5">
+    <div class="grid gap-12 lg:grid-cols-3" data-animate="fade-up">
+      <div>
+        <h3 class="font-mono text-label uppercase tracking-wide text-muted">Education</h3>
+        <div class="mt-5 space-y-5">
           {EDUCATION.map((edu) => (
-            <div class="relative pl-5 border-l-2 border-red-300 dark:border-red-700">
-              <div class="absolute w-3 h-3 rounded-full -left-1.75 top-1 bg-red-500"></div>
-              {edu.degree && <p class="mb-3 text-lg font-semibold text-gray-900 dark:text-white">{edu.degree}</p>}
-              <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">{edu.institution}</p>
-              <p class="mt-1 text-sm font-medium text-red-600 dark:text-red-400">{edu.period}</p>
+            <div class="border-t border-line pt-4">
+              {edu.degree && <p class="text-heading font-bold text-ink">{edu.degree}</p>}
+              <p class="mt-1 text-body text-muted">{edu.institution}</p>
+              <p class="mt-1 font-mono text-label text-accent">{edu.period}</p>
             </div>
           ))}
         </div>
       </div>
 
-      <div data-animate="fade-up" data-delay="0.2">
-        <div class="flex items-center gap-3 mb-6">
-          <div class="flex items-center justify-center w-10 h-10 rounded-lg bg-linear-to-br from-rose-500 to-red-500">
-            <Globe class="w-5 h-5 text-white" />
-          </div>
-          <h3 class="text-xl font-bold text-gray-900 dark:text-white font-display">Languages</h3>
-        </div>
-        <div class="space-y-4">
+      <div>
+        <h3 class="font-mono text-label uppercase tracking-wide text-muted">Languages</h3>
+        <ul class="mt-5">
           {LANGUAGES.map((language) => (
-            <div class="flex items-center justify-between p-3 border rounded-lg shadow-sm bg-white/80 border-gray-200/60 dark:bg-gray-900 dark:border-gray-800/50">
-              <span class="font-medium text-gray-800 dark:text-gray-200">{language.name}</span>
-              <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-red-100 dark:bg-red-900/40 text-red-700 dark:text-red-300">{language.proficiency}</span>
-            </div>
+            <li class="flex items-baseline justify-between gap-4 border-t border-line py-3">
+              <span class="font-medium text-ink">{language.name}</span>
+              <span class="text-right font-mono text-label text-muted">{language.proficiency}</span>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
 
-      <div data-animate="fade-left" data-delay="0.3">
-        <div class="flex items-center gap-3 mb-6">
-          <div class="flex items-center justify-center w-10 h-10 rounded-lg bg-linear-to-br from-red-500 to-rose-500">
-            <Heart class="w-5 h-5 text-white" />
-          </div>
-          <h3 class="text-xl font-bold text-gray-900 dark:text-white font-display">Beyond Code</h3>
-        </div>
-        <p class="mb-5 text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-          In my free time, I enjoy staying active by playing sports and soccer. I also greatly value time with family and friends.
+      <div>
+        <h3 class="font-mono text-label uppercase tracking-wide text-muted">Beyond code</h3>
+        <p class="mt-5 border-t border-line pt-4 text-body text-muted">
+          Off the keyboard I play soccer, train at the gym, and read — and I value time with family and friends.
         </p>
-        <div class="flex flex-wrap gap-2">
-          <span class="flex items-center gap-2 px-3 py-2 text-sm font-medium text-gray-700 border rounded-lg shadow-sm bg-white/80 border-gray-200/60 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-800/50">
-            <Volleyball class="w-4 h-4 text-red-500" />
-            Soccer
-          </span>
-          <span class="flex items-center gap-2 px-3 py-2 text-sm font-medium text-gray-700 border rounded-lg shadow-sm bg-white/80 border-gray-200/60 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-800/50">
-            <Dumbbell class="w-4 h-4 text-red-500" />
-            Exercise
-          </span>
-          <span class="flex items-center gap-2 px-3 py-2 text-sm font-medium text-gray-700 border rounded-lg shadow-sm bg-white/80 border-gray-200/60 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-800/50">
-            <BookOpen class="w-4 h-4 text-red-500" />
-            Reading
-          </span>
-        </div>
-      </div>
-    </div>
-
-    <div data-animate="fade-up" data-delay="0.1">
-      <div class="flex items-center gap-3 mb-8">
-        <div class="flex items-center justify-center w-10 h-10 rounded-lg bg-linear-to-br from-red-500 to-rose-500">
-          <Award class="w-5 h-5 text-white" />
-        </div>
-        <h3 class="text-2xl font-bold text-gray-900 dark:text-white font-display">Certifications</h3>
-      </div>
-      <div class="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-        {coursesWithIcons.map((course, idx) => (
-          <a
-            href={course.certificateUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            data-animate="zoom"
-            data-delay={String(idx * 0.06)}
-            class="flex items-center gap-4 p-4 transition-all duration-200 border shadow-sm bg-white/80 border-gray-200/60 rounded-xl dark:bg-gray-900 dark:border-gray-800/50 hover:border-red-300 dark:hover:border-red-700 group hover:shadow-md"
-          >
-            {course.providerIcon ? (
-              <img
-                src={course.providerIcon}
-                alt={`${course.provider} logo`}
-                class="object-contain w-10 h-10 rounded-lg dark:bg-gray-100 p-0.5 shrink-0"
-                loading="lazy"
-                decoding="async"
-              />
-            ) : (
-              <span class="inline-flex items-center justify-center w-10 h-10 text-xs font-bold rounded-lg text-red-700 shrink-0 bg-red-100 dark:bg-red-900/40 dark:text-red-300">
-                {course.providerInitials}
-              </span>
-            )}
-            <div class="flex-1 min-w-0">
-              <p class="text-sm font-semibold text-gray-800 truncate transition-colors dark:text-gray-200 group-hover:text-red-600 dark:group-hover:text-red-400">{course.title}</p>
-              <p class="mt-0.5 text-xs text-gray-500 dark:text-gray-500">{course.provider}</p>
-            </div>
-            <Icon name="external" className="w-4 h-4 text-gray-400 transition-colors group-hover:text-red-500" />
-          </a>
-        ))}
+        <p class="mt-4 font-mono text-label text-muted">Soccer · Exercise · Reading</p>
       </div>
     </div>
   </div>
 </section>
-
-<script>
-  document.addEventListener('mouseover', (e) => {
-    const key = e.target.closest('.key-3d');
-    const tooltip = document.getElementById('key-tooltip');
-    if (!tooltip) return;
-    const span = tooltip.querySelector('span');
-    if (key) {
-      const name = key.dataset.tech;
-      if (name) {
-        span.textContent = name;
-        span.classList.remove('opacity-0');
-      }
-    }
-  });
-
-  document.addEventListener('mouseout', (e) => {
-    const key = e.target.closest('.key-3d');
-    const tooltip = document.getElementById('key-tooltip');
-    if (!tooltip) return;
-    const span = tooltip.querySelector('span');
-    if (key && !key.contains(e.relatedTarget)) {
-      span.classList.add('opacity-0');
-    }
-  });
-</script>
