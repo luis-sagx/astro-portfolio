@@ -13,7 +13,7 @@ export const EXPERIENCE: Experience[] = [
       'Designing a client-facing bot workflow that separates qualified leads from general inquiries.',
       'Automating quotation handoff steps while keeping the customer communication path traceable.',
     ],
-    technologies: ['n8n', 'JavaScript', 'Automation'],
+    technologies: ['n8n', 'Meta', 'PostgreSQL'],
   },
   {
     company: 'Software Evolutivo',
@@ -27,6 +27,6 @@ export const EXPERIENCE: Experience[] = [
       'Fixed issues and applied improvements in an internal JHipster project.',
       'Worked with pipelines and deployed a Backstage proof of concept on an internal server.',
     ],
-    technologies: ['Astro', 'JHipster', 'CI/CD', 'Backstage'],
+    technologies: ['Astro', 'Spring Boot', 'React', 'GitLab'],
   },
 ]
