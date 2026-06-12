@@ -5,6 +5,7 @@
     "": {
       "name": "astro-portfolio",
       "dependencies": {
+        "@fontsource-variable/archivo": "^5.2.8",
         "@iconify-json/devicon": "^1.2.61",
         "@lucide/astro": "^1.7.0",
         "@tailwindcss/vite": "^4.2.2",
@@ -97,6 +98,8 @@
     "@esbuild/win32-ia32": ["@esbuild/win32-ia32@0.27.4", "", { "os": "win32", "cpu": "ia32" }, "sha512-DAyGLS0Jz5G5iixEbMHi5KdiApqHBWMGzTtMiJ72ZOLhbu/bzxgAe8Ue8CTS3n3HbIUHQz/L51yMdGMeoxXNJw=="],
 
     "@esbuild/win32-x64": ["@esbuild/win32-x64@0.27.4", "", { "os": "win32", "cpu": "x64" }, "sha512-+knoa0BDoeXgkNvvV1vvbZX4+hizelrkwmGJBdT17t8FNPwG2lKemmuMZlmaNQ3ws3DKKCxpb4zRZEIp3UxFCg=="],
+
+    "@fontsource-variable/archivo": ["@fontsource-variable/archivo@5.2.8", "", {}, "sha512-R8EotpKHEsKv7d7oiUyjyPENRi2gtAlwdTlzDCOs5BfX/LJP7jvUYJ4fF/qyd3rnbgk3r1xp33g1P57bYJfhzQ=="],
 
     "@iconify-json/devicon": ["@iconify-json/devicon@1.2.61", "", { "dependencies": { "@iconify/types": "*" } }, "sha512-GvJZrzyWbChwki9yscm8WaCfIHqFVi4hQbjNxoDS0JLsuAk4uyGOnmlHCJFN+SzAZ9FMU2RtmkdJGjYuw4G96w=="],
 

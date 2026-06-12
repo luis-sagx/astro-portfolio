@@ -13,6 +13,7 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@fontsource-variable/archivo": "^5.2.8",
     "@iconify-json/devicon": "^1.2.61",
     "@lucide/astro": "^1.7.0",
     "@tailwindcss/vite": "^4.2.2",
