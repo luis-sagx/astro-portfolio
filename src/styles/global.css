@@ -37,18 +37,18 @@
 }
 
 .dark {
-  --canvas: oklch(0.165 0.012 25);
-  --surface: oklch(0.21 0.012 25);
-  --sunken: oklch(0.14 0.01 25);
+  --canvas: oklch(0.105 0.01 25);
+  --surface: oklch(0.155 0.012 25);
+  --sunken: oklch(0.075 0.01 25);
   --ink: oklch(0.95 0.006 25);
   --ink-muted: oklch(0.71 0.015 25);
   --accent: oklch(0.66 0.19 19);
   --accent-strong: oklch(0.56 0.2 19);
   --accent-ink: oklch(0.985 0.005 19);
   --spacebar: oklch(0.75 0.15 85);
-  --line: oklch(0.31 0.012 25);
-  --key-center: oklch(0.42 0.01 25);
-  --key-edge: oklch(0.3 0.012 25);
+  --line: oklch(0.25 0.012 25);
+  --key-center: oklch(0.36 0.01 25);
+  --key-edge: oklch(0.235 0.012 25);
 }
 
 @theme inline {
