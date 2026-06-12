@@ -1,38 +1,6 @@
-@config '../../tailwind.config.js';
 @import 'tailwindcss';
+@import '@fontsource-variable/archivo/wdth.css';
 @custom-variant dark (&:where(.dark, .dark *));
-
-@font-face {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url('/fonts/inter-latin.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: url('/fonts/inter-latin.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 800;
-  font-display: swap;
-  src: url('/fonts/inter-latin.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: 'Instrument Serif';
-  font-style: italic;
-  font-weight: 400;
-  font-display: swap;
-  src: url('/fonts/instrument-serif-italic.woff2') format('woff2');
-}
 
 @font-face {
   font-family: 'JetBrains Mono';
@@ -50,178 +18,114 @@
   src: url('/fonts/jetbrains-mono-latin.woff2') format('woff2');
 }
 
-/* Base font */
-@layer base {
-  body {
-    font-family:
-      'Inter',
-      system-ui,
-      -apple-system,
-      sans-serif;
-  }
+:root {
+  --canvas: oklch(0.975 0.004 30);
+  --surface: oklch(1 0 0);
+  --sunken: oklch(0.945 0.006 30);
+  --ink: oklch(0.22 0.015 25);
+  --ink-muted: oklch(0.46 0.02 25);
+  --accent: oklch(0.55 0.21 19);
+  --accent-strong: oklch(0.46 0.2 19);
+  --accent-ink: oklch(0.985 0.005 19);
+  --spacebar: oklch(0.79 0.16 85);
+  --line: oklch(0.89 0.008 30);
+  --key-center: oklch(0.87 0.005 30);
+  --key-edge: oklch(0.72 0.008 30);
+  --z-nav: 10;
+  --z-tooltip: 20;
+  --z-modal: 30;
+}
+
+.dark {
+  --canvas: oklch(0.165 0.012 25);
+  --surface: oklch(0.21 0.012 25);
+  --sunken: oklch(0.14 0.01 25);
+  --ink: oklch(0.95 0.006 25);
+  --ink-muted: oklch(0.71 0.015 25);
+  --accent: oklch(0.66 0.19 19);
+  --accent-strong: oklch(0.56 0.2 19);
+  --accent-ink: oklch(0.985 0.005 19);
+  --spacebar: oklch(0.75 0.15 85);
+  --line: oklch(0.31 0.012 25);
+  --key-center: oklch(0.42 0.01 25);
+  --key-edge: oklch(0.3 0.012 25);
+}
+
+@theme inline {
+  --color-canvas: var(--canvas);
+  --color-surface: var(--surface);
+  --color-sunken: var(--sunken);
+  --color-ink: var(--ink);
+  --color-muted: var(--ink-muted);
+  --color-accent: var(--accent);
+  --color-accent-strong: var(--accent-strong);
+  --color-accent-ink: var(--accent-ink);
+  --color-spacebar: var(--spacebar);
+  --color-line: var(--line);
+  --color-key-center: var(--key-center);
+  --color-key-edge: var(--key-edge);
+
+  --font-sans: 'Archivo Variable', system-ui, sans-serif;
+  --font-display: 'Archivo Variable', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+@theme {
+  --radius-xs: 3px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 8px;
+  --radius-2xl: 8px;
+  --radius-3xl: 8px;
+
+  --text-display: clamp(2.75rem, 6.5vw, 5.25rem);
+  --text-display--line-height: 1.02;
+  --text-display--letter-spacing: -0.02em;
+  --text-title: clamp(2rem, 4vw, 2.75rem);
+  --text-title--line-height: 1.1;
+  --text-title--letter-spacing: -0.015em;
+  --text-heading: 1.375rem;
+  --text-heading--line-height: 1.3;
+  --text-body: 1.0625rem;
+  --text-body--line-height: 1.6;
+  --text-label: 0.8125rem;
+  --text-label--line-height: 1.4;
+  --text-label--letter-spacing: 0.01em;
 }
 
 @layer base {
   html {
     scroll-behavior: smooth;
   }
+
+  body {
+    min-height: 100dvh;
+    background: var(--canvas);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  p,
+  li {
+    text-wrap: pretty;
+  }
+
+  a,
+  button {
+    -webkit-tap-highlight-color: transparent;
+  }
 }
 
 @layer utilities {
-  .card-hover:hover {
-    transform: translateY(-4px);
-  }
-
-  /* ===========================
-     GSAP Animation Utilities
-     =========================== */
-
-  /* Initial states for scroll-triggered animations */
-  .gsap-fade-up,
-  .gsap-fade-down,
-  .gsap-fade-left,
-  .gsap-fade-right,
-  .gsap-zoom,
-  .gsap-scale {
-    opacity: 0;
-  }
-
-  .gsap-fade-up { transform: translateY(40px); }
-  .gsap-fade-down { transform: translateY(-40px); }
-  .gsap-fade-left { transform: translateX(-40px); }
-  .gsap-fade-right { transform: translateX(40px); }
-  .gsap-zoom { transform: scale(0.92); }
-  .gsap-scale { transform: scale(0.8); }
-
-  /* Magnetic button effect */
-  .magnetic-btn {
-    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  }
-
-  /* Glowing text effect */
-  .glow-text {
-    text-shadow: 0 0 20px rgba(225, 29, 72, 0.3),
-                 0 0 40px rgba(225, 29, 72, 0.1);
-  }
-
-  /* Shimmer effect */
-  .shimmer {
-    background-size: 200% 100%;
-    background-image: linear-gradient(
-      90deg,
-      transparent 0%,
-      rgba(255, 255, 255, 0.1) 50%,
-      transparent 100%
-    );
-    animation: shimmer 3s infinite;
-  }
-
-  @keyframes shimmer {
-    0% { background-position: -200% 0; }
-    100% { background-position: 200% 0; }
-  }
-
-  /* Floating animation for decorative elements */
-  .float-slow {
-    animation: float 8s ease-in-out infinite;
-  }
-
-  .float-medium {
-    animation: float 5s ease-in-out infinite;
-  }
-
-  .float-fast {
-    animation: float 3s ease-in-out infinite;
-  }
-
-  @keyframes float {
-    0%, 100% { transform: translateY(0px) rotate(0deg); }
-    50% { transform: translateY(-20px) rotate(5deg); }
-  }
-
-  /* Gradient shift animation */
-  .gradient-shift {
-    background-size: 200% 200%;
-    animation: gradientShift 4s ease infinite;
-  }
-
-  @keyframes gradientShift {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-  }
-
-  /* Scroll progress bar */
-  .scroll-progress-bar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 0%;
-    height: 3px;
-    background: linear-gradient(90deg, #E11D48, #BE123C);
-    z-index: 9999;
-    transition: width 0.1s ease-out;
-  }
-
-  /* Parallax container */
-  .parallax-wrapper {
-    overflow: hidden;
-    position: relative;
-  }
-
-  /* Stagger children animation delays */
-  .stagger-1 { animation-delay: 0.1s; }
-  .stagger-2 { animation-delay: 0.2s; }
-  .stagger-3 { animation-delay: 0.3s; }
-  .stagger-4 { animation-delay: 0.4s; }
-  .stagger-5 { animation-delay: 0.5s; }
-  .stagger-6 { animation-delay: 0.6s; }
-
-  /* Reveal animation for sections */
-  .section-reveal {
-    opacity: 0;
-    transform: translateY(60px);
-  }
-
-  /* Text reveal (line by line) */
-  .text-reveal-line {
-    display: inline-block;
-    opacity: 0;
-    transform: translateY(100%);
-  }
-
-  /* Skill tag pop-in */
-  .skill-pop-in {
-    opacity: 0;
-    transform: scale(0.5);
-  }
-
-  /* Card 3D tilt effect container */
-  .card-3d-tilt {
-    transform-style: preserve-3d;
-    perspective: 1000px;
-  }
-
-  /* Horizontal scroll indicator pulse */
-  @keyframes pulse-glow {
-    0%, 100% { opacity: 0.4; transform: scale(1); }
-    50% { opacity: 1; transform: scale(1.1); }
-  }
-
-  .pulse-glow {
-    animation: pulse-glow 2s ease-in-out infinite;
-  }
-
-  /* Typing cursor animation */
-  @keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
-  }
-
-  .typing-cursor::after {
-    content: '|';
-    animation: blink 1s step-end infinite;
-    color: #E11D48;
-    font-weight: bold;
+  .font-expanded {
+    font-stretch: 125%;
   }
 }
