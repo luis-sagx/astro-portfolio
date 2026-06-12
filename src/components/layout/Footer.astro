@@ -3,53 +3,32 @@ import { CONTACT_INFO } from '../../data/constants';
 import Icon from '../atoms/Icon.astro';
 
 const currentYear = new Date().getFullYear();
-
 const iconMap: Record<string, 'github' | 'linkedin'> = {
-	github: 'github',
-	linkedin: 'linkedin',
+  github: 'github',
+  linkedin: 'linkedin',
 };
-
 const links = CONTACT_INFO.socialLinks.filter((social) =>
-	['GitHub', 'LinkedIn'].includes(social.platform),
+  ['GitHub', 'LinkedIn'].includes(social.platform),
 );
 ---
 
-<footer class="py-12 text-gray-300 bg-gray-900 border-t border-gray-800 dark:bg-gray-950">
-	<div class="px-6 mx-auto max-w-7xl">
-		<div class="flex flex-col items-center gap-6">
-			<div class="text-center">
-				<h3 class="mb-2 text-2xl font-bold text-transparent bg-linear-to-r from-red-400 to-rose-400 bg-clip-text">
-					Luis Sagnay
-				</h3>
-				<p class="text-sm text-gray-400">Software Engineer | Web & Mobile Developer | Cybersecurity Enthusiast | AI Explorer</p>
-			</div>
+<footer class="border-t border-line bg-canvas px-6 py-12">
+  <div class="mx-auto flex max-w-6xl flex-col gap-8 md:flex-row md:items-end md:justify-between">
+    <div>
+      <h2 class="font-display text-heading font-extrabold font-expanded text-ink">Luis Sagnay</h2>
+      <p class="mt-2 max-w-[54ch] text-muted">
+        Software Engineering student building tactile web experiences, internal tools and automation workflows.
+      </p>
+      <p class="mt-4 font-mono text-label text-muted">© {currentYear} Luis Sagnay. All rights reserved.</p>
+    </div>
 
-			<div class="flex gap-8 text-sm">
-				<a href="#start" class="transition-colors hover:text-red-400">Home</a>
-				<a href="#projects" class="transition-colors hover:text-red-400">Projects</a>
-				<a href="#about-me" class="transition-colors hover:text-red-400">About</a>
-				<a href="#contact" class="transition-colors hover:text-red-400">Contact</a>
-			</div>
-
-			<div class="flex gap-4">
-				{links.map((social) => (
-					<a
-						href={social.url}
-						target="_blank"
-						rel="noopener noreferrer"
-						class="flex items-center justify-center w-10 h-10 transition-all duration-300 bg-gray-800 rounded-full hover:bg-red-600 hover:scale-110"
-						aria-label={social.ariaLabel}
-					>
-						<Icon name={iconMap[social.icon] ?? 'github'} className="w-4 h-4" />
-					</a>
-				))}
-			</div>
-
-			<div class="w-full h-px max-w-md bg-linear-to-r from-transparent via-gray-700 to-transparent"></div>
-
-			<div class="text-sm text-center text-gray-400">
-				<p>© {currentYear} Luis Sagnay. All rights reserved.</p>
-			</div>
-		</div>
-	</div>
+    <div class="flex gap-5 font-mono text-label text-accent">
+      {links.map((social) => (
+        <a href={social.url} target="_blank" rel="noopener noreferrer" aria-label={social.ariaLabel} class="inline-flex items-center gap-2 hover:underline">
+          <Icon name={iconMap[social.icon] ?? 'github'} className="h-4 w-4" />
+          {social.platform} ↗
+        </a>
+      ))}
+    </div>
+  </div>
 </footer>

@@ -1,100 +1,118 @@
 ---
-import ThemeToggle from "../organisms/ThemeToggle.astro";
-
-import { Menu } from "@lucide/astro";
+import ThemeToggle from '../organisms/ThemeToggle.astro';
 
 const NAV_ITEMS = [
-  { name: "Home", href: "#start" },
-  { name: "Projects", href: "#projects" },
-  { name: "About Me", href: "#about-me" },
-  { name: "Contact", href: "#contact" },
+  { name: 'Experience', href: '#experience' },
+  { name: 'Projects', href: '#projects' },
+  { name: 'Stack', href: '#stack' },
+  { name: 'Contact', href: '#contact' },
 ];
-
 ---
 
-<nav id="main-navbar" class="sticky top-0 z-50 transition-all duration-500 shadow-lg bg-red-600 dark:bg-gray-800">
-  <div class="flex items-center justify-between max-w-6xl px-6 py-4 mx-auto">
-
-    <!-- Logo -->
-    <a
-      href="/"
-      class="hidden text-xl font-bold text-white transition-all duration-300 md:block font-display"
-    >
+<nav id="main-navbar" class="sticky top-0 bg-canvas/95 px-4 py-4 backdrop-blur-sm" style="z-index: var(--z-nav);">
+  <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 border-b border-line pb-4">
+    <a href="#start" class="font-display text-heading font-extrabold font-expanded text-ink">
       Luis Sagnay
     </a>
 
-    <!-- Mobile button -->
     <button
       data-menu-button
       type="button"
-      class="order-1 text-white md:hidden focus:outline-none"
+      class="menu-key relative h-11 w-11 border border-line bg-key-center text-ink md:hidden"
       aria-label="Toggle navigation"
       aria-expanded="false"
     >
-      <Menu />
+      <span class="menu-line top-[15px]"></span>
+      <span class="menu-line top-[25px]"></span>
     </button>
 
-    <!-- Menu -->
-    <ul
-      data-mobile-menu
-      class="absolute left-0 z-40 flex-col hidden w-full gap-3 px-6 py-4 font-bold text-white transition-all duration-300 ease-in-out md:flex-row md:gap-8 md:flex md:static top-16 md:w-auto bg-red-600 dark:bg-gray-800 md:bg-transparent md:dark:bg-transparent md:p-0"
-    >
-      {NAV_ITEMS.map((item) => (
-        <li>
-          <a
-            href={item.href}
-            class="relative inline-block px-2 py-2 font-semibold text-white transition-colors duration-300 group nav-link dark:hover:text-red-400"
-          >
-            {item.name}
-            <span class="absolute bottom-0 left-0 w-0 h-0.5 transition-all duration-300 bg-white dark:bg-red-400 group-hover:w-full"></span>
-          </a>
-        </li>
-      ))}
-    </ul>
-
-    <!-- Theme toggle desktop -->
-    <div class="hidden ml-4 md:block">
-      <ThemeToggle />
-    </div>
-
-    <!-- Theme toggle mobile -->
-    <div class="order-3 block md:hidden">
+    <div class="hidden items-center gap-7 md:flex">
+      <ul class="flex items-center gap-7 font-mono text-label text-muted">
+        {NAV_ITEMS.map((item) => (
+          <li>
+            <a href={item.href} class="transition-colors hover:text-accent">{item.name}</a>
+          </li>
+        ))}
+      </ul>
       <ThemeToggle />
     </div>
   </div>
+
+  <div data-mobile-menu class="hidden border-b border-line bg-canvas py-5 md:hidden">
+    <ul class="mx-auto flex max-w-6xl flex-col gap-4 px-2 font-mono text-label text-ink">
+      {NAV_ITEMS.map((item) => (
+        <li>
+          <a href={item.href} class="nav-link block py-2 transition-colors hover:text-accent">{item.name}</a>
+        </li>
+      ))}
+      <li class="pt-2"><ThemeToggle /></li>
+    </ul>
+  </div>
 </nav>
 
-<!-- Script -->
+<style>
+  .menu-key {
+    border-radius: var(--radius-md);
+    box-shadow: 0 3px 0 var(--key-edge);
+    transition:
+      transform 0.1s ease-out,
+      box-shadow 0.1s ease-out;
+  }
+
+  .menu-key:active {
+    transform: translateY(2px);
+    box-shadow: 0 1px 0 var(--key-edge);
+  }
+
+  .menu-line {
+    position: absolute;
+    left: 11px;
+    width: 20px;
+    height: 2px;
+    background: currentColor;
+    transform-origin: center;
+    transition:
+      transform 0.18s ease-out,
+      top 0.18s ease-out;
+  }
+
+  .menu-key[aria-expanded='true'] .menu-line:first-child {
+    top: 20px;
+    transform: rotate(45deg);
+  }
+
+  .menu-key[aria-expanded='true'] .menu-line:last-child {
+    top: 20px;
+    transform: rotate(-45deg);
+  }
+</style>
+
 <script is:inline>
-  const button = document.querySelector("[data-menu-button]");
-  const menu = document.querySelector("[data-mobile-menu]");
-  const links = document.querySelectorAll(".nav-link");
+  const button = document.querySelector('[data-menu-button]');
+  const menu = document.querySelector('[data-mobile-menu]');
+  const links = document.querySelectorAll('.nav-link');
 
   let open = false;
 
   const syncState = () => {
-    if (!menu || !button) {
-      return;
-    }
-
-    menu.classList.toggle("hidden", !open);
-    menu.classList.toggle("flex", open);
-    button.setAttribute("aria-expanded", String(open));
+    if (!menu || !button) return;
+    menu.classList.toggle('hidden', !open);
+    button.setAttribute('aria-expanded', String(open));
   };
 
-  button?.addEventListener("click", () => {
+  button?.addEventListener('click', () => {
     open = !open;
     syncState();
   });
 
   links.forEach((link) => {
-    link.addEventListener("click", () => {
+    link.addEventListener('click', () => {
       open = false;
       syncState();
     });
   });
 
-  window.addEventListener("resize", () => {
+  window.addEventListener('resize', () => {
     if (window.innerWidth >= 768 && open) {
       open = false;
       syncState();
