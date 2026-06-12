@@ -51,4 +51,18 @@ export const COURSES: Course[] = [
       'https://www.credly.com/badges/6967e5d5-ea63-4457-b535-4171a2f37db4/public_url',
     icon: 'ibm',
   },
+  {
+    title: 'Concientización de Ciberseguridad para Líderes Corporativos',
+    provider: 'Udemy',
+    certificateUrl:
+      'https://www.udemy.com/certificate/UC-3e4503bc-460e-4fcb-b3df-e890f45474ba/',
+    icon: 'udemy',
+  },
+  {
+    title: 'Ciberseguridad - CompTIA Security',
+    provider: 'Udemy',
+    certificateUrl:
+      'https://www.udemy.com/certificate/UC-d8f0a4d7-c2d6-4045-9ade-147dcc33dab7/',
+    icon: 'udemy',
+  },
 ]
