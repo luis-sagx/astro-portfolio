@@ -13,8 +13,8 @@ const { project, reverse = false } = Astro.props;
 
 <article
   class:list={[
-    'grid gap-8 border-t border-line py-12 lg:grid-cols-[1.2fr_0.8fr] lg:items-center',
-    { 'lg:grid-cols-[0.8fr_1.2fr]': reverse },
+    'grid gap-8 border-t border-line py-12 lg:grid-cols-[1.15fr_0.85fr] lg:items-center',
+    { 'lg:grid-cols-[0.85fr_1.15fr]': reverse },
   ]}
   data-animate="fade-up"
 >
@@ -66,7 +66,7 @@ const { project, reverse = false } = Astro.props;
 
 <style>
   .project-shot {
-    min-height: 18rem;
+    height: clamp(16rem, 34vw, 24rem);
     overflow: hidden;
     border: 1px solid var(--line);
     border-radius: var(--radius-lg);

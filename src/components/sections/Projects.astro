@@ -1,11 +1,7 @@
 ---
 import { PROJECTS } from '../../data/constants';
 import FeaturedProject from '../organisms/FeaturedProject.astro';
-import ProjectRow from '../organisms/ProjectRow.astro';
 import SectionHeading from '../molecules/SectionHeading.astro';
-
-const featuredProjects = PROJECTS.slice(0, 2);
-const moreProjects = PROJECTS.slice(2);
 ---
 
 <section id="projects" class="bg-canvas px-6 py-24 lg:py-32">
@@ -13,19 +9,13 @@ const moreProjects = PROJECTS.slice(2);
     <SectionHeading
       letter="P"
       title="Projects"
-      sub="Work samples first, decoration never. Two featured builds, then a compact ledger of the rest."
+      sub="Detailed work samples, all shown with the same weight so the scan does not hide useful proof."
     />
 
     <div>
-      {featuredProjects.map((project, index) => (
+      {PROJECTS.map((project, index) => (
         <FeaturedProject project={project} reverse={index % 2 === 1} />
       ))}
     </div>
-
-    {moreProjects.length > 0 && (
-      <ul class="mt-10 border-b border-line">
-        {moreProjects.map((project) => <ProjectRow project={project} />)}
-      </ul>
-    )}
   </div>
 </section>

@@ -37,6 +37,7 @@ const TECH_ICON_MAP: Record<string, string> = {
   vite: 'devicon:vitejs',
   bootstrap: 'devicon:bootstrap',
   bun: 'devicon:bun',
+  astro: 'devicon:astro',
 }
 
 
@@ -77,6 +78,7 @@ const TECH_BADGE_COLOR_MAP: Record<string, { bg: string; border?: string }> = {
 
 const TECH_ASSET_SLUG_MAP: Record<string, string> = {
   materialdesign3: 'materialdesign',
+  'ci/cd': 'cicd',
 }
 
 // Techs with light backgrounds that need a dark icon
