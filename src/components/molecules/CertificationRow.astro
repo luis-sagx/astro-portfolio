@@ -1,0 +1,27 @@
+---
+import type { Course } from '../../data/models/portfolio.model';
+import Icon from '../atoms/Icon.astro';
+
+interface Props {
+  course: Course;
+}
+
+const { course } = Astro.props;
+---
+
+<li>
+  <a
+    href={course.certificateUrl ?? '#'}
+    target={course.certificateUrl ? '_blank' : undefined}
+    rel={course.certificateUrl ? 'noopener noreferrer' : undefined}
+    class="group flex items-center justify-between gap-5 border-b border-line py-4 transition-colors hover:bg-sunken"
+  >
+    <div class="min-w-0">
+      <p class="truncate font-semibold text-ink group-hover:text-accent">{course.title}</p>
+      <p class="mt-0.5 font-mono text-label text-muted">
+        {course.provider}{course.year ? ` · ${course.year}` : ''}
+      </p>
+    </div>
+    <Icon name="external" className="h-4 w-4 shrink-0 text-muted group-hover:text-accent" />
+  </a>
+</li>

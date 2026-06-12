@@ -1,0 +1,19 @@
+---
+import SectionKey from '../atoms/SectionKey.astro';
+
+interface Props {
+  letter: string;
+  title: string;
+  sub?: string;
+}
+
+const { letter, title, sub } = Astro.props;
+---
+
+<header class="mb-14 flex items-start gap-4" data-animate="fade-up">
+  <SectionKey letter={letter} />
+  <div>
+    <h2 class="font-display text-title font-extrabold font-expanded text-ink">{title}</h2>
+    {sub && <p class="mt-2 max-w-[70ch] text-body text-muted">{sub}</p>}
+  </div>
+</header>

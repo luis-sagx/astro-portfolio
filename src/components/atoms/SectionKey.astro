@@ -1,0 +1,45 @@
+---
+interface Props {
+  letter: string;
+}
+
+const { letter } = Astro.props;
+---
+
+<span class="section-key" aria-hidden="true">{letter}</span>
+
+<style>
+  .section-key {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    flex-shrink: 0;
+    color: var(--ink);
+    background: var(--key-center);
+    border-radius: var(--radius-md);
+    font-family: var(--font-mono);
+    font-size: 1.125rem;
+    font-weight: 500;
+    box-shadow:
+      0 4px 0 var(--key-edge),
+      0 6px 8px oklch(0 0 0 / 0.12);
+    transition:
+      transform 0.1s ease-out,
+      box-shadow 0.1s ease-out;
+  }
+
+  .section-key:hover {
+    transform: translateY(3px);
+    box-shadow:
+      0 1px 0 var(--key-edge),
+      0 2px 3px oklch(0 0 0 / 0.12);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .section-key {
+      transition: none;
+    }
+  }
+</style>

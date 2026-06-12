@@ -1,0 +1,77 @@
+---
+import type { Project } from '../../data/models/portfolio.model';
+import Icon from '../atoms/Icon.astro';
+import Key3D from '../atoms/Key3D.astro';
+
+interface Props {
+  project: Project;
+  reverse?: boolean;
+}
+
+const { project, reverse = false } = Astro.props;
+---
+
+<article
+  class:list={[
+    'grid gap-8 border-t border-line py-12 lg:grid-cols-[1.2fr_0.8fr] lg:items-center',
+    { 'lg:grid-cols-[0.8fr_1.2fr]': reverse },
+  ]}
+  data-animate="fade-up"
+>
+  <div class:list={['project-shot bg-sunken', { 'lg:order-2': reverse }]}>
+    <img
+      src={project.image}
+      alt={`${project.title} screenshot`}
+      loading="lazy"
+      decoding="async"
+      class="h-full w-full object-contain"
+    />
+  </div>
+
+  <div>
+    <h3 class="text-title font-extrabold font-expanded text-ink">{project.title}</h3>
+    <p class="mt-4 text-body font-medium text-ink">{project.description}</p>
+
+    {project.highlights && project.highlights.length > 0 && (
+      <ul class="mt-5 space-y-3 text-body text-muted">
+        {project.highlights.map((highlight) => (
+          <li class="grid grid-cols-[1rem_1fr] gap-3">
+            <span class="mt-3 h-1.5 w-1.5 bg-accent" aria-hidden="true"></span>
+            <span>{highlight}</span>
+          </li>
+        ))}
+      </ul>
+    )}
+
+    <div class="mt-6 flex flex-wrap gap-2">
+      {project.technologies.map((tag) => (
+        <Key3D name={tag} mini />
+      ))}
+    </div>
+
+    <div class="mt-8 flex flex-wrap gap-5 font-mono text-label text-accent">
+      {project.githubUrl && (
+        <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 hover:underline">
+          <Icon name="github" className="h-4 w-4" /> View code ↗
+        </a>
+      )}
+      {project.link && project.link !== project.githubUrl && (
+        <a href={project.link} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 hover:underline">
+          <Icon name="external" className="h-4 w-4" /> Open ↗
+        </a>
+      )}
+    </div>
+  </div>
+</article>
+
+<style>
+  .project-shot {
+    min-height: 18rem;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    box-shadow:
+      0 6px 0 var(--key-edge),
+      0 10px 18px oklch(0 0 0 / 0.1);
+  }
+</style>

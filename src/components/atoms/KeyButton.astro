@@ -1,0 +1,106 @@
+---
+interface Props {
+  href: string;
+  variant?: 'primary' | 'secondary';
+  download?: boolean | string;
+  external?: boolean;
+  ariaLabel?: string;
+}
+
+const {
+  href,
+  variant = 'primary',
+  download = false,
+  external = false,
+  ariaLabel,
+} = Astro.props;
+---
+
+<a
+  href={href}
+  class:list={['key-btn', `key-btn--${variant}`]}
+  download={download || undefined}
+  target={external ? '_blank' : undefined}
+  rel={external ? 'noopener noreferrer' : undefined}
+  aria-label={ariaLabel}
+>
+  <slot />
+</a>
+
+<style>
+  .key-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 44px;
+    padding: 0.875rem 1.5rem;
+    border-radius: var(--radius-md);
+    font-family: var(--font-mono);
+    font-size: var(--text-label);
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition:
+      transform 0.1s ease-out,
+      box-shadow 0.1s ease-out,
+      background-color 0.1s ease-out;
+  }
+
+  .key-btn--primary {
+    color: var(--accent-ink);
+    background: var(--accent);
+    box-shadow:
+      0 4px 0 var(--accent-strong),
+      0 6px 10px oklch(0 0 0 / 0.15);
+  }
+
+  .key-btn--secondary {
+    color: var(--ink);
+    background: var(--surface);
+    border: 1px solid var(--line);
+    box-shadow:
+      0 4px 0 var(--key-edge),
+      0 6px 10px oklch(0 0 0 / 0.1);
+  }
+
+  .key-btn:hover {
+    transform: translateY(1px);
+  }
+
+  .key-btn--primary:hover {
+    box-shadow:
+      0 3px 0 var(--accent-strong),
+      0 4px 8px oklch(0 0 0 / 0.15);
+  }
+
+  .key-btn--secondary:hover {
+    background: var(--sunken);
+    box-shadow:
+      0 3px 0 var(--key-edge),
+      0 4px 8px oklch(0 0 0 / 0.1);
+  }
+
+  .key-btn:active {
+    transform: translateY(3px);
+  }
+
+  .key-btn--primary:active {
+    box-shadow: 0 1px 0 var(--accent-strong);
+  }
+
+  .key-btn--secondary:active {
+    box-shadow: 0 1px 0 var(--key-edge);
+  }
+
+  .key-btn:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .key-btn {
+      transition: none;
+    }
+  }
+</style>

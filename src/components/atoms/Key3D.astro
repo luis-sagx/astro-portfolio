@@ -1,162 +1,113 @@
 ---
-import { resolveTechBadgeColor } from '../../utils/tech-icons';
 import TechIcon from './TechIcon.astro';
 
 interface Props {
   name: string;
-  isWide?: boolean;
   widthUnits?: number;
+  tone?: 'center' | 'edge' | 'spacebar';
   mini?: boolean;
-  colorOverride?: string;
 }
 
-const { name, isWide = false, widthUnits = 1, mini = false, colorOverride } = Astro.props;
+const { name, widthUnits = 1, tone = 'center', mini = false } = Astro.props;
 
-const colors = colorOverride ? { bg: colorOverride } : resolveTechBadgeColor(name);
-const bgColor = colors.bg;
+const capVar = {
+  center: 'var(--key-center)',
+  edge: 'var(--key-edge)',
+  spacebar: 'var(--spacebar)',
+}[tone];
 ---
 
 <div
-  class={`key-3d ${isWide ? 'key-wide' : ''} ${mini ? 'key-mini' : ''}`}
-  style={`--bg-color: ${bgColor}; --key-units: ${isWide ? 2 : widthUnits};`}
+  class:list={['key3', { 'key3--mini': mini }]}
+  style={`--units: ${widthUnits}; --cap: ${capVar};`}
   data-tech={name}
+  title={name}
 >
-  <div class="key-back"></div>
-  <div class="key-top">
-    <span class="key-icon">
-      <TechIcon name={name} size={mini ? 16 : 20} className="shrink-0" />
-    </span>
-  </div>
+  <span class="key3-front" aria-hidden="true"></span>
+  <span class="key3-right" aria-hidden="true"></span>
+  <span class="key3-cap">
+    <TechIcon name={name} size={mini ? 16 : 20} className="shrink-0" />
+  </span>
 </div>
 
 <style>
-  .key-3d {
-    --key-radius: 7px;
-    --key-units: 1;
-    --key-unit-size: 52px;
-    --key-gap: 6px;
-    --bg-color: #3b82f6;
+  @property --depth {
+    syntax: '<length>';
+    inherits: true;
+    initial-value: 11px;
+  }
+
+  .key3 {
+    --size: clamp(32px, 6.5vw, 52px);
+    --gap: clamp(3px, 0.7vw, 6px);
+    --depth: 11px;
+    --units: 1;
+    --cap: var(--key-center);
 
     position: relative;
-    display: inline-block;
+    width: calc(var(--size) * var(--units) + var(--gap) * (var(--units) - 1));
+    height: var(--size);
     cursor: pointer;
-    pointer-events: auto;
-    z-index: 10;
     transform-style: preserve-3d;
+    transition: --depth 0.08s ease-out;
   }
 
-  .key-back {
+  .key3-cap {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: calc((var(--key-unit-size) * var(--key-units)) + (var(--key-gap) * (var(--key-units) - 1)));
-    height: 52px;
-    background: color-mix(in srgb, var(--bg-color) 30%, #0a0a0f 70%);
-    border: 1px solid rgba(0, 0, 0, 0.6);
-    border-radius: var(--key-radius);
-    transform: translate(5px, 11px);
-    z-index: 0;
-  }
-
-  .key-top {
-    position: relative;
-    z-index: 1;
-    padding: 10px;
-    width: calc((var(--key-unit-size) * var(--key-units)) + (var(--key-gap) * (var(--key-units) - 1)));
-    height: 52px;
+    inset: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--bg-color);
-    border-radius: var(--key-radius);
+    background: var(--cap);
+    border-radius: var(--radius-md);
+    transform: translateZ(var(--depth));
     box-shadow:
-      0 2px 4px rgba(0, 0, 0, 0.5),
-      inset 0 1.5px 0 rgba(255, 255, 255, 0.2),
-      inset 0 -1px 0 rgba(0, 0, 0, 0.15);
-    transition: transform 0.1s ease-out;
+      inset 0 1px 0 oklch(1 0 0 / 0.25),
+      inset 0 -1px 0 oklch(0 0 0 / 0.15);
   }
 
-  .key-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
+  .key3-front {
+    position: absolute;
+    left: 1px;
+    right: 1px;
+    top: 100%;
+    height: var(--depth);
+    transform-origin: top;
+    transform: rotateX(90deg);
+    background: color-mix(in oklch, var(--cap) 58%, black);
+    border-radius: 0 0 var(--radius-sm) var(--radius-sm);
   }
 
-  :global(html.dark) .key-3d {
-    filter: brightness(0.82);
+  .key3-right {
+    position: absolute;
+    top: 1px;
+    bottom: 1px;
+    left: 100%;
+    width: var(--depth);
+    transform-origin: left;
+    transform: rotateY(-90deg);
+    background: color-mix(in oklch, var(--cap) 72%, black);
   }
 
-  .key-3d:hover .key-top {
-    transform: translate(2px, 5px);
+  .key3:hover,
+  .key3.is-pressed {
+    --depth: 4px;
   }
 
-  .key-3d:hover {
-    z-index: 30;
+  .key3--mini {
+    --size: 34px;
+    --gap: 3px;
+    --depth: 6px;
   }
 
-  @media (max-width: 768px) {
-    .key-3d {
-      --key-unit-size: 40px;
-      --key-gap: 4px;
+  .key3--mini:hover,
+  .key3--mini.is-pressed {
+    --depth: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .key3 {
+      transition: none;
     }
-
-    .key-top {
-      height: 40px;
-      padding: 7px;
-    }
-
-    .key-back {
-      height: 40px;
-      transform: translate(3px, 7px);
-    }
-
-    .key-icon {
-      transform: scale(0.85);
-    }
-  }
-
-  @media (max-width: 480px) {
-    .key-3d {
-      --key-unit-size: 32px;
-      --key-gap: 2px;
-    }
-
-    .key-top {
-      height: 32px;
-      padding: 5px;
-    }
-
-    .key-back {
-      height: 32px;
-      transform: translate(2px, 5px);
-    }
-
-    .key-icon {
-      transform: scale(0.7);
-    }
-  }
-
-  /* Mini variant for cards */
-  .key-mini {
-    --key-unit-size: 36px;
-    --key-gap: 3px;
-  }
-
-  .key-mini .key-top {
-    height: 36px;
-    padding: 6px;
-    box-shadow:
-      0 1px 2px rgba(0, 0, 0, 0.5),
-      inset 0 1px 0 rgba(255, 255, 255, 0.15);
-  }
-
-  .key-mini .key-back {
-    height: 36px;
-    transform: translate(3px, 5px);
-  }
-
-  .key-mini .key-icon {
-    transform: scale(0.7);
   }
 </style>
