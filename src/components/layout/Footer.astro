@@ -25,7 +25,7 @@ const links = CONTACT_INFO.socialLinks.filter((social) =>
     <div class="flex gap-5 font-mono text-label text-accent">
       {links.map((social) => (
         <a href={social.url} target="_blank" rel="noopener noreferrer" aria-label={social.ariaLabel} class="inline-flex items-center gap-2 hover:underline">
-          <Icon name={iconMap[social.icon] ?? 'github'} className="h-4 w-4" />
+          <Icon name={iconMap[social.icon] ?? 'github'} className="h-5 w-5" />
           {social.platform} ↗
         </a>
       ))}

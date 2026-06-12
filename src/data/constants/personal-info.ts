@@ -6,7 +6,7 @@ export const PERSONAL_INFO: PersonalInfo = {
   profession: 'Software Engineering student',
   status: 'Available for junior roles and internships',
   proofLine:
-    'I build websites, internal tools and automations that solve real business problems — learning by shipping inside real teams.',
+    'I build websites, internal tools and automations that solve real business problems, learning by shipping inside real teams.',
   interests: ['Web', 'Automation', 'DevOps'],
   bio: [
     'Studying at',

@@ -13,8 +13,7 @@ const { project, reverse = false } = Astro.props;
 
 <article
   class:list={[
-    'grid gap-8 border-t border-line py-12 lg:grid-cols-[1.15fr_0.85fr] lg:items-center',
-    { 'lg:grid-cols-[0.85fr_1.15fr]': reverse },
+    'grid gap-8 border-t border-line py-12 lg:grid-cols-2 lg:items-center',
   ]}
   data-animate="fade-up"
 >
@@ -29,7 +28,7 @@ const { project, reverse = false } = Astro.props;
   </div>
 
   <div>
-    <h3 class="text-title font-extrabold font-expanded text-ink">{project.title}</h3>
+    <h3 class="font-display text-[clamp(1.55rem,3vw,2.1rem)] leading-[1.12] font-extrabold font-expanded text-ink">{project.title}</h3>
     <p class="mt-4 text-body font-medium text-ink">{project.description}</p>
 
     {project.highlights && project.highlights.length > 0 && (
@@ -52,12 +51,12 @@ const { project, reverse = false } = Astro.props;
     <div class="mt-8 flex flex-wrap gap-5 font-mono text-label text-accent">
       {project.githubUrl && (
         <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 hover:underline">
-          <Icon name="github" className="h-4 w-4" /> View code ↗
+          <Icon name="github" className="h-5 w-5" /> View code ↗
         </a>
       )}
       {project.link && project.link !== project.githubUrl && (
         <a href={project.link} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 hover:underline">
-          <Icon name="external" className="h-4 w-4" /> Open ↗
+          <Icon name="external" className="h-5 w-5" /> Open ↗
         </a>
       )}
     </div>
@@ -66,12 +65,18 @@ const { project, reverse = false } = Astro.props;
 
 <style>
   .project-shot {
-    height: clamp(16rem, 34vw, 24rem);
+    height: 18rem;
     overflow: hidden;
     border: 1px solid var(--line);
     border-radius: var(--radius-lg);
     box-shadow:
       0 6px 0 var(--key-edge),
       0 10px 18px oklch(0 0 0 / 0.1);
+  }
+
+  @media (min-width: 1024px) {
+    .project-shot {
+      height: 20rem;
+    }
   }
 </style>
