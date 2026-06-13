@@ -231,12 +231,12 @@ export const es: Translation = {
       {
         title: 'Frontend',
         icon: 'desktop',
-        skills: [{ name: 'Angular' }, { name: 'React' }, { name: 'Tailwind CSS' }, { name: 'Flutter' }],
+        skills: [{ name: 'Angular' }, { name: 'React' }, { name: 'Tailwind CSS' }, { name: 'Flutter' }, { name: 'Astro' }],
       },
       {
         title: 'Backend',
         icon: 'server',
-        skills: [{ name: 'Node.js' }, { name: 'Spring Boot' }, { name: 'Flask' }, { name: 'ASP.NET Core' }],
+        skills: [{ name: 'Node.js' }, { name: 'Express' }, { name: 'n8n' }, { name: 'Spring Boot' }, { name: 'Flask' }, { name: 'ASP.NET Core' }],
       },
       {
         title: 'Bases de datos',

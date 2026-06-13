@@ -262,6 +262,7 @@ export const en: Translation = {
           { name: 'React' },
           { name: 'Tailwind CSS' },
           { name: 'Flutter' },
+          { name: 'Astro' },
         ],
       },
       {
@@ -269,6 +270,8 @@ export const en: Translation = {
         icon: 'server',
         skills: [
           { name: 'Node.js' },
+          { name: 'Express' },
+          { name: 'n8n' },
           { name: 'Spring Boot' },
           { name: 'Flask' },
           { name: 'ASP.NET Core' },
