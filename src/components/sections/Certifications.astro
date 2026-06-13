@@ -12,6 +12,9 @@ const VISIBLE_COUNT = 10;
 const courses = messages.data.courses;
 const visible = courses.slice(0, VISIBLE_COUNT);
 const rest = courses.slice(VISIBLE_COUNT);
+const certificationsSub = messages.certificationsSection.sub
+  ? `${courses.length} ${messages.certificationsSection.sub}`
+  : undefined;
 ---
 
 <section id="certifications" class="bg-canvas px-6 py-24 lg:py-32">
@@ -19,7 +22,7 @@ const rest = courses.slice(VISIBLE_COUNT);
     <SectionHeading
       letter="C"
       title={messages.certificationsSection.title}
-      sub={`${courses.length} ${messages.certificationsSection.sub}`}
+      sub={certificationsSub}
     />
 
     <ul class="grid border-y border-line md:grid-cols-2 md:gap-x-12" data-animate="fade-up">

@@ -1,4 +1,4 @@
-import type { Translation } from './types';
+import type { Translation } from './types'
 
 export const en: Translation = {
   locale: 'en',
@@ -27,39 +27,37 @@ export const en: Translation = {
   },
   hero: {
     headline:
-      'Software Engineering student at Universidad de las Fuerzas Armadas ESPE. I build websites, internal tools, and automations that solve real business problems by shipping inside real teams.',
+      'I am a Software Engineering student at Universidad de las Fuerzas Armadas ESPE and I build web products, automations, and reliable technical environments.',
     ctaPrimary: 'View projects',
     ctaSecondary: 'Download CV',
     imageAlt: 'Luis Sagnay - Software Engineering student',
   },
   experienceSection: {
     title: 'Experience',
-    sub: 'Recent internship work: public enough to discuss, specific enough to prove range.',
+    sub: 'Recent experience across internships, web development, and automation.',
     currentLabel: 'Current',
   },
   projectsSection: {
     title: 'Projects',
-    sub: 'Detailed work samples, all shown with the same weight so the scan does not hide useful proof.',
+    sub: 'Selected projects across web development, automation, and applied software.',
     viewCode: 'View code',
     openProject: 'Open',
     screenshotAlt: 'screenshot',
   },
   stackSection: {
     title: 'Tech stack',
-    sub: 'Every key is a technology I work with. Hover one.',
+    sub: '',
   },
   aboutSection: {
     title: 'About',
     education: 'Education',
     languages: 'Languages',
     beyondCode: 'Beyond code',
-    beyondCopy:
-      'Away from the keyboard I play soccer, train at the gym, read, and make time for family and friends.',
-    beyondTags: 'Soccer · Exercise · Reading',
+    beyondTags: 'Soccer - Exercise - Reading - Family',
   },
   certificationsSection: {
     title: 'Certifications',
-    sub: 'completed — and counting.',
+    sub: '',
     showMore: 'Show more',
     showLess: 'Show less',
   },
@@ -70,7 +68,7 @@ export const en: Translation = {
   },
   footer: {
     blurb:
-      'Software Engineering student building tactile web experiences, internal tools, and automation workflows.',
+      'Software Engineering student focused on web development, automation, and DevOps.',
     rights: 'All rights reserved.',
     languageLabel: 'Language',
     languageOptions: {
@@ -86,7 +84,7 @@ export const en: Translation = {
       status: 'Available for junior roles and internships',
       proofLine:
         'I build websites, internal tools, and automations that solve real business problems by shipping inside real teams.',
-      interests: ['Web', 'Automation', 'DevOps'],
+      interests: ['Development', 'AI - Automation', 'Cybersecurity', 'DevOps'],
       bio: [
         'Studying at',
         'Universidad de las Fuerzas Armadas ESPE.',
@@ -150,7 +148,13 @@ export const en: Translation = {
         title: 'Cinema System',
         description:
           'Web application for managing movie theater operations, including showtimes.',
-        technologies: ['Angular', 'Node JS', 'Express', 'MongoDB', 'Tailwind CSS'],
+        technologies: [
+          'Angular',
+          'Node JS',
+          'Express',
+          'MongoDB',
+          'Tailwind CSS',
+        ],
         link: 'https://github.com/luis-sagx/cinema-tests',
         githubUrl: 'https://github.com/luis-sagx/cinema-tests',
         highlights: [
@@ -166,14 +170,24 @@ export const en: Translation = {
         technologies: ['Flutter', 'Firebase', 'Material Design 3'],
         link: 'https://github.com/luis-sagx/sagx-up',
         githubUrl: 'https://github.com/luis-sagx/sagx-up',
-        highlights: ['AI-driven financial insights', 'User-friendly mobile interface'],
+        highlights: [
+          'AI-driven financial insights',
+          'User-friendly mobile interface',
+        ],
       },
       {
         image: '/img/sureno.webp',
         title: 'Ecommerce "Sureño"',
         description:
           'Website designed to sell and manage products from the "Sureño" brand.',
-        technologies: ['HTML', 'CSS', 'JavaScript', 'Flask', 'MongoDB', 'Bootstrap'],
+        technologies: [
+          'HTML',
+          'CSS',
+          'JavaScript',
+          'Flask',
+          'MongoDB',
+          'Bootstrap',
+        ],
         link: 'https://github.com/luis-sagx/Sureno.git',
         githubUrl: 'https://github.com/luis-sagx/Sureno.git',
         highlights: [
@@ -186,7 +200,14 @@ export const en: Translation = {
         title: 'Letter Sending "Simply Lovely"',
         description:
           'Interactive platform for children to create, customize, and send digital letters.',
-        technologies: ['HTML', 'CSS', 'JavaScript', 'Node JS', 'Express', 'MongoDB'],
+        technologies: [
+          'HTML',
+          'CSS',
+          'JavaScript',
+          'Node JS',
+          'Express',
+          'MongoDB',
+        ],
         link: 'https://github.com/MateoJa54/carta.git',
         githubUrl: 'https://github.com/MateoJa54/carta.git',
         highlights: ['Interactive UI for children', 'Email automation'],
@@ -216,7 +237,10 @@ export const en: Translation = {
         technologies: ['React', 'Typescript', 'Tailwind CSS', 'Vite'],
         link: 'https://github.com/luis-sagx/expense-control.git',
         githubUrl: 'https://github.com/luis-sagx/expense-control.git',
-        highlights: ['Real-time expense tracking', 'Data visualization with charts'],
+        highlights: [
+          'Real-time expense tracking',
+          'Data visualization with charts',
+        ],
       },
     ],
     skillCategories: [
@@ -234,22 +258,43 @@ export const en: Translation = {
       {
         title: 'Frontend',
         icon: 'desktop',
-        skills: [{ name: 'Angular' }, { name: 'React' }, { name: 'Tailwind CSS' }, { name: 'Flutter' }],
+        skills: [
+          { name: 'Angular' },
+          { name: 'React' },
+          { name: 'Tailwind CSS' },
+          { name: 'Flutter' },
+        ],
       },
       {
         title: 'Backend',
         icon: 'server',
-        skills: [{ name: 'Node.js' }, { name: 'Spring Boot' }, { name: 'Flask' }, { name: 'ASP.NET Core' }],
+        skills: [
+          { name: 'Node.js' },
+          { name: 'Spring Boot' },
+          { name: 'Flask' },
+          { name: 'ASP.NET Core' },
+        ],
       },
       {
         title: 'Databases',
         icon: 'database',
-        skills: [{ name: 'MongoDB' }, { name: 'SQL Server' }, { name: 'PostgreSQL' }, { name: 'MySQL' }, { name: 'Firebase' }],
+        skills: [
+          { name: 'MongoDB' },
+          { name: 'SQL Server' },
+          { name: 'PostgreSQL' },
+          { name: 'MySQL' },
+          { name: 'Firebase' },
+        ],
       },
       {
         title: 'Tools & DevOps',
         icon: 'wrench',
-        skills: [{ name: 'Git' }, { name: 'Docker' }, { name: 'Linux' }, { name: 'Postman' }],
+        skills: [
+          { name: 'Git' },
+          { name: 'Docker' },
+          { name: 'Linux' },
+          { name: 'Postman' },
+        ],
       },
     ],
     education: [
@@ -323,4 +368,4 @@ export const en: Translation = {
       { name: 'English', proficiency: 'B1 - Intermediate' },
     ],
   },
-};
+}

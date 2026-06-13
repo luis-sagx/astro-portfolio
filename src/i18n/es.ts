@@ -27,39 +27,37 @@ export const es: Translation = {
   },
   hero: {
     headline:
-      'Estudiante de Ingeniería de Software en la Universidad de las Fuerzas Armadas ESPE. Construyo sitios web, herramientas internas y automatizaciones que resuelven problemas reales de negocio trabajando dentro de equipos reales.',
+      'Soy estudiante de Ingeniería de Software en la Universidad de las Fuerzas Armadas ESPE y desarrollo productos web, automatizaciones y entornos técnicos confiables.',
     ctaPrimary: 'Ver proyectos',
     ctaSecondary: 'Descargar CV',
     imageAlt: 'Luis Sagnay - estudiante de Ingeniería de Software',
   },
   experienceSection: {
     title: 'Experiencia',
-    sub: 'Trabajo reciente de pasantías: lo bastante público para contarlo y lo bastante específico para demostrar alcance.',
+    sub: 'Experiencia reciente en pasantías, desarrollo web y automatización.',
     currentLabel: 'Actual',
   },
   projectsSection: {
     title: 'Proyectos',
-    sub: 'Muestras detalladas de trabajo, todas con el mismo peso para que el recorrido no esconda evidencia útil.',
+    sub: 'Proyectos seleccionados de desarrollo web, automatización y software aplicado.',
     viewCode: 'Ver código',
     openProject: 'Abrir',
     screenshotAlt: 'captura',
   },
   stackSection: {
     title: 'Stack tecnológico',
-    sub: 'Cada tecla es una tecnología con la que trabajo. Pasá el cursor por una.',
+    sub: '',
   },
   aboutSection: {
     title: 'Sobre mí',
     education: 'Educación',
     languages: 'Idiomas',
     beyondCode: 'Más allá del código',
-    beyondCopy:
-      'Fuera del teclado juego fútbol, entreno en el gimnasio, leo y valoro el tiempo con mi familia y amigos.',
-    beyondTags: 'Fútbol · Ejercicio · Lectura',
+    beyondTags: 'Fútbol - Ejercicio - Lectura - Familia',
   },
   certificationsSection: {
     title: 'Certificaciones',
-    sub: 'completadas — y sumando.',
+    sub: '',
     showMore: 'Mostrar más',
     showLess: 'Mostrar menos',
   },
@@ -70,7 +68,7 @@ export const es: Translation = {
   },
   footer: {
     blurb:
-      'Estudiante de Ingeniería de Software construyendo experiencias web táctiles, herramientas internas y flujos de automatización.',
+      'Estudiante de Ingeniería de Software enfocado en desarrollo web, automatización y DevOps.',
     rights: 'Todos los derechos reservados.',
     languageLabel: 'Idioma',
     languageOptions: {
@@ -86,7 +84,7 @@ export const es: Translation = {
       status: 'Disponible para roles junior y pasantías',
       proofLine:
         'Construyo sitios web, herramientas internas y automatizaciones que resuelven problemas reales de negocio trabajando dentro de equipos reales.',
-      interests: ['Web', 'Automatización', 'DevOps'],
+      interests: ['Development', 'AI - Automation', 'Cybersecurity', 'DevOps'],
       bio: [
         'Estudiando en',
         'Universidad de las Fuerzas Armadas ESPE.',
