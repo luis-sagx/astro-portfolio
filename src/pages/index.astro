@@ -1,62 +1,27 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import Hero from '../components/sections/Hero.astro';
-import Experience from '../components/sections/Experience.astro';
-import Projects from '../components/sections/Projects.astro';
-import Stack from '../components/sections/Stack.astro';
-import About from '../components/sections/About.astro';
-import Certifications from '../components/sections/Certifications.astro';
-import Contact from '../components/sections/Contact.astro';
+import { defaultLocale, localeCookieKey, localeStorageKey } from '../i18n/config';
 ---
 
-<BaseLayout title="Luis Sagnay | Software Engineering">
-  <Hero />
-  <Experience />
-  <Projects />
-  <Stack />
-  <About />
-  <Certifications />
-  <Contact />
-</BaseLayout>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Redirecting…</title>
+    <meta name="robots" content="noindex" />
+    <meta http-equiv="refresh" content={`0;url=/${defaultLocale}/`} />
+  </head>
+  <body>
+    <script is:inline define:vars={{ defaultLocale, localeCookieKey, localeStorageKey }}>
+      const cookieMatch = document.cookie.match(new RegExp(`(?:^|; )${localeCookieKey}=([^;]+)`));
+      const cookieLocale = cookieMatch?.[1];
+      const storedLocale = localStorage.getItem(localeStorageKey);
+      const browserLocale = navigator.language.toLowerCase().startsWith('es') ? 'es' : defaultLocale;
+      const nextLocale = storedLocale ?? cookieLocale ?? browserLocale;
 
-<script>
-  import { gsap } from 'gsap';
-  import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-  gsap.registerPlugin(ScrollTrigger);
-
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  if (!reduceMotion) {
-    document.querySelectorAll<HTMLElement>('[data-animate]').forEach((el) => {
-      gsap.fromTo(
-        el,
-        { opacity: 0, y: 24 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.6,
-          ease: 'power3.out',
-          scrollTrigger: { trigger: el, start: 'top 85%', once: true },
-        },
-      );
-    });
-
-    const keys = gsap.utils.toArray<HTMLElement>('#stack .key3');
-    if (keys.length > 0) {
-      ScrollTrigger.create({
-        trigger: '#stack',
-        start: 'top 70%',
-        once: true,
-        onEnter: () => {
-          keys.forEach((key, index) => {
-            gsap.delayedCall(0.4 + index * 0.035, () => {
-              key.classList.add('is-pressed');
-              gsap.delayedCall(0.12, () => key.classList.remove('is-pressed'));
-            });
-          });
-        },
-      });
-    }
-  }
-</script>
+      localStorage.setItem(localeStorageKey, nextLocale);
+      document.cookie = `${localeCookieKey}=${nextLocale}; path=/; max-age=31536000; SameSite=Lax`;
+      window.location.replace(`/${nextLocale}/`);
+    </script>
+  </body>
+</html>

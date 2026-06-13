@@ -1,25 +1,28 @@
 ---
+import type { Locale } from '../../i18n/config';
+import type { Translation } from '../../i18n/types';
 import ThemeToggle from '../organisms/ThemeToggle.astro';
 
-const NAV_ITEMS = [
-  { name: 'Experience', href: '#experience' },
-  { name: 'Projects', href: '#projects' },
-  { name: 'Stack', href: '#stack' },
-  { name: 'Contact', href: '#contact' },
-];
+interface Props {
+  locale: Locale;
+  messages: Translation;
+}
+
+const { locale, messages } = Astro.props;
+const navItems = messages.navbar.items;
 ---
 
 <nav id="main-navbar" class="sticky top-0 bg-canvas/95 px-4 py-4 backdrop-blur-sm" style="z-index: var(--z-nav);">
   <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 border-b border-line pb-4">
-    <a href="#start" class="font-display text-heading font-extrabold font-expanded text-ink">
-      Luis Sagnay
+    <a href={`/${locale}/#start`} class="font-display text-heading font-extrabold font-expanded text-ink">
+      {messages.navbar.brand}
     </a>
 
     <button
       data-menu-button
       type="button"
       class="menu-key relative h-11 w-11 border border-line bg-key-center text-ink md:hidden"
-      aria-label="Toggle navigation"
+      aria-label={messages.navbar.toggleNavigation}
       aria-expanded="false"
     >
       <span class="menu-line top-[15px]"></span>
@@ -28,24 +31,24 @@ const NAV_ITEMS = [
 
     <div class="hidden items-center gap-7 md:flex">
       <ul class="flex items-center gap-7 font-mono text-label text-muted">
-        {NAV_ITEMS.map((item) => (
+        {navItems.map((item) => (
           <li>
             <a href={item.href} class="transition-colors hover:text-accent">{item.name}</a>
           </li>
         ))}
       </ul>
-      <ThemeToggle />
+      <ThemeToggle label={messages.theme.toggle} />
     </div>
   </div>
 
   <div data-mobile-menu class="hidden border-b border-line bg-canvas py-5 md:hidden">
     <ul class="mx-auto flex max-w-6xl flex-col gap-4 px-2 font-mono text-label text-ink">
-      {NAV_ITEMS.map((item) => (
+      {navItems.map((item) => (
         <li>
           <a href={item.href} class="nav-link block py-2 transition-colors hover:text-accent">{item.name}</a>
         </li>
       ))}
-      <li class="pt-2"><ThemeToggle /></li>
+      <li class="pt-2"><ThemeToggle label={messages.theme.toggle} /></li>
     </ul>
   </div>
 </nav>

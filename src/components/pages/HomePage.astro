@@ -1,0 +1,71 @@
+---
+import Hero from '../sections/Hero.astro';
+import Experience from '../sections/Experience.astro';
+import Projects from '../sections/Projects.astro';
+import Stack from '../sections/Stack.astro';
+import About from '../sections/About.astro';
+import Certifications from '../sections/Certifications.astro';
+import Contact from '../sections/Contact.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import type { Locale } from '../../i18n/config';
+import { getTranslations } from '../../i18n';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const messages = getTranslations(locale);
+---
+
+<BaseLayout locale={locale} messages={messages} canonicalPath={`/${locale}/`}>
+  <Hero messages={messages} />
+  <Experience messages={messages} />
+  <Projects messages={messages} />
+  <Stack messages={messages} />
+  <About messages={messages} />
+  <Certifications messages={messages} />
+  <Contact messages={messages} />
+</BaseLayout>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (!reduceMotion) {
+    document.querySelectorAll<HTMLElement>('[data-animate]').forEach((el) => {
+      gsap.fromTo(
+        el,
+        { opacity: 0, y: 24 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          ease: 'power3.out',
+          scrollTrigger: { trigger: el, start: 'top 85%', once: true },
+        },
+      );
+    });
+
+    const keys = gsap.utils.toArray<HTMLElement>('#stack .key3');
+    if (keys.length > 0) {
+      ScrollTrigger.create({
+        trigger: '#stack',
+        start: 'top 70%',
+        once: true,
+        onEnter: () => {
+          keys.forEach((key, index) => {
+            gsap.delayedCall(0.4 + index * 0.035, () => {
+              key.classList.add('is-pressed');
+              gsap.delayedCall(0.12, () => key.classList.remove('is-pressed'));
+            });
+          });
+        },
+      });
+    }
+  }
+</script>

@@ -1,14 +1,16 @@
 ---
 import type { Project } from '../../data/models/portfolio.model';
+import type { Translation } from '../../i18n/types';
 import Icon from '../atoms/Icon.astro';
 import Key3D from '../atoms/Key3D.astro';
 
 interface Props {
   project: Project;
   reverse?: boolean;
+  messages: Translation;
 }
 
-const { project, reverse = false } = Astro.props;
+const { project, reverse = false, messages } = Astro.props;
 ---
 
 <article
@@ -20,7 +22,7 @@ const { project, reverse = false } = Astro.props;
   <div class:list={['project-shot bg-sunken', { 'lg:order-2': reverse }]}>
     <img
       src={project.image}
-      alt={`${project.title} screenshot`}
+      alt={`${project.title} ${messages.projectsSection.screenshotAlt}`}
       loading="lazy"
       decoding="async"
       class="h-full w-full object-contain"
@@ -51,12 +53,12 @@ const { project, reverse = false } = Astro.props;
     <div class="mt-8 flex flex-wrap gap-5 font-mono text-label text-accent">
       {project.githubUrl && (
         <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 hover:underline">
-          <Icon name="github" className="h-5 w-5" /> View code ↗
+          <Icon name="github" className="h-5 w-5" /> {messages.projectsSection.viewCode} ↗
         </a>
       )}
       {project.link && project.link !== project.githubUrl && (
         <a href={project.link} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 hover:underline">
-          <Icon name="external" className="h-5 w-5" /> Open ↗
+          <Icon name="external" className="h-5 w-5" /> {messages.projectsSection.openProject} ↗
         </a>
       )}
     </div>

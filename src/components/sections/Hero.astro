@@ -1,15 +1,19 @@
 ---
-import { CONTACT_INFO } from '../../data/constants';
-import { PERSONAL_INFO } from '../../data/constants/personal-info';
+import type { Translation } from '../../i18n/types';
 import Icon from '../atoms/Icon.astro';
 import KeyButton from '../atoms/KeyButton.astro';
 
-const fullName = `${PERSONAL_INFO.firstname} ${PERSONAL_INFO.lastname}`;
+interface Props {
+  messages: Translation;
+}
+
+const { messages } = Astro.props;
+const { contactInfo, personalInfo } = messages.data;
 const socialIconMap: Record<string, 'github' | 'linkedin'> = {
   GitHub: 'github',
   LinkedIn: 'linkedin',
 };
-const socialLinks = CONTACT_INFO.socialLinks.filter((social) =>
+const socialLinks = contactInfo.socialLinks.filter((social) =>
   ['GitHub', 'LinkedIn'].includes(social.platform),
 );
 ---
@@ -17,28 +21,28 @@ const socialLinks = CONTACT_INFO.socialLinks.filter((social) =>
 <section id="start" class="bg-canvas px-6 pt-12 pb-24 lg:pt-16 lg:pb-32">
   <div class="mx-auto grid max-w-6xl items-center gap-14 lg:grid-cols-[1.1fr_0.9fr]">
     <div class="order-2 lg:order-1" data-animate="fade-up">
-      <p class="mb-5 font-mono text-label text-accent">{PERSONAL_INFO.status}</p>
+      <p class="mb-5 font-mono text-label text-accent">{personalInfo.status}</p>
 
       <h1 class="font-display text-display font-extrabold font-expanded text-ink">
-        {PERSONAL_INFO.firstname}<br />{PERSONAL_INFO.lastname}
+        {personalInfo.firstname}<br />{personalInfo.lastname}
       </h1>
 
       <p class="mt-6 max-w-[62ch] text-body font-medium text-ink">
-        {PERSONAL_INFO.profession} at ESPE. {PERSONAL_INFO.proofLine}
+        {messages.hero.headline}
       </p>
 
       <p class="mt-4 max-w-[66ch] text-body text-muted">
-        {PERSONAL_INFO.bio[2]}
+        {personalInfo.bio[2]}
       </p>
 
       <div class="mt-9 flex flex-col gap-4 sm:flex-row">
-        <KeyButton href="#projects" variant="primary">View projects</KeyButton>
+        <KeyButton href="#projects" variant="primary">{messages.hero.ctaPrimary}</KeyButton>
         <KeyButton
-          href={PERSONAL_INFO.resumeUrl ?? '/cv/Luis_Sagnay_CV.pdf'}
+          href={personalInfo.resumeUrl ?? '/cv/Luis_Sagnay_CV.pdf'}
           variant="secondary"
           download="Luis_Sagnay_CV.pdf"
         >
-          Download CV
+          {messages.hero.ctaSecondary}
         </KeyButton>
       </div>
 
@@ -63,8 +67,8 @@ const socialLinks = CONTACT_INFO.socialLinks.filter((social) =>
     <div class="order-1 lg:order-2" data-animate="fade-up">
       <div class="photo-plinth mx-auto max-w-sm">
         <img
-          src={PERSONAL_INFO.imageUrl}
-          alt={`${fullName} - Software Engineering student`}
+          src={personalInfo.imageUrl}
+          alt={messages.hero.imageAlt}
           width="420"
           height="520"
           fetchpriority="high"

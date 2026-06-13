@@ -1,12 +1,18 @@
 ---
 import { Moon, Sun } from '@lucide/astro';
+
+interface Props {
+  label: string;
+}
+
+const { label } = Astro.props;
 ---
 
 <button
   data-theme-toggle
   type="button"
   class="theme-key relative flex h-11 w-11 items-center justify-center overflow-hidden border border-line bg-key-center text-ink"
-  aria-label="Toggle theme"
+  aria-label={label}
 >
   <Sun
     class="absolute h-5 w-5 scale-0 -rotate-90 opacity-0 transition-all duration-300 dark:scale-100 dark:rotate-0 dark:opacity-100"

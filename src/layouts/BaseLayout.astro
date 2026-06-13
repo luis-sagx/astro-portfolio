@@ -2,37 +2,51 @@
 import Navbar from '../components/layout/Navbar.astro';
 import Footer from '../components/layout/Footer.astro';
 import '../styles/global.css';
+import type { Locale } from '../i18n/config';
+import type { Translation } from '../i18n/types';
 
 interface Props {
-  title: string;
+  locale: Locale;
+  messages: Translation;
+  canonicalPath: string;
 }
 
-const { title } = Astro.props;
+const { locale, messages, canonicalPath } = Astro.props;
+const siteUrl = 'https://luis-sagx.xyz';
+const canonicalUrl = new URL(canonicalPath, siteUrl).toString();
+const alternateUrls = {
+  en: new URL('/en/', siteUrl).toString(),
+  es: new URL('/es/', siteUrl).toString(),
+};
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={locale}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <link rel="canonical" href="https://luis-sagx.xyz" />
-    <meta name="description" content="Luis Sagnay - Software Engineering student at ESPE building useful software through internships, projects and practical engineering work." />
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="alternate" hreflang="en" href={alternateUrls.en} />
+    <link rel="alternate" hreflang="es" href={alternateUrls.es} />
+    <link rel="alternate" hreflang="x-default" href={new URL('/', siteUrl).toString()} />
+    <meta name="description" content={messages.meta.description} />
     <meta name="author" content="Luis Sagnay" />
     <meta name="theme-color" content="#b91c1c" />
 
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://luis-sagx.xyz" />
-    <meta property="og:title" content="Luis Sagnay - Software Engineering" />
-    <meta property="og:description" content="Portfolio of Luis Sagnay: internships, projects and practical software engineering work." />
-    <meta property="og:site_name" content="Luis Sagnay Portfolio" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={messages.meta.ogTitle} />
+    <meta property="og:description" content={messages.meta.ogDescription} />
+    <meta property="og:site_name" content={messages.meta.siteName} />
+    <meta property="og:locale" content={locale === 'es' ? 'es_EC' : 'en_US'} />
 
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:url" content="https://luis-sagx.xyz" />
-    <meta name="twitter:title" content="Luis Sagnay - Software Engineering" />
-    <meta name="twitter:description" content="Portfolio of Luis Sagnay: internships, projects and practical software engineering work." />
+    <meta name="twitter:url" content={canonicalUrl} />
+    <meta name="twitter:title" content={messages.meta.ogTitle} />
+    <meta name="twitter:description" content={messages.meta.ogDescription} />
 
-    <title>{title}</title>
+    <title>{messages.meta.title}</title>
 
     <script>
       window.addEventListener('load', () => {
@@ -55,10 +69,10 @@ const { title } = Astro.props;
     </script>
   </head>
   <body>
-    <Navbar />
+    <Navbar locale={locale} messages={messages} />
     <main>
       <slot />
     </main>
-    <Footer />
+    <Footer locale={locale} messages={messages} />
   </body>
 </html>

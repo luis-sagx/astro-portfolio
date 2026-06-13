@@ -1,20 +1,26 @@
 ---
-import { PROJECTS } from '../../data/constants';
+import type { Translation } from '../../i18n/types';
 import FeaturedProject from '../organisms/FeaturedProject.astro';
 import SectionHeading from '../molecules/SectionHeading.astro';
+
+interface Props {
+  messages: Translation;
+}
+
+const { messages } = Astro.props;
 ---
 
 <section id="projects" class="bg-canvas px-6 py-24 lg:py-32">
   <div class="mx-auto max-w-6xl">
     <SectionHeading
       letter="P"
-      title="Projects"
-      sub="Detailed work samples, all shown with the same weight so the scan does not hide useful proof."
+      title={messages.projectsSection.title}
+      sub={messages.projectsSection.sub}
     />
 
     <div>
-      {PROJECTS.map((project, index) => (
-        <FeaturedProject project={project} reverse={index % 2 === 1} />
+      {messages.data.projects.map((project, index) => (
+        <FeaturedProject project={project} reverse={index % 2 === 1} messages={messages} />
       ))}
     </div>
   </div>

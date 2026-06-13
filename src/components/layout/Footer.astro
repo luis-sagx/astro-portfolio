@@ -1,13 +1,21 @@
 ---
-import { CONTACT_INFO } from '../../data/constants';
+import type { Locale } from '../../i18n/config';
+import { localeCookieKey, localeStorageKey, locales } from '../../i18n/config';
+import type { Translation } from '../../i18n/types';
 import Icon from '../atoms/Icon.astro';
 
+interface Props {
+  locale: Locale;
+  messages: Translation;
+}
+
+const { locale, messages } = Astro.props;
 const currentYear = new Date().getFullYear();
 const iconMap: Record<string, 'github' | 'linkedin'> = {
   github: 'github',
   linkedin: 'linkedin',
 };
-const links = CONTACT_INFO.socialLinks.filter((social) =>
+const links = messages.data.contactInfo.socialLinks.filter((social) =>
   ['GitHub', 'LinkedIn'].includes(social.platform),
 );
 ---
@@ -15,20 +23,69 @@ const links = CONTACT_INFO.socialLinks.filter((social) =>
 <footer class="border-t border-line bg-canvas px-6 py-12">
   <div class="mx-auto flex max-w-6xl flex-col gap-8 md:flex-row md:items-end md:justify-between">
     <div>
-      <h2 class="font-display text-heading font-extrabold font-expanded text-ink">Luis Sagnay</h2>
+      <h2 class="font-display text-heading font-extrabold font-expanded text-ink">{messages.navbar.brand}</h2>
       <p class="mt-2 max-w-[54ch] text-muted">
-        Software Engineering student building tactile web experiences, internal tools and automation workflows.
+        {messages.footer.blurb}
       </p>
-      <p class="mt-4 font-mono text-label text-muted">© {currentYear} Luis Sagnay. All rights reserved.</p>
+      <p class="mt-4 font-mono text-label text-muted">© {currentYear} Luis Sagnay. {messages.footer.rights}</p>
     </div>
 
-    <div class="flex gap-5 font-mono text-label text-accent">
-      {links.map((social) => (
-        <a href={social.url} target="_blank" rel="noopener noreferrer" aria-label={social.ariaLabel} class="inline-flex items-center gap-2 hover:underline">
-          <Icon name={iconMap[social.icon] ?? 'github'} className="h-5 w-5" />
-          {social.platform} ↗
-        </a>
-      ))}
+    <div class="flex flex-col gap-5 md:items-end">
+      <label class="flex items-center gap-3 font-mono text-label text-muted">
+        <span>{messages.footer.languageLabel}</span>
+        <select
+          data-language-select
+          aria-label={messages.footer.languageLabel}
+          class="rounded-md border border-line bg-surface px-3 py-2 text-ink"
+          value={locale}
+        >
+          {locales.map((optionLocale) => (
+            <option value={optionLocale} selected={optionLocale === locale}>
+              {messages.footer.languageOptions[optionLocale]}
+            </option>
+          ))}
+        </select>
+      </label>
+
+      <div class="flex gap-5 font-mono text-label text-accent">
+        {links.map((social) => (
+          <a href={social.url} target="_blank" rel="noopener noreferrer" aria-label={social.ariaLabel} class="inline-flex items-center gap-2 hover:underline">
+            <Icon name={iconMap[social.icon] ?? 'github'} className="h-5 w-5" />
+            {social.platform} ↗
+          </a>
+        ))}
+      </div>
     </div>
   </div>
 </footer>
+
+<script is:inline define:vars={{ locale, localeCookieKey, localeStorageKey, locales }}>
+  const languageSelect = document.querySelector('[data-language-select]');
+
+  if (languageSelect instanceof HTMLSelectElement) {
+    languageSelect.value = locale;
+
+    languageSelect.addEventListener('change', (event) => {
+      const target = event.currentTarget;
+      if (!(target instanceof HTMLSelectElement)) return;
+
+      const nextLocale = target.value;
+      if (!locales.includes(nextLocale) || nextLocale === locale) return;
+
+      localStorage.setItem(localeStorageKey, nextLocale);
+      document.cookie = `${localeCookieKey}=${nextLocale}; path=/; max-age=31536000; SameSite=Lax`;
+
+      const url = new URL(window.location.href);
+      const segments = url.pathname.split('/').filter(Boolean);
+
+      if (segments.length > 0 && locales.includes(segments[0])) {
+        segments[0] = nextLocale;
+      } else {
+        segments.unshift(nextLocale);
+      }
+
+      const nextPath = segments.length === 1 ? `/${nextLocale}/` : `/${segments.join('/')}`;
+      window.location.assign(`${nextPath}${url.search}${url.hash}`);
+    });
+  }
+</script>
