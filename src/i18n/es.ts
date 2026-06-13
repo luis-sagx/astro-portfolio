@@ -120,10 +120,10 @@ export const es: Translation = {
         status: 'Actual',
         companyUrl: 'https://pinprexat.com/',
         summary:
-          'Construyendo una automatización en n8n para respuesta al cliente, calificación de leads y soporte al flujo de cotizaciones para una empresa de servicios industriales.',
+          'Trabajo en automatización de procesos y mejora de flujos de atención al cliente para una empresa de servicios industriales.',
         bullets: [
-          'Diseñando un flujo de bot orientado a clientes que separa leads calificados de consultas generales.',
-          'Automatizando pasos del traspaso de cotizaciones mientras se mantiene trazable el camino de comunicación con el cliente.',
+          'Diseño soluciones para automatizar tareas repetitivas y ordenar procesos de comunicación con clientes.',
+          'Aplico integración, trazabilidad y mejora continua para que los flujos sean más claros y confiables.',
         ],
         technologies: ['n8n', 'Meta', 'PostgreSQL'],
       },
@@ -133,11 +133,10 @@ export const es: Translation = {
         period: 'Abr 2026 - Jun 2026',
         companyUrl: 'https://softwareevolutivo.com.ec/',
         summary:
-          'Trabajé en modernización web, mantenimiento interno de JHipster, pipelines de CI/CD y una prueba de concepto con Backstage.',
+          'Trabajé en desarrollo y mantenimiento de soluciones web, aplicando buenas prácticas de ingeniería y despliegue.',
         bullets: [
-          'Reconstruí la experiencia del sitio web de la empresa con Astro como parte de un esfuerzo de modernización de WordPress a sitio estático.',
-          'Corregí problemas y apliqué mejoras en un proyecto interno hecho con JHipster.',
-          'Trabajé con pipelines y desplegué una prueba de concepto de Backstage en un servidor interno.',
+          'Participé en mejoras de programación web con foco en rendimiento, orden y mantenibilidad.',
+          'Apliqué buenas prácticas de desarrollo y apoyé tareas relacionadas con integración y DevOps.',
         ],
         technologies: ['Astro', 'Spring Boot', 'React', 'GitLab'],
       },

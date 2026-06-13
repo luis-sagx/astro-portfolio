@@ -40,12 +40,16 @@ const socialLinks = contactInfo.socialLinks.filter((social) =>
       </ul>
 
       <div class="mt-9 flex flex-col gap-4 sm:flex-row">
-        <KeyButton href="#projects" variant="primary">{messages.hero.ctaPrimary}</KeyButton>
+        <KeyButton href="#projects" variant="primary">
+          <Icon name="eye" className="h-4 w-4" />
+          {messages.hero.ctaPrimary}
+        </KeyButton>
         <KeyButton
           href={personalInfo.resumeUrl ?? '/cv/Luis_Sagnay_CV.pdf'}
           variant="secondary"
           download="Luis_Sagnay_CV.pdf"
         >
+          <Icon name="download" className="h-4 w-4" />
           {messages.hero.ctaSecondary}
         </KeyButton>
       </div>
@@ -76,7 +80,7 @@ const socialLinks = contactInfo.socialLinks.filter((social) =>
           width="420"
           height="520"
           fetchpriority="high"
-          class="aspect-[4/5] w-full object-cover"
+          class="aspect-4/5 w-full object-cover"
         />
       </div>
     </div>

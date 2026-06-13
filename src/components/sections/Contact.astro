@@ -50,13 +50,15 @@ const socialIconMap: Record<string, 'linkedin' | 'github'> = {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={social.ariaLabel}
-              class="group flex items-center justify-between border-b border-line py-4 transition-colors hover:bg-sunken"
+              class="group flex items-center justify-between border-b border-line py-4 transition-colors hover:bg-sunken "
             >
-              <span class="flex items-center gap-3 font-medium text-ink">
+              <span class="flex items-center gap-3 font-medium text-ink group-hover:text-accent">
                 <Icon name={socialIconMap[social.platform]} className="h-6 w-6 text-muted group-hover:text-accent" />
                 {social.platform}
               </span>
-              <span class="font-mono text-label text-accent">↗</span>
+              <span class="font-mono text-label text-accent">
+                <svg class="h-5 w-5 shrink-0 text-muted group-hover:text-accent" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-source-file="/home/luis/Desktop/ls/projects/portfolio/astro-portfolio/src/components/atoms/Icon.astro" data-astro-source-loc="88:4"><path d="M14 4h6v6M20 4l-9 9M5 8v11h11" data-astro-source-file="/home/luis/Desktop/ls/projects/portfolio/astro-portfolio/src/components/atoms/Icon.astro" data-astro-source-loc="89:6"></path></svg>
+              </span>
             </a>
           </li>
         ))}

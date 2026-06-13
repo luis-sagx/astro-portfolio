@@ -120,10 +120,10 @@ export const en: Translation = {
         status: 'Current',
         companyUrl: 'https://pinprexat.com/',
         summary:
-          'Building an n8n automation for customer response, lead qualification, and quotation support for an industrial services company.',
+          'I work on process automation and customer service workflow improvements for an industrial services company.',
         bullets: [
-          'Designing a client-facing bot workflow that separates qualified leads from general inquiries.',
-          'Automating quotation handoff steps while keeping the customer communication path traceable.',
+          'I design solutions that automate repetitive tasks and improve customer communication processes.',
+          'I apply integration, traceability, and continuous improvement so workflows stay clear and reliable.',
         ],
         technologies: ['n8n', 'Meta', 'PostgreSQL'],
       },
@@ -133,11 +133,10 @@ export const en: Translation = {
         period: 'Apr 2026 - Jun 2026',
         companyUrl: 'https://softwareevolutivo.com.ec/',
         summary:
-          'Worked across web modernization, internal JHipster maintenance, CI/CD pipelines, and a Backstage proof of concept.',
+          'I worked on web development and software maintenance, applying engineering best practices and deployment workflows.',
         bullets: [
-          'Rebuilt the company website experience with Astro as part of a WordPress-to-static modernization effort.',
-          'Fixed issues and applied improvements in an internal JHipster project.',
-          'Worked with pipelines and deployed a Backstage proof of concept on an internal server.',
+          'I contributed to web programming improvements with a focus on performance, structure, and maintainability.',
+          'I applied development best practices and supported integration and DevOps-related work.',
         ],
         technologies: ['Astro', 'Spring Boot', 'React', 'GitLab'],
       },
