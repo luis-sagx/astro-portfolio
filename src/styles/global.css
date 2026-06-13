@@ -30,7 +30,7 @@
   --spacebar: oklch(0.79 0.16 85);
   --line: oklch(0.89 0.008 30);
   --key-center: oklch(0.87 0.005 30);
-  --key-edge: oklch(0.72 0.008 30);
+  --key-edge: oklch(78.998% 0.01211 37.07);
   --z-nav: 10;
   --z-tooltip: 20;
   --z-modal: 30;
@@ -47,8 +47,8 @@
   --accent-ink: oklch(0.985 0.005 19);
   --spacebar: oklch(0.75 0.15 85);
   --line: oklch(0.25 0.012 25);
-  --key-center: oklch(0.36 0.01 25);
-  --key-edge: oklch(0.235 0.012 25);
+  --key-center: oklch(53.544% 0.01175 32.281);
+  --key-edge: oklch(41.599% 0.00938 17.26);
 }
 
 @theme inline {
