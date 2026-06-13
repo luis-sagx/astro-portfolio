@@ -53,7 +53,7 @@ export const es: Translation = {
     education: 'Educación',
     languages: 'Idiomas',
     beyondCode: 'Más allá del código',
-    beyondTags: 'Fútbol - Ejercicio - Lectura - Familia',
+    beyondItems: ['Fútbol', 'Ejercicio', 'Lectura', 'Familia'],
   },
   certificationsSection: {
     title: 'Certificaciones',

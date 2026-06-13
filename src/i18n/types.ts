@@ -55,7 +55,7 @@ export interface Translation {
     education: string
     languages: string
     beyondCode: string
-    beyondTags: string
+    beyondItems: string[]
   }
   certificationsSection: {
     title: string

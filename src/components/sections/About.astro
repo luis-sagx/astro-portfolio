@@ -1,4 +1,5 @@
 ---
+import { BookOpen, Dumbbell, Heart, Trophy } from '@lucide/astro';
 import type { Translation } from '../../i18n/types';
 import SectionHeading from '../molecules/SectionHeading.astro';
 
@@ -7,6 +8,7 @@ interface Props {
 }
 
 const { messages } = Astro.props;
+const beyondCodeIcons = [Trophy, Dumbbell, BookOpen, Heart];
 ---
 
 <section id="about-me" class="bg-canvas px-6 py-24 lg:py-32">
@@ -41,7 +43,20 @@ const { messages } = Astro.props;
 
       <div>
         <h3 class="font-mono text-label uppercase tracking-wide text-muted">{messages.aboutSection.beyondCode}</h3>
-        <p class="mt-4 font-mono text-label text-muted">{messages.aboutSection.beyondTags}</p>
+        <ul class="mt-5 grid grid-cols-2 gap-4 sm:grid-cols-4">
+          {messages.aboutSection.beyondItems.map((item, index) => {
+            const Icon = beyondCodeIcons[index];
+
+            return (
+              <li class="flex flex-col items-center gap-3 border-t border-line pt-4 text-center">
+                <span class="flex h-12 w-12 items-center justify-center rounded-full border border-line bg-surface text-accent">
+                  <Icon size={18} stroke-width={2} />
+                </span>
+                <span class="font-mono text-label text-muted">{item}</span>
+              </li>
+            );
+          })}
+        </ul>
       </div>
     </div>
   </div>
