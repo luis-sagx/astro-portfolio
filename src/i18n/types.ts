@@ -18,6 +18,7 @@ export interface Translation {
     ogTitle: string;
     ogDescription: string;
     siteName: string;
+    ogImageAlt: string;
   };
   navbar: {
     brand: string;

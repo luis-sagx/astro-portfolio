@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Luis Sagnay social preview">
+  <style>
+    @font-face {
+      font-family: 'Archivo OG';
+      src: url('/fonts/archivo-latin-wdth-normal.woff2') format('woff2');
+      font-style: normal;
+      font-weight: 100 900;
+      font-display: swap;
+    }
+  </style>
+  <rect width="1200" height="630" fill="#09090b"/>
+  <rect x="48" y="48" width="1104" height="534" rx="28" fill="#111114" stroke="#2b2b31" stroke-width="2"/>
+
+  <text
+    x="104"
+    y="164"
+    fill="#ef4444"
+    font-family="'Archivo OG', sans-serif"
+    font-size="28"
+    font-weight="650"
+    font-stretch="125%"
+    letter-spacing="1.5"
+  >
+    Software Engineering
+  </text>
+
+  <text
+    x="104"
+    y="286"
+    fill="#fafafa"
+    font-family="'Archivo OG', sans-serif"
+    font-size="104"
+    font-weight="780"
+    font-stretch="125%"
+    letter-spacing="-2.5"
+  >
+    Luis Sagnay
+  </text>
+
+  <text
+    x="104"
+    y="388"
+    fill="#b5b5bd"
+    font-family="'Archivo OG', sans-serif"
+    font-size="34"
+    font-weight="560"
+  >
+    Web &amp; Mobile Developer | Cybersecurity Enthusiast
+  </text>
+
+  <text
+    x="104"
+    y="438"
+    fill="#b5b5bd"
+    font-family="'Archivo OG', sans-serif"
+    font-size="34"
+    font-weight="560"
+  >
+    AI Explorer
+  </text>
+</svg>

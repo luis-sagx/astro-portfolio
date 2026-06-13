@@ -10,6 +10,7 @@ export const en: Translation = {
     ogDescription:
       'Portfolio of Luis Sagnay: internships, projects, and practical software engineering work.',
     siteName: 'Luis Sagnay Portfolio',
+    ogImageAlt: 'Luis Sagnay portfolio preview',
   },
   navbar: {
     brand: 'Luis Sagnay',

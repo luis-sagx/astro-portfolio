@@ -14,9 +14,38 @@ interface Props {
 const { locale, messages, canonicalPath } = Astro.props;
 const siteUrl = 'https://luis-sagx.xyz';
 const canonicalUrl = new URL(canonicalPath, siteUrl).toString();
+const socialImageUrl = new URL('/og-cover.svg', siteUrl).toString();
 const alternateUrls = {
   en: new URL('/en/', siteUrl).toString(),
   es: new URL('/es/', siteUrl).toString(),
+};
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Luis Sagnay',
+  url: canonicalUrl,
+  image: new URL(messages.data.personalInfo.imageUrl, siteUrl).toString(),
+  jobTitle: messages.data.personalInfo.profession,
+  description: messages.meta.description,
+  email: `mailto:${messages.data.contactInfo.email}`,
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Quito',
+    addressCountry: 'EC',
+  },
+  alumniOf: {
+    '@type': 'CollegeOrUniversity',
+    name: 'Universidad de las Fuerzas Armadas ESPE',
+  },
+  sameAs: messages.data.contactInfo.socialLinks.map((social) => social.url),
+};
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: messages.meta.siteName,
+  url: canonicalUrl,
+  inLanguage: locale,
+  description: messages.meta.description,
 };
 ---
 
@@ -25,11 +54,12 @@ const alternateUrls = {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="canonical" href={canonicalUrl} />
+    <meta name="robots" content="index,follow" />
     <link rel="alternate" hreflang="en" href={alternateUrls.en} />
     <link rel="alternate" hreflang="es" href={alternateUrls.es} />
-    <link rel="alternate" hreflang="x-default" href={new URL('/', siteUrl).toString()} />
+    <link rel="alternate" hreflang="x-default" href={alternateUrls.en} />
     <meta name="description" content={messages.meta.description} />
     <meta name="author" content="Luis Sagnay" />
     <meta name="theme-color" content="#b91c1c" />
@@ -40,13 +70,20 @@ const alternateUrls = {
     <meta property="og:description" content={messages.meta.ogDescription} />
     <meta property="og:site_name" content={messages.meta.siteName} />
     <meta property="og:locale" content={locale === 'es' ? 'es_EC' : 'en_US'} />
+    <meta property="og:locale:alternate" content={locale === 'es' ? 'en_US' : 'es_EC'} />
+    <meta property="og:image" content={socialImageUrl} />
+    <meta property="og:image:alt" content={messages.meta.ogImageAlt} />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content={canonicalUrl} />
     <meta name="twitter:title" content={messages.meta.ogTitle} />
     <meta name="twitter:description" content={messages.meta.ogDescription} />
+    <meta name="twitter:image" content={socialImageUrl} />
+    <meta name="twitter:image:alt" content={messages.meta.ogImageAlt} />
 
     <title>{messages.meta.title}</title>
+    <script type="application/ld+json" set:html={JSON.stringify(personSchema)}></script>
+    <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)}></script>
 
     <script>
       window.addEventListener('load', () => {

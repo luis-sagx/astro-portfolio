@@ -10,6 +10,7 @@ export const es: Translation = {
     ogDescription:
       'Portafolio de Luis Sagnay: pasantías, proyectos y trabajo práctico de ingeniería de software.',
     siteName: 'Portafolio de Luis Sagnay',
+    ogImageAlt: 'Vista previa del portafolio de Luis Sagnay',
   },
   navbar: {
     brand: 'Luis Sagnay',
