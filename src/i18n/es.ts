@@ -1,4 +1,4 @@
-import type { Translation } from './types';
+import type { Translation } from './types'
 
 export const es: Translation = {
   locale: 'es',
@@ -84,7 +84,7 @@ export const es: Translation = {
       status: 'Disponible para roles junior y pasantías',
       proofLine:
         'Construyo sitios web, herramientas internas y automatizaciones que resuelven problemas reales de negocio trabajando dentro de equipos reales.',
-      interests: ['Development', 'AI - Automation', 'Cybersecurity', 'DevOps'],
+      interests: ['Development', 'AI', 'Cybersecurity', 'DevOps'],
       bio: [
         'Estudiando en',
         'Universidad de las Fuerzas Armadas ESPE.',
@@ -113,20 +113,20 @@ export const es: Translation = {
       ],
     },
     experience: [
-      {
-        company: 'Pinprexat',
-        role: 'Practicante de Automatización de Software',
-        period: 'Jun 2026 - Actualidad',
-        status: 'Actual',
-        companyUrl: 'https://pinprexat.com/',
-        summary:
-          'Trabajo en automatización de procesos y mejora de flujos de atención al cliente para una empresa de servicios industriales.',
-        bullets: [
-          'Diseño soluciones para automatizar tareas repetitivas y ordenar procesos de comunicación con clientes.',
-          'Aplico integración, trazabilidad y mejora continua para que los flujos sean más claros y confiables.',
-        ],
-        technologies: ['n8n', 'Meta', 'PostgreSQL'],
-      },
+      // {
+      //   company: 'Pinprexat',
+      //   role: 'Practicante de Automatización de Software',
+      //   period: 'Jun 2026 - Actualidad',
+      //   status: 'Actual',
+      //   companyUrl: 'https://pinprexat.com/',
+      //   summary:
+      //     'Trabajo en automatización de procesos y mejora de flujos de atención al cliente para una empresa de servicios industriales.',
+      //   bullets: [
+      //     'Diseño soluciones para automatizar tareas repetitivas y ordenar procesos de comunicación con clientes.',
+      //     'Aplico integración, trazabilidad y mejora continua para que los flujos sean más claros y confiables.',
+      //   ],
+      //   technologies: ['n8n', 'Meta', 'PostgreSQL'],
+      // },
       {
         company: 'Software Evolutivo',
         role: 'Practicante de Desarrollo de Software',
@@ -143,11 +143,44 @@ export const es: Translation = {
     ],
     projects: [
       {
+        image: '/img/pockly.webp',
+        title: 'Pockly',
+        description:
+          'Kit online de herramientas para tareas diarias de desarrollo y productividad.',
+        technologies: ['Angular', 'TypeScript', 'Tailwind CSS'],
+        link: 'https://github.com/luis-sagx/pockly',
+        githubUrl: 'https://github.com/luis-sagx/pockly',
+        liveUrl: 'https://pockly.vercel.app',
+        highlights: [
+          'Herramientas de texto, JSON, imagen, desarrollo y cálculo',
+          'Aplicaciones Angular modulares y rápidas',
+        ],
+      },
+      {
+        image: '/img/parrashub.webp',
+        title: 'ParrasHub',
+        description:
+          'Plataforma de chat multi-sala en tiempo real con acceso por PIN y soporte multimedia.',
+        technologies: ['React', 'NestJS', 'Socket.IO', 'PostgreSQL', 'MongoDB'],
+        link: 'https://github.com/luis-sagx/parrahub',
+        githubUrl: 'https://github.com/luis-sagx/parrahub',
+        highlights: [
+          'Autenticación de administrador con JWT y salas protegidas',
+          'Subida asíncrona de archivos con Redis, BullMQ y MinIO',
+        ],
+      },
+      {
         image: '/img/cinema.webp',
         title: 'Cinema System',
         description:
           'Aplicación web para gestionar operaciones de una sala de cine, incluyendo funciones y horarios.',
-        technologies: ['Angular', 'Node JS', 'Express', 'MongoDB', 'Tailwind CSS'],
+        technologies: [
+          'Angular',
+          'Node JS',
+          'Express',
+          'MongoDB',
+          'Tailwind CSS',
+        ],
         link: 'https://github.com/luis-sagx/cinema-tests',
         githubUrl: 'https://github.com/luis-sagx/cinema-tests',
         highlights: [
@@ -163,14 +196,24 @@ export const es: Translation = {
         technologies: ['Flutter', 'Firebase', 'Material Design 3'],
         link: 'https://github.com/luis-sagx/sagx-up',
         githubUrl: 'https://github.com/luis-sagx/sagx-up',
-        highlights: ['Insights financieros impulsados por IA', 'Interfaz móvil fácil de usar'],
+        highlights: [
+          'Insights financieros impulsados por IA',
+          'Interfaz móvil fácil de usar',
+        ],
       },
       {
         image: '/img/sureno.webp',
         title: 'Ecommerce "Sureño"',
         description:
           'Sitio web diseñado para vender y gestionar productos de la marca "Sureño".',
-        technologies: ['HTML', 'CSS', 'JavaScript', 'Flask', 'MongoDB', 'Bootstrap'],
+        technologies: [
+          'HTML',
+          'CSS',
+          'JavaScript',
+          'Flask',
+          'MongoDB',
+          'Bootstrap',
+        ],
         link: 'https://github.com/luis-sagx/Sureno.git',
         githubUrl: 'https://github.com/luis-sagx/Sureno.git',
         highlights: [
@@ -183,10 +226,20 @@ export const es: Translation = {
         title: 'Letter Sending "Simply Lovely"',
         description:
           'Plataforma interactiva para que niños creen, personalicen y envíen cartas digitales.',
-        technologies: ['HTML', 'CSS', 'JavaScript', 'Node JS', 'Express', 'MongoDB'],
+        technologies: [
+          'HTML',
+          'CSS',
+          'JavaScript',
+          'Node JS',
+          'Express',
+          'MongoDB',
+        ],
         link: 'https://github.com/MateoJa54/carta.git',
         githubUrl: 'https://github.com/MateoJa54/carta.git',
-        highlights: ['Interfaz interactiva para niños', 'Automatización de correos'],
+        highlights: [
+          'Interfaz interactiva para niños',
+          'Automatización de correos',
+        ],
       },
       {
         image: '/img/hospital.webp',
@@ -203,17 +256,10 @@ export const es: Translation = {
         ],
         link: 'https://github.com/Teo344/Sistema_Gestion_Hospitalaria.git',
         githubUrl: 'https://github.com/Teo344/Sistema_Gestion_Hospitalaria.git',
-        highlights: ['Operaciones CRUD completas', 'Aplicación de procedimientos almacenados'],
-      },
-      {
-        image: '/img/control.webp',
-        title: 'Expense Control',
-        description:
-          'Aplicación web para gestionar y seguir gastos personales de forma efectiva.',
-        technologies: ['React', 'Typescript', 'Tailwind CSS', 'Vite'],
-        link: 'https://github.com/luis-sagx/expense-control.git',
-        githubUrl: 'https://github.com/luis-sagx/expense-control.git',
-        highlights: ['Seguimiento de gastos en tiempo real', 'Visualización de datos con gráficos'],
+        highlights: [
+          'Operaciones CRUD completas',
+          'Aplicación de procedimientos almacenados',
+        ],
       },
     ],
     skillCategories: [
@@ -231,22 +277,46 @@ export const es: Translation = {
       {
         title: 'Frontend',
         icon: 'desktop',
-        skills: [{ name: 'Angular' }, { name: 'React' }, { name: 'Tailwind CSS' }, { name: 'Flutter' }, { name: 'Astro' }],
+        skills: [
+          { name: 'Angular' },
+          { name: 'React' },
+          { name: 'Tailwind CSS' },
+          { name: 'Flutter' },
+          { name: 'Astro' },
+        ],
       },
       {
         title: 'Backend',
         icon: 'server',
-        skills: [{ name: 'Node.js' }, { name: 'Express' }, { name: 'n8n' }, { name: 'Spring Boot' }, { name: 'Flask' }, { name: 'ASP.NET Core' }],
+        skills: [
+          { name: 'Node.js' },
+          { name: 'Express' },
+          { name: 'n8n' },
+          { name: 'Spring Boot' },
+          { name: 'Flask' },
+          { name: 'ASP.NET Core' },
+        ],
       },
       {
         title: 'Bases de datos',
         icon: 'database',
-        skills: [{ name: 'MongoDB' }, { name: 'SQL Server' }, { name: 'PostgreSQL' }, { name: 'MySQL' }, { name: 'Firebase' }],
+        skills: [
+          { name: 'MongoDB' },
+          { name: 'SQL Server' },
+          { name: 'PostgreSQL' },
+          { name: 'MySQL' },
+          { name: 'Firebase' },
+        ],
       },
       {
         title: 'Herramientas y DevOps',
         icon: 'wrench',
-        skills: [{ name: 'Git' }, { name: 'Docker' }, { name: 'Linux' }, { name: 'Postman' }],
+        skills: [
+          { name: 'Git' },
+          { name: 'Docker' },
+          { name: 'Linux' },
+          { name: 'Postman' },
+        ],
       },
     ],
     education: [
@@ -320,4 +390,4 @@ export const es: Translation = {
       { name: 'Inglés', proficiency: 'B1 - Intermedio' },
     ],
   },
-};
+}

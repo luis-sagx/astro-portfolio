@@ -2,6 +2,33 @@ import type { Project } from '../models/portfolio.model'
 
 export const PROJECTS: Project[] = [
   {
+    image: 'img/pockly.webp',
+    title: 'Pockly',
+    description:
+      'Online toolkit for everyday development and productivity tasks.',
+    technologies: ['Angular', 'TypeScript', 'Tailwind CSS'],
+    link: 'https://github.com/luis-sagx/pockly',
+    githubUrl: 'https://github.com/luis-sagx/pockly',
+    liveUrl: 'https://pockly.vercel.app',
+    highlights: [
+      'Text, JSON, image, developer, and calculator tools',
+      'Fast modular Angular applications',
+    ],
+  },
+  {
+    image: 'img/parrashub.webp',
+    title: 'ParrasHub',
+    description:
+      'Real-time multi-room chat platform with PIN access and multimedia support.',
+    technologies: ['React', 'NestJS', 'Socket.IO', 'PostgreSQL', 'MongoDB'],
+    link: 'https://github.com/luis-sagx/parrahub',
+    githubUrl: 'https://github.com/luis-sagx/parrahub',
+    highlights: [
+      'JWT admin authentication and protected rooms',
+      'Async file uploads with Redis, BullMQ, and MinIO',
+    ],
+  },
+  {
     image: 'img/cinema.webp',
     title: 'Cinema System',
     description:
@@ -82,19 +109,6 @@ export const PROJECTS: Project[] = [
     highlights: [
       'Complete CRUD operations',
       'Application of stored procedures',
-    ],
-  },
-  {
-    image: 'img/control.webp',
-    title: 'Expense Control',
-    description:
-      'Web application for managing and tracking personal expenses effectively.',
-    technologies: ['React', 'Typescript', 'Tailwind CSS', 'Vite'],
-    link: 'https://github.com/luis-sagx/expense-control.git',
-    githubUrl: 'https://github.com/luis-sagx/expense-control.git',
-    highlights: [
-      'Real-time expense tracking',
-      'Data visualization with charts',
     ],
   },
 ]
