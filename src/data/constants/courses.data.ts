@@ -10,8 +10,49 @@ import type { Course } from '../models/portfolio.model'
 // },
 export const COURSES: Course[] = [
   {
+    title: 'Curso de Criptografía',
+    provider: 'Udemy',
+    year: 2026,
+    certificateUrl:
+      'https://www.udemy.com/certificate/UC-c3a5e5b9-c747-45d6-a41d-b74118da60fe/',
+    icon: 'udemy',
+  },
+  {
+    title: 'Educación en la Era de la Inteligencia Artificial',
+    provider: 'Udemy',
+    year: 2026,
+    certificateUrl:
+      'https://www.udemy.com/certificate/UC-30fc2ad6-9ed1-40ba-a0ea-1059484926df/',
+    icon: 'udemy',
+  },
+  {
+    title: 'Concientización de Ciberseguridad para Líderes Corporativos',
+    provider: 'Udemy',
+    year: 2026,
+    certificateUrl:
+      'https://www.udemy.com/certificate/UC-3e4503bc-460e-4fcb-b3df-e890f45474ba/',
+    icon: 'udemy',
+  },
+  {
+    title: 'Ciberseguridad - CompTIA Security',
+    provider: 'Udemy',
+    year: 2026,
+    certificateUrl:
+      'https://www.udemy.com/certificate/UC-d8f0a4d7-c2d6-4045-9ade-147dcc33dab7/',
+    icon: 'udemy',
+  },
+  {
+    title: 'React y TypeScript',
+    provider: 'Udemy',
+    year: 2025,
+    certificateUrl:
+      'https://www.udemy.com/certificate/UC-6a0ef27e-5215-4287-9bf7-3634f09c1a0e/',
+    icon: 'udemy',
+  },
+  {
     title: 'Curso completo de Linux',
     provider: 'Udemy',
+    year: 2025,
     certificateUrl:
       'https://www.udemy.com/certificate/UC-8edd265d-f9a0-44f3-998d-dbbb910498f8/',
     icon: 'udemy',
@@ -24,24 +65,10 @@ export const COURSES: Course[] = [
     icon: 'cisco',
   },
   {
-    title: 'React y TypeScript',
-    provider: 'Udemy',
-    certificateUrl:
-      'https://www.udemy.com/certificate/UC-6a0ef27e-5215-4287-9bf7-3634f09c1a0e/',
-    icon: 'udemy',
-  },
-  {
-    title: 'Foundational C# with Microsoft',
-    provider: 'freecodecamp',
-    certificateUrl:
-      'https://freecodecamp.org/certification/luis-sagx/foundational-c-sharp-with-microsoft',
-    icon: 'freecodecamp',
-  },
-  {
     title: 'Python Fundamentals 1 & 2',
     provider: 'Cisco Networking Academy',
     certificateUrl:
-      'https://www.credly.com/badges/c627c2f0-6a1c-44af-a1fa-de4fc49d1e6f/public_url',
+    'https://www.credly.com/badges/c627c2f0-6a1c-44af-a1fa-de4fc49d1e6f/public_url',
     icon: 'cisco',
   },
   {
@@ -52,17 +79,10 @@ export const COURSES: Course[] = [
     icon: 'ibm',
   },
   {
-    title: 'Concientización de Ciberseguridad para Líderes Corporativos',
-    provider: 'Udemy',
+    title: 'Foundational C# with Microsoft',
+    provider: 'freecodecamp',
     certificateUrl:
-      'https://www.udemy.com/certificate/UC-3e4503bc-460e-4fcb-b3df-e890f45474ba/',
-    icon: 'udemy',
-  },
-  {
-    title: 'Ciberseguridad - CompTIA Security',
-    provider: 'Udemy',
-    certificateUrl:
-      'https://www.udemy.com/certificate/UC-d8f0a4d7-c2d6-4045-9ade-147dcc33dab7/',
-    icon: 'udemy',
+      'https://freecodecamp.org/certification/luis-sagx/foundational-c-sharp-with-microsoft',
+    icon: 'freecodecamp',
   },
 ]

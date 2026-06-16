@@ -1,20 +1,20 @@
 import type { Experience } from '../models/portfolio.model'
 
 export const EXPERIENCE: Experience[] = [
-  {
-    company: 'Pinprexat',
-    role: 'Software Automation Intern',
-    period: 'Jun 2026 - Present',
-    status: 'Current',
-    companyUrl: 'https://pinprexat.com/',
-    summary:
-      'Building an n8n automation for customer response, lead qualification and quotation flow support for an industrial services company.',
-    bullets: [
-      'Designing a client-facing bot workflow that separates qualified leads from general inquiries.',
-      'Automating quotation handoff steps while keeping the customer communication path traceable.',
-    ],
-    technologies: ['n8n', 'Meta', 'PostgreSQL'],
-  },
+  // {
+  //   company: 'Pinprexat',
+  //   role: 'Software Automation Intern',
+  //   period: 'Jun 2026 - Present',
+  //   status: 'Current',
+  //   companyUrl: 'https://pinprexat.com/',
+  //   summary:
+  //     'Building an n8n automation for customer response, lead qualification and quotation flow support for an industrial services company.',
+  //   bullets: [
+  //     'Designing a client-facing bot workflow that separates qualified leads from general inquiries.',
+  //     'Automating quotation handoff steps while keeping the customer communication path traceable.',
+  //   ],
+  //   technologies: ['n8n', 'Meta', 'PostgreSQL'],
+  // },
   {
     company: 'Software Evolutivo',
     role: 'Software Development Intern',

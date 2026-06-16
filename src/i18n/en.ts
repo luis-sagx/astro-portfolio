@@ -323,8 +323,49 @@ export const en: Translation = {
     ],
     courses: [
       {
+        title: 'Cryptography Course',
+        provider: 'Udemy',
+        year: 2026,
+        certificateUrl:
+          'https://www.udemy.com/certificate/UC-c3a5e5b9-c747-45d6-a41d-b74118da60fe/',
+        icon: 'udemy',
+      },
+      {
+        title: 'Education in the Age of Artificial Intelligence',
+        provider: 'Udemy',
+        year: 2026,
+        certificateUrl:
+          'https://www.udemy.com/certificate/UC-30fc2ad6-9ed1-40ba-a0ea-1059484926df/',
+        icon: 'udemy',
+      },
+      {
+        title: 'Cybersecurity Awareness for Corporate Leaders',
+        provider: 'Udemy',
+        year: 2026,
+        certificateUrl:
+          'https://www.udemy.com/certificate/UC-3e4503bc-460e-4fcb-b3df-e890f45474ba/',
+        icon: 'udemy',
+      },
+      {
+        title: 'Cybersecurity - CompTIA Security',
+        provider: 'Udemy',
+        year: 2026,
+        certificateUrl:
+          'https://www.udemy.com/certificate/UC-d8f0a4d7-c2d6-4045-9ade-147dcc33dab7/',
+        icon: 'udemy',
+      },
+      {
+        title: 'React and TypeScript',
+        provider: 'Udemy',
+        year: 2025,
+        certificateUrl:
+          'https://www.udemy.com/certificate/UC-6a0ef27e-5215-4287-9bf7-3634f09c1a0e/',
+        icon: 'udemy',
+      },
+      {
         title: 'Complete Linux Course',
         provider: 'Udemy',
+        year: 2025,
         certificateUrl:
           'https://www.udemy.com/certificate/UC-8edd265d-f9a0-44f3-998d-dbbb910498f8/',
         icon: 'udemy',
@@ -335,13 +376,6 @@ export const en: Translation = {
         certificateUrl:
           'https://www.credly.com/badges/c7ca2164-f09b-4998-a049-390d36a8a7d5/public_url',
         icon: 'cisco',
-      },
-      {
-        title: 'React and TypeScript',
-        provider: 'Udemy',
-        certificateUrl:
-          'https://www.udemy.com/certificate/UC-6a0ef27e-5215-4287-9bf7-3634f09c1a0e/',
-        icon: 'udemy',
       },
       {
         title: 'Foundational C# with Microsoft',
@@ -363,20 +397,6 @@ export const en: Translation = {
         certificateUrl:
           'https://www.credly.com/badges/6967e5d5-ea63-4457-b535-4171a2f37db4/public_url',
         icon: 'ibm',
-      },
-      {
-        title: 'Cybersecurity Awareness for Corporate Leaders',
-        provider: 'Udemy',
-        certificateUrl:
-          'https://www.udemy.com/certificate/UC-3e4503bc-460e-4fcb-b3df-e890f45474ba/',
-        icon: 'udemy',
-      },
-      {
-        title: 'Cybersecurity - CompTIA Security',
-        provider: 'Udemy',
-        certificateUrl:
-          'https://www.udemy.com/certificate/UC-d8f0a4d7-c2d6-4045-9ade-147dcc33dab7/',
-        icon: 'udemy',
       },
     ],
     languages: [
