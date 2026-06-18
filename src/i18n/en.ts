@@ -113,20 +113,20 @@ export const en: Translation = {
       ],
     },
     experience: [
-      {
-        company: 'Pinprexat',
-        role: 'Software Automation Intern',
-        period: 'Jun 2026 - Present',
-        status: 'Current',
-        companyUrl: 'https://pinprexat.com/',
-        summary:
-          'I work on process automation and customer service workflow improvements for an industrial services company.',
-        bullets: [
-          'I design solutions that automate repetitive tasks and improve customer communication processes.',
-          'I apply integration, traceability, and continuous improvement so workflows stay clear and reliable.',
-        ],
-        technologies: ['n8n', 'Meta', 'PostgreSQL'],
-      },
+      // {
+      //   company: 'Pinprexat',
+      //   role: 'Software Automation Intern',
+      //   period: 'Jun 2026 - Present',
+      //   status: 'Current',
+      //   companyUrl: 'https://pinprexat.com/',
+      //   summary:
+      //     'I work on process automation and customer service workflow improvements for an industrial services company.',
+      //   bullets: [
+      //     'I design solutions that automate repetitive tasks and improve customer communication processes.',
+      //     'I apply integration, traceability, and continuous improvement so workflows stay clear and reliable.',
+      //   ],
+      //   technologies: ['n8n', 'Meta', 'PostgreSQL'],
+      // },
       {
         company: 'Software Evolutivo',
         role: 'Software Development Intern',
