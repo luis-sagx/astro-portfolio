@@ -1,4 +1,6 @@
 import { defaultLocale, locales, type Locale } from './config';
+import { COURSES } from '../data/constants';
+import type { Course, CourseId } from '../data/models/portfolio.model';
 
 export function isLocale(value: string | undefined): value is Locale {
   return Boolean(value && locales.includes(value as Locale));
@@ -21,4 +23,11 @@ export function getLocalizedPath(pathname: string, locale: Locale): string {
 export function getLocaleFromPathname(pathname: string): Locale {
   const maybeLocale = pathname.split('/').filter(Boolean)[0];
   return isLocale(maybeLocale) ? maybeLocale : defaultLocale;
+}
+
+export function buildCourses(titles: Record<CourseId, string>): Course[] {
+  return COURSES.map((course) => ({
+    ...course,
+    title: titles[course.id],
+  }));
 }

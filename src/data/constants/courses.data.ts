@@ -1,8 +1,8 @@
-import type { Course } from '../models/portfolio.model'
+import type { CourseMetadata } from '../models/portfolio.model'
 
-export const COURSES: Course[] = [
+export const COURSES: CourseMetadata[] = [
   {
-    title: 'Curso de Criptografía',
+    id: 'cryptography-course',
     provider: 'Udemy',
     date: '06-2026',
     certificateUrl:
@@ -10,7 +10,7 @@ export const COURSES: Course[] = [
     icon: 'udemy',
   },
   {
-    title: 'Educación en la Era de la Inteligencia Artificial',
+    id: 'education-ai-era',
     provider: 'Udemy',
     date: '06-2026',
     certificateUrl:
@@ -18,7 +18,7 @@ export const COURSES: Course[] = [
     icon: 'udemy',
   },
   {
-    title: 'Concientización de Ciberseguridad para Líderes Corporativos',
+    id: 'cybersecurity-awareness-leaders',
     provider: 'Udemy',
     date: '05-2026',
     certificateUrl:
@@ -26,7 +26,7 @@ export const COURSES: Course[] = [
     icon: 'udemy',
   },
   {
-    title: 'Ciberseguridad - CompTIA Security',
+    id: 'cybersecurity-comptia-security',
     provider: 'Udemy',
     date: '05-2026',
     certificateUrl:
@@ -34,7 +34,7 @@ export const COURSES: Course[] = [
     icon: 'udemy',
   },
   {
-    title: 'Artificial Intelligence Fundamentals',
+    id: 'ai-fundamentals',
     provider: 'IBM SkillsBuild',
     date: '02-2026',
     certificateUrl:
@@ -42,7 +42,7 @@ export const COURSES: Course[] = [
     icon: 'ibm',
   },
   {
-    title: 'Python Fundamentals 1 & 2',
+    id: 'python-fundamentals-1-2',
     provider: 'Cisco Networking Academy',
     date: '02-2026',
     certificateUrl:
@@ -50,7 +50,7 @@ export const COURSES: Course[] = [
     icon: 'cisco',
   },
   {
-    title: 'Introduction to Cybersecurity',
+    id: 'intro-cybersecurity',
     provider: 'Cisco Networking Academy',
     date: '01-2026',
     certificateUrl:
@@ -58,7 +58,7 @@ export const COURSES: Course[] = [
     icon: 'cisco',
   },
   {
-    title: 'React y TypeScript',
+    id: 'react-typescript',
     provider: 'Udemy',
     date: '12-2025',
     certificateUrl:
@@ -66,7 +66,7 @@ export const COURSES: Course[] = [
     icon: 'udemy',
   },
   {
-    title: 'Curso completo de Linux',
+    id: 'linux-course',
     provider: 'Udemy',
     date: '10-2025',
     certificateUrl:
@@ -74,7 +74,7 @@ export const COURSES: Course[] = [
     icon: 'udemy',
   },
   {
-    title: 'Foundational C# with Microsoft',
+    id: 'foundational-csharp',
     provider: 'freecodecamp/microsoft',
     date: '05-2025',
     certificateUrl:

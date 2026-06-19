@@ -44,10 +44,31 @@ export interface Education {
   degree?: string
 }
 
+export type CourseId =
+  | 'cryptography-course'
+  | 'education-ai-era'
+  | 'cybersecurity-awareness-leaders'
+  | 'cybersecurity-comptia-security'
+  | 'ai-fundamentals'
+  | 'python-fundamentals-1-2'
+  | 'intro-cybersecurity'
+  | 'react-typescript'
+  | 'linux-course'
+  | 'foundational-csharp'
+
+export interface CourseMetadata {
+  id: CourseId
+  provider: string
+  date?: string
+  certificateUrl?: string
+  icon?: string
+}
+
 export interface Course {
+  id: CourseId
   title: string
   provider: string
-  date?: string 
+  date?: string
   certificateUrl?: string
   icon?: string
 }

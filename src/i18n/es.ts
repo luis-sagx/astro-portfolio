@@ -1,4 +1,5 @@
 import type { Translation } from './types'
+import { buildCourses } from './utils'
 
 export const es: Translation = {
   locale: 'es',
@@ -327,88 +328,18 @@ export const es: Translation = {
         degree: 'Ingeniería de Software',
       },
     ],
-    courses: [
-      {
-        title: 'Curso de Criptografía',
-        provider: 'Udemy',
-        date: '06-2026',
-        certificateUrl:
-          'https://www.udemy.com/certificate/UC-c3a5e5b9-c747-45d6-a41d-b74118da60fe/',
-        icon: 'udemy',
-      },
-      {
-        title: 'Educación en la Era de la Inteligencia Artificial',
-        provider: 'Udemy',
-        date: '06-2026',
-        certificateUrl:
-          'https://www.udemy.com/certificate/UC-30fc2ad6-9ed1-40ba-a0ea-1059484926df/',
-        icon: 'udemy',
-      },
-      {
-        title: 'Concientización de Ciberseguridad para Líderes Corporativos',
-        provider: 'Udemy',
-        date: '05-2026',
-        certificateUrl:
-          'https://www.udemy.com/certificate/UC-3e4503bc-460e-4fcb-b3df-e890f45474ba/',
-        icon: 'udemy',
-      },
-      {
-        title: 'Ciberseguridad - CompTIA Security',
-        provider: 'Udemy',
-        date: '05-2026',
-        certificateUrl:
-          'https://www.udemy.com/certificate/UC-d8f0a4d7-c2d6-4045-9ade-147dcc33dab7/',
-        icon: 'udemy',
-      },
-      {
-        title: 'React y TypeScript',
-        provider: 'Udemy',
-        date: '12-2025',
-        certificateUrl:
-          'https://www.udemy.com/certificate/UC-6a0ef27e-5215-4287-9bf7-3634f09c1a0e/',
-        icon: 'udemy',
-      },
-      {
-        title: 'Curso completo de Linux',
-        provider: 'Udemy',
-        date: '10-2025',
-        certificateUrl:
-          'https://www.udemy.com/certificate/UC-8edd265d-f9a0-44f3-998d-dbbb910498f8/',
-        icon: 'udemy',
-      },
-      {
-        title: 'Introducción a la Ciberseguridad',
-        provider: 'Cisco Networking Academy',
-        date: '01-2026',
-        certificateUrl:
-          'https://www.credly.com/badges/c7ca2164-f09b-4998-a049-390d36a8a7d5/public_url',
-        icon: 'cisco',
-      },
-      {
-        title: 'Fundamentos de C# con Microsoft',
-        provider: 'freecodecamp',
-        date: '05-2025',
-        certificateUrl:
-          'https://freecodecamp.org/certification/luis-sagx/foundational-c-sharp-with-microsoft',
-        icon: 'freecodecamp',
-      },
-      {
-        title: 'Fundamentos de Python 1 y 2',
-        provider: 'Cisco Networking Academy',
-        date: '02-2026',
-        certificateUrl:
-          'https://www.credly.com/badges/c627c2f0-6a1c-44af-a1fa-de4fc49d1e6f/public_url',
-        icon: 'cisco',
-      },
-      {
-        title: 'Fundamentos de Inteligencia Artificial',
-        provider: 'IBM SkillsBuild',
-        date: '02-2026',
-        certificateUrl:
-          'https://www.credly.com/badges/6967e5d5-ea63-4457-b535-4171a2f37db4/public_url',
-        icon: 'ibm',
-      },
-    ],
+    courses: buildCourses({
+      'cryptography-course': 'Curso de Criptografía',
+      'education-ai-era': 'Educación en la Era de la Inteligencia Artificial',
+      'cybersecurity-awareness-leaders': 'Concientización de Ciberseguridad para Líderes Corporativos',
+      'cybersecurity-comptia-security': 'Ciberseguridad - CompTIA Security',
+      'ai-fundamentals': 'Fundamentos de Inteligencia Artificial',
+      'python-fundamentals-1-2': 'Fundamentos de Python 1 y 2',
+      'intro-cybersecurity': 'Introducción a la Ciberseguridad',
+      'react-typescript': 'React y TypeScript',
+      'linux-course': 'Curso completo de Linux',
+      'foundational-csharp': 'Fundamentos de C# con Microsoft',
+    }),
     languages: [
       { name: 'Español', proficiency: 'Nativo' },
       { name: 'Inglés', proficiency: 'B1 - Intermedio' },
