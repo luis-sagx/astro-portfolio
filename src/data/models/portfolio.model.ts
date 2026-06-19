@@ -47,7 +47,7 @@ export interface Education {
 export interface Course {
   title: string
   provider: string
-  year?: number
+  date?: string 
   certificateUrl?: string
   icon?: string
 }
