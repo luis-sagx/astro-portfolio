@@ -64,7 +64,7 @@ export const en: Translation = {
   },
   contactSection: {
     title: 'Get in touch',
-    sub: 'Open to internships, junior roles, and interesting projects.',
+    sub: 'Open to junior roles, and interesting projects.',
     sendEmail: 'Send an email',
   },
   footer: {
@@ -82,7 +82,7 @@ export const en: Translation = {
       firstname: 'Luis',
       lastname: 'Sagnay',
       profession: 'Software Engineering student',
-      status: 'Available for junior roles and internships',
+      status: 'Available for junior roles ',
       proofLine:
         'I build websites, internal tools, and automations that solve real business problems by shipping inside real teams.',
       interests: ['Development', 'AI', 'Cybersecurity', 'DevOps'],

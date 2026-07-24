@@ -64,7 +64,7 @@ export const es: Translation = {
   },
   contactSection: {
     title: 'Contacto',
-    sub: 'Disponible para pasantías, roles junior y proyectos interesantes.',
+    sub: 'Disponible para roles junior y proyectos interesantes.',
     sendEmail: 'Enviar un correo',
   },
   footer: {
@@ -82,7 +82,7 @@ export const es: Translation = {
       firstname: 'Luis',
       lastname: 'Sagnay',
       profession: 'Estudiante de Ingeniería de Software',
-      status: 'Disponible para roles junior y pasantías',
+      status: 'Disponible para roles junior',
       proofLine:
         'Construyo sitios web, herramientas internas y automatizaciones que resuelven problemas reales de negocio trabajando dentro de equipos reales.',
       interests: ['Development', 'AI', 'Cybersecurity', 'DevOps'],
@@ -331,7 +331,8 @@ export const es: Translation = {
     courses: buildCourses({
       'cryptography-course': 'Curso de Criptografía',
       'education-ai-era': 'Educación en la Era de la Inteligencia Artificial',
-      'cybersecurity-awareness-leaders': 'Concientización de Ciberseguridad para Líderes Corporativos',
+      'cybersecurity-awareness-leaders':
+        'Concientización de Ciberseguridad para Líderes Corporativos',
       'cybersecurity-comptia-security': 'Ciberseguridad - CompTIA Security',
       'ai-fundamentals': 'Fundamentos de Inteligencia Artificial',
       'python-fundamentals-1-2': 'Fundamentos de Python 1 y 2',
