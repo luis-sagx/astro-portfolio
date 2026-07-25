@@ -69,6 +69,13 @@ const capVar = {
       inset 0 -1px 0 oklch(0 0 0 / 0.15);
   }
 
+  @media (max-width: 640px) {
+    .key3-cap :global(svg),
+    .key3-cap :global(img) {
+      transform: scale(0.9);
+    }
+  }
+
   .key3-front {
     position: absolute;
     left: 1px;
