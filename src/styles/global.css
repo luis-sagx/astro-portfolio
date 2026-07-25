@@ -96,15 +96,23 @@
 
 @layer base {
   html {
+    width: 100%;
+    overflow-x: clip;
     scroll-behavior: smooth;
   }
 
   body {
+    width: 100%;
+    overflow-x: clip;
     min-height: 100dvh;
     background: var(--canvas);
     color: var(--ink);
     font-family: var(--font-sans);
     text-rendering: optimizeLegibility;
+  }
+
+  main {
+    overflow-x: clip;
   }
 
   h1,
