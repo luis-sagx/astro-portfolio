@@ -14,10 +14,10 @@ const { course } = Astro.props;
     href={course.certificateUrl ?? '#'}
     target={course.certificateUrl ? '_blank' : undefined}
     rel={course.certificateUrl ? 'noopener noreferrer' : undefined}
-    class="group flex items-center justify-between gap-5 border-b border-line py-4 transition-colors hover:bg-sunken"
+    class="group grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4 border-b border-line py-4 transition-colors hover:bg-sunken sm:gap-5"
   >
     <div class="min-w-0">
-      <p class="truncate font-semibold text-ink group-hover:text-accent">{course.title}</p>
+      <p class="font-semibold leading-snug text-ink group-hover:text-accent">{course.title}</p>
       <p class="mt-0.5 font-mono text-label text-muted">
         {course.provider}{course.date ? ` · ${course.date}` : ''}
       </p>
