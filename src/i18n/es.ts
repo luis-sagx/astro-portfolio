@@ -149,9 +149,8 @@ export const es: Translation = {
         description:
           'Kit online de herramientas para tareas diarias de desarrollo y productividad.',
         technologies: ['Angular', 'TypeScript', 'Tailwind CSS'],
-        link: 'https://github.com/luis-sagx/pockly',
-        githubUrl: 'https://github.com/luis-sagx/pockly',
-        liveUrl: 'https://pockly.vercel.app',
+        link: 'https://www.pockly.uk/',
+        liveUrl: 'https://www.pockly.uk/',
         highlights: [
           'Herramientas de texto, JSON, imagen, desarrollo y cálculo',
           'Aplicaciones Angular modulares y rápidas',

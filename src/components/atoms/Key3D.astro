@@ -6,9 +6,11 @@ interface Props {
   widthUnits?: number;
   tone?: 'center' | 'edge' | 'spacebar';
   mini?: boolean;
+  category?: string;
 }
 
-const { name, widthUnits = 1, tone = 'center', mini = false } = Astro.props;
+const { name, widthUnits = 1, tone = 'center', mini = false, category } = Astro.props;
+const iconSize = name === 'Docker' && !mini ? 34 : mini ? 20 : 28;
 
 const capVar = {
   center: 'var(--key-center)',
@@ -21,12 +23,13 @@ const capVar = {
   class:list={['key3', { 'key3--mini': mini }]}
   style={`--units: ${widthUnits}; --cap: ${capVar};`}
   data-tech={name}
+  data-category={category}
   title={name}
 >
   <span class="key3-front" aria-hidden="true"></span>
   <span class="key3-right" aria-hidden="true"></span>
   <span class="key3-cap">
-    <TechIcon name={name} size={mini ? 20 : 28} className="shrink-0" />
+    <TechIcon name={name} size={iconSize} className="shrink-0" />
   </span>
 </div>
 

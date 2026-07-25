@@ -21,6 +21,7 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
       { name: 'React' },
       { name: 'Tailwind CSS' },
       { name: 'Flutter' },
+      { name: 'Astro' },
     ],
   },
   {
@@ -28,6 +29,8 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
     icon: 'server',
     skills: [
       { name: 'Node.js' },
+      { name: 'Express' },
+      { name: 'n8n' },
       { name: 'Spring Boot' },
       { name: 'Flask' },
       { name: 'ASP.NET Core' },

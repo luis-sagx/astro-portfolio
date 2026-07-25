@@ -7,6 +7,7 @@ interface KeyboardKey {
   name: string;
   width: number;
   tone: 'center' | 'edge' | 'spacebar';
+  category: string;
 }
 
 interface Props {
@@ -22,34 +23,35 @@ const keyboardRowConfig = [
   { widths: [1.4, 1, 3.9, 1.2] },
 ];
 
-const allSkills = messages.data.skillCategories.flatMap((category) => category.skills);
-const configuredSlots = keyboardRowConfig.reduce(
-  (total, row) => total + row.widths.length,
-  0,
+const categoryBySkill = new Map(
+  messages.data.skillCategories.flatMap((category) =>
+    category.skills.map((skill) => [skill.name, category.title]),
+  ),
 );
 
-if (allSkills.length > configuredSlots) {
-  const extras = allSkills.length - configuredSlots;
-  keyboardRowConfig[keyboardRowConfig.length - 1].widths.push(
-    ...Array(extras).fill(1),
-  );
-}
+const stackRows = [
+  ['JavaScript', 'TypeScript', 'Python', 'Java', 'C#', 'Angular', 'React'],
+  ['Tailwind CSS', 'Flutter', 'Astro', 'Node.js', 'Express', 'ASP.NET Core', 'Flask'],
+  ['Spring Boot', 'Firebase', 'MongoDB', 'PostgreSQL', 'MySQL', 'SQL Server', 'n8n'],
+  ['Docker', 'Git', 'Linux', 'Postman'],
+];
 
-let skillCursor = 0;
+const getTone = (name: string, keyIndex: number, rowLength: number): KeyboardKey['tone'] => {
+  if (name === 'Linux') return 'spacebar';
+  return keyIndex === 0 || keyIndex === rowLength - 1 ? 'edge' : 'center';
+};
 
-const keyboardRows = keyboardRowConfig
-  .map((rowConfig) => ({
-    keys: rowConfig.widths
-      .map((width, keyIndex) => {
-        const skill = allSkills[skillCursor++];
-        if (!skill) return null;
-        const isEdge = keyIndex === 0 || keyIndex === rowConfig.widths.length - 1;
-        const tone = skill.name === 'Linux' ? 'spacebar' : isEdge ? 'edge' : 'center';
-        return { name: skill.name, width, tone } satisfies KeyboardKey;
-      })
-      .filter((key): key is KeyboardKey => key !== null),
-  }))
-  .filter((row) => row.keys.length > 0);
+const keyboardRows = stackRows.map((row, rowIndex) => ({
+  keys: row.map((name, keyIndex) => {
+    const category = categoryBySkill.get(name) ?? '';
+    return {
+      name,
+      width: keyboardRowConfig[rowIndex].widths[keyIndex],
+      tone: getTone(name, keyIndex, row.length),
+      category,
+    } satisfies KeyboardKey;
+  }),
+}));
 ---
 
 <section id="stack" class="bg-canvas px-6 py-24 lg:py-32">
@@ -73,7 +75,7 @@ const keyboardRows = keyboardRowConfig
           {keyboardRows.map((rowData) => (
             <div class="kb-row">
               {rowData.keys.map((key) => (
-                <Key3D name={key.name} widthUnits={key.width} tone={key.tone} />
+                <Key3D name={key.name} widthUnits={key.width} tone={key.tone} category={key.category} />
               ))}
             </div>
           ))}
@@ -173,7 +175,9 @@ const keyboardRows = keyboardRowConfig
     if (!(target instanceof Element)) return;
     const key = target.closest('[data-tech]');
     if (!key || !legend) return;
-    legend.textContent = key.getAttribute('data-tech') ?? '';
+    const tech = key.getAttribute('data-tech') ?? '';
+    const category = key.getAttribute('data-category') ?? '';
+    legend.textContent = category ? `${category} · ${tech}` : tech;
   });
 
   document.addEventListener('mouseout', (event) => {
