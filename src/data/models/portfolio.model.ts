@@ -74,7 +74,10 @@ export type Project = ProjectMetadata & ProjectContent
 /* Experience                                                                 */
 /* -------------------------------------------------------------------------- */
 
-export type ExperienceId = 'software-evolutivo'
+export type ExperienceId =
+  | 'pinprexat-part-time'
+  | 'pinprexat-intern'
+  | 'software-evolutivo'
 
 export interface ExperienceMetadata {
   id: ExperienceId

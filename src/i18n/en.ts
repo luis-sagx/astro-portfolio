@@ -102,6 +102,27 @@ export const en: Translation = {
       github: { ariaLabel: 'GitHub profile of Luis Sagnay' },
     }),
     experience: buildExperience({
+      'pinprexat-part-time': {
+        role: 'Automation Developer (Part-time)',
+        period: 'Jul 2026 - Present',
+        status: 'Current',
+        summary:
+          'I build internal automation and web tools that streamline the company operational workflow end to end.',
+        bullets: [
+          'I develop web interfaces and automated flows that connect the stages of an internal operational process.',
+          'I work on data modeling and search so the information behind those flows stays reliable and easy to query.',
+        ],
+      },
+      'pinprexat-intern': {
+        role: 'Automation Intern',
+        period: 'Jun 2026 - Jul 2026',
+        summary:
+          'I supported process automation work, mapping manual internal tasks and turning them into automated flows.',
+        bullets: [
+          'I analyzed repetitive internal tasks and implemented automated flows to replace them.',
+          'I integrated internal services and data sources to keep the automated processes traceable.',
+        ],
+      },
       'software-evolutivo': {
         role: 'Software Development Intern',
         period: 'Apr 2026 - Jun 2026',

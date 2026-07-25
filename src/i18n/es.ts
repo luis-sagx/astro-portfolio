@@ -102,6 +102,27 @@ export const es: Translation = {
       github: { ariaLabel: 'Perfil de GitHub de Luis Sagnay' },
     }),
     experience: buildExperience({
+      'pinprexat-part-time': {
+        role: 'Desarrollador de Automatización (Medio tiempo)',
+        period: 'Jul 2026 - Actualidad',
+        status: 'Actual',
+        summary:
+          'Desarrollo automatizaciones y herramientas web internas que ordenan el flujo de trabajo operativo de la empresa de principio a fin.',
+        bullets: [
+          'Construyo interfaces web y flujos automatizados que conectan las etapas de un proceso operativo interno.',
+          'Trabajo en el modelado y la búsqueda de datos para que la información detrás de esos flujos sea confiable y fácil de consultar.',
+        ],
+      },
+      'pinprexat-intern': {
+        role: 'Practicante de Automatización',
+        period: 'Jun 2026 - Jul 2026',
+        summary:
+          'Apoyé el trabajo de automatización de procesos, identificando tareas internas manuales y convirtiéndolas en flujos automatizados.',
+        bullets: [
+          'Analicé tareas internas repetitivas e implementé flujos automatizados para reemplazarlas.',
+          'Integré servicios y fuentes de datos internas para mantener trazables los procesos automatizados.',
+        ],
+      },
       'software-evolutivo': {
         role: 'Practicante de Desarrollo de Software',
         period: 'Abr 2026 - Jun 2026',
