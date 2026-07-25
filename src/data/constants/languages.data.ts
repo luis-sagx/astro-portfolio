@@ -1,6 +1,7 @@
-import type { Language } from '../models/portfolio.model'
+import type { LanguageMetadata } from '../models/portfolio.model'
 
-export const LANGUAGES: Language[] = [
-  { name: 'Spanish', proficiency: 'Native' },
-  { name: 'English', proficiency: 'B1 - Intermediate level' },
+/** Display order only; both name and proficiency are translated per locale. */
+export const LANGUAGES: LanguageMetadata[] = [
+  { id: 'spanish' },
+  { id: 'english' },
 ]

@@ -37,7 +37,6 @@ export interface Translation {
   experienceSection: {
     title: string
     sub: string
-    currentLabel: string
   }
   projectsSection: {
     title: string

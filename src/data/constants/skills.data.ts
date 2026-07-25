@@ -1,8 +1,8 @@
-import type { SkillCategory } from '../models/portfolio.model'
+import type { SkillCategoryMetadata } from '../models/portfolio.model'
 
-export const SKILL_CATEGORIES: SkillCategory[] = [
+export const SKILL_CATEGORIES: SkillCategoryMetadata[] = [
   {
-    title: 'Programming Languages',
+    id: 'languages',
     icon: 'code',
     skills: [
       { name: 'Java' },
@@ -12,9 +12,8 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
       { name: 'C#' },
     ],
   },
-
   {
-    title: 'Frontend',
+    id: 'frontend',
     icon: 'desktop',
     skills: [
       { name: 'Angular' },
@@ -25,7 +24,7 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
     ],
   },
   {
-    title: 'Backend',
+    id: 'backend',
     icon: 'server',
     skills: [
       { name: 'Node.js' },
@@ -36,9 +35,8 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
       { name: 'ASP.NET Core' },
     ],
   },
-
   {
-    title: 'Databases',
+    id: 'databases',
     icon: 'database',
     skills: [
       { name: 'MongoDB' },
@@ -49,7 +47,7 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
     ],
   },
   {
-    title: 'Tools & DevOps',
+    id: 'tools',
     icon: 'wrench',
     skills: [
       { name: 'Git' },
