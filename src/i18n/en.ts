@@ -203,6 +203,11 @@ export const en: Translation = {
       'react-typescript': { title: 'React and TypeScript' },
       'linux-course': { title: 'Complete Linux Course' },
       'foundational-csharp': { title: 'Foundational C# with Microsoft' },
+      'intermediate-docker': { title: 'Intermediate Docker' },
+      'aws-concepts': { title: 'AWS Concepts' },
+      'rag-langchain': {
+        title: 'Retrieval Augmented Generation (RAG) with LangChain',
+      },
     }),
     languages: buildLanguages({
       spanish: { name: 'Spanish', proficiency: 'Native' },

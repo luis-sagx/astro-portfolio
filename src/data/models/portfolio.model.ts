@@ -129,6 +129,9 @@ export type CourseId =
   | 'react-typescript'
   | 'linux-course'
   | 'foundational-csharp'
+  | 'intermediate-docker'
+  | 'aws-concepts'
+  | 'rag-langchain'
 
 export interface CourseMetadata {
   id: CourseId

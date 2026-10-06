@@ -26,7 +26,7 @@ Remove the duplicate Pinprexat entry and its ID, update the remaining localized 
 ## Task list
 
 - [x] **PX-1 — Pinprexat internship and technologies.** Consolidate the experience and update Spanish/English copy, skills, and stack labels. Route: delegated direct. Trigger: this task touches more than two non-trivial files; mapping required six content/model/component files.
-- [ ] **PX-2 — DataCamp courses.** Add course metadata and Spanish/English titles. Route: delegated direct. Trigger: this task touches the model, metadata, and two locale files.
+- [x] **PX-2 — DataCamp courses.** Add course metadata and Spanish/English titles. Route: delegated direct. Trigger: this task touches the model, metadata, and two locale files.
 
 ## Acceptance criteria
 
@@ -51,12 +51,16 @@ Remove the duplicate Pinprexat entry and its ID, update the remaining localized 
 - Initial repository state: branch `main`; pre-existing untracked `DESIGN.md` and `skills-lock.json` left untouched. `.codegraph/` was created by the required project index initialization.
 - PX-1 outcome: one Pinprexat internship remains, June–October 2026, with confidentiality-safe summaries in both locales. Expo Go and NestJS are present in skills, stack labels, and experience technologies; the other existing stack technologies are preserved.
 - PX-1 verification: `git diff --check` passed; `bun run build` passed and generated `/en/index.html`, `/es/index.html`, `/sitemap.xml`, and `/index.html`.
-- PX-1 work-unit commit: pending.
+- PX-1 work-unit commit: `476436d` (`feat(experience): consolidate Pinprexat internship`).
+- PX-2 outcome: added the three requested DataCamp courses with the supplied URLs, no dates, and Spanish/English titles.
+- PX-2 verification: `git diff --check` passed; `bun run build` passed and generated `/en/index.html`, `/es/index.html`, `/sitemap.xml`, and `/index.html`.
+- PX-2 work-unit commit: pending.
 
 ## Next step
 
-Record the PX-1 work-unit commit, then implement PX-2 through its delegated writer and run the build.
+Record the PX-2 work-unit commit; the requested implementation is otherwise complete.
 
 ## Commit evidence
 
-Pending.
+PX-1: `476436d` (`feat(experience): consolidate Pinprexat internship`).
+PX-2: pending.

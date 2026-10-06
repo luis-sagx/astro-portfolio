@@ -81,4 +81,22 @@ export const COURSES: CourseMetadata[] = [
       'https://freecodecamp.org/certification/luis-sagx/foundational-c-sharp-with-microsoft',
     icon: 'freecodecamp',
   },
+  {
+    id: 'intermediate-docker',
+    provider: 'DataCamp',
+    certificateUrl:
+      'https://www.datacamp.com/courses/intermediate-docker?utm_medium=organic_social&utm_campaign=sharewidget&utm_content=coursedetailpage',
+  },
+  {
+    id: 'aws-concepts',
+    provider: 'DataCamp',
+    certificateUrl:
+      'https://www.datacamp.com/courses/aws-concepts?utm_medium=organic_social&utm_campaign=sharewidget&utm_content=coursedetailpage',
+  },
+  {
+    id: 'rag-langchain',
+    provider: 'DataCamp',
+    certificateUrl:
+      'https://www.datacamp.com/completed/statement-of-accomplishment/course/cb8936745acc6a6c535bd861637679d703b691fe?utm_medium=organic_social&utm_campaign=sharewidget&utm_content=soa',
+  },
 ]
