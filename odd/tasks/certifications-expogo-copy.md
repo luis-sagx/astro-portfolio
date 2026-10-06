@@ -36,12 +36,12 @@ Apply the user's focused corrections: remove the Cybersecurity Awareness for Cor
 - CodeGraph identified the 10-item visible slice and “show more” control in `src/components/sections/Certifications.astro`, the named course in `src/data/constants/courses.data.ts` and `src/data/models/portfolio.model.ts`, the missing Expo mapping in `src/utils/tech-icons.ts`, and Pinprexat copy in `src/i18n/es.ts` and `src/i18n/en.ts`.
 - CE-1 outcome: the named certification and ID were removed, all remaining courses render in one list, Expo Go uses `devicon:expo`, and Pinprexat copy now describes the work in plain language in Spanish and English.
 - CE-1 verification: `git diff --check` passed; `bun run build` passed; generated Spanish and English HTML contains the Expo Go label and `devicon:expo`, with no “show more” control or removed certification.
-- CE-1 work-unit commit: pending.
+- CE-1 work-unit commit: `183506c` (`fix(portfolio): show all certifications and Expo Go icon`).
 
 ## Next step
 
-Record the CE-1 work-unit commit; implementation and verification are complete.
+Implementation is complete. Engram synchronization remains pending because its tools were unavailable in this session.
 
 ## Commit evidence
 
-Pending.
+CE-1: `183506c` (`fix(portfolio): show all certifications and Expo Go icon`).
