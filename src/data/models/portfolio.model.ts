@@ -75,7 +75,6 @@ export type Project = ProjectMetadata & ProjectContent
 /* -------------------------------------------------------------------------- */
 
 export type ExperienceId =
-  | 'pinprexat-part-time'
   | 'pinprexat-intern'
   | 'software-evolutivo'
 

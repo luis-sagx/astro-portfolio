@@ -20,6 +20,7 @@ export const SKILL_CATEGORIES: SkillCategoryMetadata[] = [
       { name: 'React' },
       { name: 'Tailwind CSS' },
       { name: 'Flutter' },
+      { name: 'Expo Go' },
       { name: 'Astro' },
     ],
   },
@@ -29,6 +30,7 @@ export const SKILL_CATEGORIES: SkillCategoryMetadata[] = [
     skills: [
       { name: 'Node.js' },
       { name: 'Express' },
+      { name: 'NestJS' },
       { name: 'n8n' },
       { name: 'Spring Boot' },
       { name: 'Flask' },
