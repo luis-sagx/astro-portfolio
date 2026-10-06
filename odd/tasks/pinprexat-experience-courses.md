@@ -54,13 +54,13 @@ Remove the duplicate Pinprexat entry and its ID, update the remaining localized 
 - PX-1 work-unit commit: `476436d` (`feat(experience): consolidate Pinprexat internship`).
 - PX-2 outcome: added the three requested DataCamp courses with the supplied URLs, no dates, and Spanish/English titles.
 - PX-2 verification: `git diff --check` passed; `bun run build` passed and generated `/en/index.html`, `/es/index.html`, `/sitemap.xml`, and `/index.html`.
-- PX-2 work-unit commit: pending.
+- PX-2 work-unit commit: `d458ff2` (`feat(courses): add DataCamp certifications`).
 
 ## Next step
 
-Record the PX-2 work-unit commit; the requested implementation is otherwise complete.
+Implementation is complete. Engram synchronization remains pending because its tools were unavailable in this session.
 
 ## Commit evidence
 
 PX-1: `476436d` (`feat(experience): consolidate Pinprexat internship`).
-PX-2: pending.
+PX-2: `d458ff2` (`feat(courses): add DataCamp certifications`).
