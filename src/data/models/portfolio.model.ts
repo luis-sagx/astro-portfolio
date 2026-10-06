@@ -121,7 +121,6 @@ export type Education = EducationMetadata & EducationContent
 export type CourseId =
   | 'cryptography-course'
   | 'education-ai-era'
-  | 'cybersecurity-awareness-leaders'
   | 'cybersecurity-comptia-security'
   | 'ai-fundamentals'
   | 'python-fundamentals-1-2'

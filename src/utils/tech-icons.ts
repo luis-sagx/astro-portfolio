@@ -17,6 +17,7 @@ const TECH_ICON_MAP: Record<string, string> = {
   react: 'devicon:react',
   nextjs: 'devicon:nextjs',
   nestjs: 'devicon:nestjs',
+  expogo: 'devicon:expo',
   socketio: 'devicon:socketio',
   tailwindcss: 'devicon:tailwindcss',
   flutter: 'devicon:flutter',

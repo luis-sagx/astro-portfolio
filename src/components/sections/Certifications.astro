@@ -8,10 +8,7 @@ interface Props {
 }
 
 const { messages } = Astro.props;
-const VISIBLE_COUNT = 10;
 const courses = messages.data.courses;
-const visible = courses.slice(0, VISIBLE_COUNT);
-const rest = courses.slice(VISIBLE_COUNT);
 const certificationsSub = messages.certificationsSection.sub
   ? `${courses.length} ${messages.certificationsSection.sub}`
   : undefined;
@@ -26,41 +23,7 @@ const certificationsSub = messages.certificationsSection.sub
     />
 
     <ul class="grid border-y border-line md:grid-cols-2 md:gap-x-12" data-animate="fade-up">
-      {visible.map((course) => <CertificationRow course={course} />)}
+      {courses.map((course) => <CertificationRow course={course} />)}
     </ul>
-
-    {rest.length > 0 && (
-      <details class="cert-more border-b border-line">
-        <summary class="cursor-pointer py-4 font-mono text-label text-accent">
-          <span class="more-label">{messages.certificationsSection.showMore} {rest.length} ▾</span>
-          <span class="less-label">{messages.certificationsSection.showLess} ▴</span>
-        </summary>
-        <ul class="grid md:grid-cols-2 md:gap-x-12">
-          {rest.map((course) => <CertificationRow course={course} />)}
-        </ul>
-      </details>
-    )}
   </div>
 </section>
-
-<style>
-  .cert-more summary {
-    list-style: none;
-  }
-
-  .cert-more summary::-webkit-details-marker {
-    display: none;
-  }
-
-  .cert-more .less-label {
-    display: none;
-  }
-
-  .cert-more[open] .more-label {
-    display: none;
-  }
-
-  .cert-more[open] .less-label {
-    display: inline;
-  }
-</style>

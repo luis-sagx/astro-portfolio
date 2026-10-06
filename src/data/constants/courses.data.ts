@@ -18,14 +18,6 @@ export const COURSES: CourseMetadata[] = [
     icon: 'udemy',
   },
   {
-    id: 'cybersecurity-awareness-leaders',
-    provider: 'Udemy',
-    date: '05-2026',
-    certificateUrl:
-      'https://www.udemy.com/certificate/UC-3e4503bc-460e-4fcb-b3df-e890f45474ba/',
-    icon: 'udemy',
-  },
-  {
     id: 'cybersecurity-comptia-security',
     provider: 'Udemy',
     date: '05-2026',

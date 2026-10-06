@@ -106,11 +106,11 @@ export const es: Translation = {
         role: 'Pasante de Desarrollo de Software',
         period: 'Jun 2026 - Oct 2026',
         summary:
-          'Colaboré en herramientas para consultar información pública y en la evolución de una plataforma interna para gestionar servicios técnicos.',
+          'Contribuí al desarrollo de una herramienta para agilizar la preparación de compras públicas y a la mejora del sistema interno del laboratorio.',
         bullets: [
-          'Desarrollé una solución que recopila información pública y permite consultarla con apoyo de un asistente conversacional basado en documentación disponible.',
-          'Mejoré los portales web, el backend y la aplicación móvil que apoyan la gestión interna de servicios.',
-          'Participé en reuniones diarias de coordinación con el equipo.',
+          'Automaticé la recopilación de información de procesos de compra pública y añadí un asistente para resolver dudas a partir de la documentación de cada proceso.',
+          'Mejoré los portales de administración y clientes, el backend y la app móvil de la plataforma interna del laboratorio.',
+          'Participé en las reuniones diarias del equipo.',
         ],
       },
       'software-evolutivo': {
@@ -196,9 +196,6 @@ export const es: Translation = {
       'cryptography-course': { title: 'Curso de Criptografía' },
       'education-ai-era': {
         title: 'Educación en la Era de la Inteligencia Artificial',
-      },
-      'cybersecurity-awareness-leaders': {
-        title: 'Concientización de Ciberseguridad para Líderes Corporativos',
       },
       'cybersecurity-comptia-security': {
         title: 'Ciberseguridad - CompTIA Security',

@@ -106,11 +106,11 @@ export const en: Translation = {
         role: 'Software Development Intern',
         period: 'Jun 2026 - Oct 2026',
         summary:
-          'I contributed to tools for searching public information and to the continued development of an internal platform for managing technical services.',
+          'I contributed to a tool that streamlines public procurement preparation and to improvements to the lab’s internal system.',
         bullets: [
-          'I developed a solution that gathers public information and supports questions through a conversational assistant grounded in available documentation.',
-          'I improved the web portals, backend, and mobile app supporting internal service management.',
-          'I joined daily team coordination meetings.',
+          'I automated information gathering for public procurement processes and added an assistant that answers questions using each process’s documentation.',
+          'I improved the administration and client portals, backend, and mobile app for the lab’s internal platform.',
+          'I took part in the team’s daily meetings.',
         ],
       },
       'software-evolutivo': {
@@ -190,9 +190,6 @@ export const en: Translation = {
       'cryptography-course': { title: 'Cryptography Course' },
       'education-ai-era': {
         title: 'Education in the Age of Artificial Intelligence',
-      },
-      'cybersecurity-awareness-leaders': {
-        title: 'Cybersecurity Awareness for Corporate Leaders',
       },
       'cybersecurity-comptia-security': {
         title: 'Cybersecurity - CompTIA Security',
