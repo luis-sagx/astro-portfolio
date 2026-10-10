@@ -124,60 +124,44 @@ export const es: Translation = {
       },
     }),
     projects: buildProjects({
-      pockly: {
+      sureno: {
         description:
-          "Kit online de herramientas para tareas diarias de desarrollo y productividad.",
+          "E-commerce de bebidas con compra minorista y pedidos mayoristas por cajas de 12 unidades.",
         highlights: [
-          "Herramientas de texto, JSON, imagen, desarrollo y cálculo",
-          "Aplicaciones Angular modulares y rápidas",
+          "Catálogo y carrito con precios según modalidad de compra.",
+          "Pedidos mayoristas configurados por cajas de 12 unidades.",
+        ],
+      },
+      chiroless: {
+        description:
+          "App de finanzas personales que registra movimientos por texto, voz o widget y los clasifica con IA.",
+        highlights: [
+          "Captura rápida de ingresos y gastos desde distintas entradas.",
+          "IA de Firebase interpreta el monto y la categoría desde texto o voz.",
         ],
       },
       parrashub: {
         description:
-          "Plataforma de chat multi-sala en tiempo real con acceso por PIN y soporte multimedia.",
+          "Chat en tiempo real con WebSockets y salas privadas de acceso mediante PIN.",
         highlights: [
-          "Autenticación de administrador con JWT y salas protegidas",
-          "Subida asíncrona de archivos con Redis, BullMQ y MinIO",
+          "Salas creadas por administradores y protegidas con PIN.",
+          "Ingreso con nickname y mensajería en tiempo real.",
         ],
       },
-      cinema: {
+      lotengo: {
         description:
-          "Aplicación web para gestionar operaciones de una sala de cine, incluyendo funciones y horarios.",
+          "App móvil de vocabulario en inglés con niveles progresivos, práctica con preguntas y repetición espaciada.",
         highlights: [
-          "Pruebas unitarias y de integración completas",
-          "Pruebas de estrés para optimización de rendimiento",
+          "Recorrido de aprendizaje desde nivel básico hasta avanzado.",
+          "Práctica con preguntas y repasos espaciados al estilo Anki.",
         ],
       },
-      sagxup: {
+      pockly: {
         description:
-          "Aplicación móvil para gestión financiera personal, incluyendo un asistente con IA.",
+          "Toolkit web modular para texto, JSON, edición de imágenes, cálculos y utilidades de desarrollo.",
         highlights: [
-          "Insights financieros impulsados por IA",
-          "Interfaz móvil fácil de usar",
-        ],
-      },
-      sureno: {
-        description:
-          'Sitio web diseñado para vender y gestionar productos de la marca "Sureño".',
-        highlights: [
-          "Solución e-commerce full stack",
-          "Panel administrativo para seguimiento de pedidos",
-        ],
-      },
-      carta: {
-        description:
-          "Plataforma interactiva para que niños creen, personalicen y envíen cartas digitales.",
-        highlights: [
-          "Interfaz interactiva para niños",
-          "Automatización de correos",
-        ],
-      },
-      hospital: {
-        description:
-          "Aplicación web para gestionar citas médicas y tratamientos.",
-        highlights: [
-          "Operaciones CRUD completas",
-          "Aplicación de procedimientos almacenados",
+          "Herramientas para procesar texto, JSON, imágenes y cálculos.",
+          "Acceso centralizado a utilidades técnicas y de productividad.",
         ],
       },
     }),

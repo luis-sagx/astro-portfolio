@@ -124,55 +124,45 @@ export const en: Translation = {
       },
     }),
     projects: buildProjects({
-      pockly: {
+      sureno: {
         description:
-          "Online toolkit for everyday development and productivity tasks.",
+          "Beverage e-commerce with retail purchases and wholesale orders in 12-unit cases.",
         highlights: [
-          "Text, JSON, image, developer, and calculator tools",
-          "Fast modular Angular applications",
+          "Catalog and cart with pricing based on purchase type.",
+          "Wholesale orders configured in cases of 12 units.",
+        ],
+      },
+      chiroless: {
+        description:
+          "Personal finance app that captures entries by text, voice, or widget and classifies them with AI.",
+        highlights: [
+          "Quick capture for income and expenses across multiple input modes.",
+          "Firebase AI extracts the amount and category from text or voice.",
         ],
       },
       parrashub: {
         description:
-          "Real-time multi-room chat platform with PIN access and multimedia support.",
+          "Real-time chat built with WebSockets and private rooms accessed by PIN.",
         highlights: [
-          "JWT admin authentication and protected rooms",
-          "Async file uploads with Redis, BullMQ, and MinIO",
+          "Rooms created by an administrator and protected by a PIN.",
+          "Join with a nickname and exchange messages in real time.",
         ],
       },
-      cinema: {
+      lotengo: {
         description:
-          "Web application for managing movie theater operations, including showtimes.",
+          "Mobile app for English vocabulary learning with progressive levels, question-based practice, and spaced repetition.",
         highlights: [
-          "Comprehensive unit and integration testing",
-          "Stress testing for performance optimization",
+          "A learning path from beginner through advanced levels.",
+          "Question-based practice and Anki-style spaced reviews.",
         ],
       },
-      sagxup: {
+      pockly: {
         description:
-          "Mobile application for personal financial management, including an AI assistant.",
+          "Modular web toolkit for text, JSON, image editing, calculations, and developer utilities.",
         highlights: [
-          "AI-driven financial insights",
-          "User-friendly mobile interface",
+          "Tools for processing text, JSON, images, and calculations.",
+          "Centralized access to technical and productivity utilities.",
         ],
-      },
-      sureno: {
-        description:
-          'Website designed to sell and manage products from the "Sureño" brand.',
-        highlights: [
-          "Full-stack e-commerce solution",
-          "Administrative dashboard for order tracking",
-        ],
-      },
-      carta: {
-        description:
-          "Interactive platform for children to create, customize, and send digital letters.",
-        highlights: ["Interactive UI for children", "Email automation"],
-      },
-      hospital: {
-        description:
-          "Web application for managing medical appointments and treatments.",
-        highlights: ["Complete CRUD operations", "Use of stored procedures"],
       },
     }),
     skillCategories: buildSkillCategories({

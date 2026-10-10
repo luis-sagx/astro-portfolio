@@ -15,18 +15,48 @@ const { project, reverse = false, messages } = Astro.props;
 
 <article
   class:list={[
-    'grid gap-8 border-t border-line py-12 lg:grid-cols-2 lg:items-center',
+  'grid gap-8 border-t border-line py-12 lg:grid-cols-2 lg:items-center',
   ]}
   data-animate="fade-up"
 >
-  <div class:list={['project-shot bg-sunken', { 'lg:order-2': reverse }]}>
-    <img
-      src={project.image}
-      alt={`${project.title} ${messages.projectsSection.screenshotAlt}`}
-      loading="lazy"
-      decoding="async"
-      class="h-full w-full object-contain"
-    />
+  <div class:list={['project-carousel', { 'lg:order-2': reverse }]} data-project-carousel>
+    <div class="project-shot bg-sunken" aria-live="off">
+      {project.images.map((image, index) => (
+        <figure
+          id={`project-${project.id}-slide-${index + 1}`}
+          class="project-slide"
+          data-carousel-slide
+          hidden={index !== 0}
+        >
+          <img
+            src={image}
+            alt={`${project.title} ${messages.projectsSection.screenshotAlt} ${index + 1}`}
+            loading={index === 0 ? 'eager' : 'lazy'}
+            decoding="async"
+            class="h-full w-full object-contain"
+          />
+        </figure>
+      ))}
+
+      <div
+        class="project-carousel__indicators"
+        role="group"
+        aria-label={`${project.title} ${messages.projectsSection.screenshotAlt}`}
+      >
+        {project.images.map((_, index) => (
+          <button
+            type="button"
+            class="project-carousel__indicator"
+            aria-label={`${project.title} ${messages.projectsSection.screenshotAlt} ${index + 1}`}
+            aria-controls={`project-${project.id}-slide-${index + 1}`}
+            aria-pressed={index === 0}
+            data-carousel-indicator
+          >
+            <span class="project-carousel__dash" aria-hidden="true"></span>
+          </button>
+        ))}
+      </div>
+    </div>
   </div>
 
   <div>
@@ -67,6 +97,7 @@ const { project, reverse = false, messages } = Astro.props;
 
 <style>
   .project-shot {
+    position: relative;
     height: 18rem;
     overflow: hidden;
     border: 1px solid var(--line);
@@ -81,4 +112,109 @@ const { project, reverse = false, messages } = Astro.props;
       height: 20rem;
     }
   }
+
+  .project-slide {
+    position: absolute;
+    inset: 0;
+    margin: 0;
+  }
+
+  .project-carousel__indicators {
+    position: absolute;
+    z-index: 1;
+    right: 0;
+    bottom: 0.25rem;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    gap: 0.35rem;
+  }
+
+  .project-carousel__indicator {
+    display: grid;
+    min-width: 2.75rem;
+    min-height: 2.75rem;
+    place-items: center;
+    cursor: pointer;
+  }
+
+  .project-carousel__indicator:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: -2px;
+  }
+
+  .project-carousel__dash {
+    width: 0.75rem;
+    height: 0.375rem;
+    border-radius: 3px;
+    background: var(--line);
+  }
+
+  .project-carousel__indicator[aria-pressed='true'] .project-carousel__dash {
+    width: 2rem;
+    background: var(--accent);
+  }
 </style>
+
+<script>
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  document.querySelectorAll<HTMLElement>('[data-project-carousel]').forEach((carousel) => {
+    const slides = Array.from(carousel.querySelectorAll<HTMLElement>('[data-carousel-slide]'));
+    const indicators = Array.from(
+      carousel.querySelectorAll<HTMLButtonElement>('[data-carousel-indicator]'),
+    );
+
+    if (slides.length < 2 || slides.length !== indicators.length) return;
+
+    let currentIndex = 0;
+    let timer: number | undefined;
+
+    const showSlide = (nextIndex: number) => {
+      currentIndex = nextIndex;
+
+      slides.forEach((slide, index) => {
+        slide.hidden = index !== currentIndex;
+      });
+
+      indicators.forEach((indicator, index) => {
+        indicator.setAttribute('aria-pressed', String(index === currentIndex));
+      });
+    };
+
+    const stop = () => {
+      if (timer === undefined) return;
+      window.clearInterval(timer);
+      timer = undefined;
+    };
+
+    const start = () => {
+      if (
+        timer !== undefined ||
+        reducedMotion.matches ||
+        document.hidden ||
+        carousel.matches(':hover') ||
+        carousel.contains(document.activeElement)
+      ) {
+        return;
+      }
+
+      timer = window.setInterval(() => {
+        showSlide((currentIndex + 1) % slides.length);
+      }, 5000);
+    };
+
+    indicators.forEach((indicator, index) => {
+      indicator.addEventListener('click', () => showSlide(index));
+    });
+
+    carousel.addEventListener('mouseenter', stop);
+    carousel.addEventListener('mouseleave', start);
+    carousel.addEventListener('focusin', stop);
+    carousel.addEventListener('focusout', start);
+    document.addEventListener('visibilitychange', () => (document.hidden ? stop() : start()));
+    reducedMotion.addEventListener('change', () => (reducedMotion.matches ? stop() : start()));
+
+    start();
+  });
+</script>
