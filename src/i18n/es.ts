@@ -113,7 +113,7 @@ export const es: Translation = {
         ],
       },
       "software-evolutivo": {
-        role: "Practicante de Desarrollo de Software",
+        role: "Pasante de Desarrollo de Software",
         period: "Abr 2026 - Jun 2026",
         summary:
           "Trabajé en desarrollo y mantenimiento de soluciones web, aplicando buenas prácticas de ingeniería y despliegue.",
