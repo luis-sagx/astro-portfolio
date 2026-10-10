@@ -57,9 +57,9 @@ The user requested this project-list and screenshot-gallery update and approved 
 - `git diff --check` passed.
 - `bun run build` passed: Bun install reported no dependency changes and Astro generated all three pages (`/en/`, `/es/`, `/`).
 - Engram mirror: **pending**; no Engram/memory tools are available in this session. Resynchronize the full document under topic `odd/portfolio-project-gallery/tasks` when available.
-- Commit identity: pending.
+- Work-unit commit: `27c3d4b` — `feat(portfolio): refresh projects and add screenshot galleries`.
 - Native review-mode check: unavailable because `gentle-ai` is not installed; no review was started.
 
 ## Next step
 
-Commit P1's source changes, task document, and the five requested screenshot sets without staging unrelated pre-existing changes; then record the work-unit commit identity.
+Implementation and local verification are complete. The user can decide whether to push or open a pull request. Engram synchronization remains pending until its tools are available.
