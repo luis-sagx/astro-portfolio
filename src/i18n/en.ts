@@ -126,42 +126,42 @@ export const en: Translation = {
     projects: buildProjects({
       sureno: {
         description:
-          "E-commerce for a liquor store, with retail and wholesale purchasing in cases of 12 units.",
+          "Beverage e-commerce with retail purchases and wholesale orders in 12-unit cases.",
         highlights: [
-          "Product catalog and cart for beverage orders",
-          "Wholesale orders sold in cases of 12 units",
+          "Catalog and cart with pricing based on purchase type.",
+          "Wholesale orders configured in cases of 12 units.",
         ],
       },
       chiroless: {
         description:
-          "Mobile app for quickly recording personal income and expenses, including from a home screen widget.",
+          "Personal finance app that captures entries by text, voice, or widget and classifies them with AI.",
         highlights: [
-          "Firebase AI interprets text or voice to identify the amount and category",
-          "Movement summaries for personal finance tracking",
+          "Quick capture for income and expenses across multiple input modes.",
+          "Firebase AI extracts the amount and category from text or voice.",
         ],
       },
       parrashub: {
         description:
-          "Real-time chat with private rooms: an administrator creates a room with a PIN, and others join with the PIN and a nickname.",
+          "Real-time chat built with WebSockets and private rooms accessed by PIN.",
         highlights: [
-          "Live messaging over WebSockets",
-          "Private rooms created and managed with PINs",
+          "Rooms created by an administrator and protected by a PIN.",
+          "Join with a nickname and exchange messages in real time.",
         ],
       },
       lotengo: {
         description:
-          "Mobile app for learning English vocabulary from beginner to advanced through flashcards, questions, and Anki-inspired spaced repetition.",
+          "Mobile app for English vocabulary learning with progressive levels, question-based practice, and spaced repetition.",
         highlights: [
-          "Vocabulary practice with flashcards and questions",
-          "Spaced review to help learners retain new words",
+          "A learning path from beginner through advanced levels.",
+          "Question-based practice and Anki-style spaced reviews.",
         ],
       },
       pockly: {
         description:
-          "Online toolkit for everyday development and productivity tasks.",
+          "Modular web toolkit for text, JSON, image editing, calculations, and developer utilities.",
         highlights: [
-          "Text, JSON, image, developer, and calculator tools",
-          "Fast modular Angular applications",
+          "Tools for processing text, JSON, images, and calculations.",
+          "Centralized access to technical and productivity utilities.",
         ],
       },
     }),

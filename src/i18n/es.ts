@@ -126,42 +126,42 @@ export const es: Translation = {
     projects: buildProjects({
       sureno: {
         description:
-          "E-commerce para una licorería que permite comprar al por menor o al por mayor, con cajas de 12 unidades.",
+          "E-commerce de bebidas con compra minorista y pedidos mayoristas por cajas de 12 unidades.",
         highlights: [
-          "Catálogo y carrito para compras de bebidas",
-          "Precios y pedidos mayoristas por caja de 12 unidades",
+          "Catálogo y carrito con precios según modalidad de compra.",
+          "Pedidos mayoristas configurados por cajas de 12 unidades.",
         ],
       },
       chiroless: {
         description:
-          "App móvil para registrar ingresos y gastos personales rápidamente, incluso desde un widget.",
+          "App de finanzas personales que registra movimientos por texto, voz o widget y los clasifica con IA.",
         highlights: [
-          "La IA de Firebase interpreta texto o voz para detectar el valor y la categoría",
-          "Resumen de movimientos y control de finanzas personales",
+          "Captura rápida de ingresos y gastos desde distintas entradas.",
+          "IA de Firebase interpreta el monto y la categoría desde texto o voz.",
         ],
       },
       parrashub: {
         description:
-          "Chat en tiempo real con salas privadas: un administrador las crea con un PIN y los demás se unen con el PIN y un nickname.",
+          "Chat en tiempo real con WebSockets y salas privadas de acceso mediante PIN.",
         highlights: [
-          "Mensajería en vivo mediante WebSockets",
-          "Salas privadas creadas y administradas por PIN",
+          "Salas creadas por administradores y protegidas con PIN.",
+          "Ingreso con nickname y mensajería en tiempo real.",
         ],
       },
       lotengo: {
         description:
-          "App móvil para aprender vocabulario en inglés, desde nivel básico hasta avanzado, con tarjetas, preguntas y repetición espaciada inspirada en Anki.",
+          "App móvil de vocabulario en inglés con niveles progresivos, práctica con preguntas y repetición espaciada.",
         highlights: [
-          "Práctica de vocabulario con tarjetas y preguntas",
-          "Repaso espaciado para ayudar a retener lo aprendido",
+          "Recorrido de aprendizaje desde nivel básico hasta avanzado.",
+          "Práctica con preguntas y repasos espaciados al estilo Anki.",
         ],
       },
       pockly: {
         description:
-          "Kit online de herramientas para tareas diarias de desarrollo y productividad.",
+          "Toolkit web modular para texto, JSON, edición de imágenes, cálculos y utilidades de desarrollo.",
         highlights: [
-          "Herramientas de texto, JSON, imagen, desarrollo y cálculo",
-          "Aplicaciones Angular modulares y rápidas",
+          "Herramientas para procesar texto, JSON, imágenes y cálculos.",
+          "Acceso centralizado a utilidades técnicas y de productividad.",
         ],
       },
     }),
