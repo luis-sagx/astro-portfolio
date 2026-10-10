@@ -44,19 +44,17 @@ export type SkillCategory = SkillCategoryMetadata & SkillCategoryContent
 /* -------------------------------------------------------------------------- */
 
 export type ProjectId =
-  | 'pockly'
-  | 'parrashub'
-  | 'cinema'
-  | 'sagxup'
   | 'sureno'
-  | 'carta'
-  | 'hospital'
+  | 'chiroless'
+  | 'parrashub'
+  | 'lotengo'
+  | 'pockly'
 
 export interface ProjectMetadata {
   id: ProjectId
   /** Product name, identical across locales. */
   title: string
-  image: string
+  images: string[]
   technologies: string[]
   link: string
   githubUrl?: string

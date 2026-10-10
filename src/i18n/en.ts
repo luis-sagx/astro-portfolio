@@ -124,6 +124,38 @@ export const en: Translation = {
       },
     }),
     projects: buildProjects({
+      sureno: {
+        description:
+          "E-commerce for a liquor store, with retail and wholesale purchasing in cases of 12 units.",
+        highlights: [
+          "Product catalog and cart for beverage orders",
+          "Wholesale orders sold in cases of 12 units",
+        ],
+      },
+      chiroless: {
+        description:
+          "Mobile app for quickly recording personal income and expenses, including from a home screen widget.",
+        highlights: [
+          "Firebase AI interprets text or voice to identify the amount and category",
+          "Movement summaries for personal finance tracking",
+        ],
+      },
+      parrashub: {
+        description:
+          "Real-time chat with private rooms: an administrator creates a room with a PIN, and others join with the PIN and a nickname.",
+        highlights: [
+          "Live messaging over WebSockets",
+          "Private rooms created and managed with PINs",
+        ],
+      },
+      lotengo: {
+        description:
+          "Mobile app for learning English vocabulary from beginner to advanced through flashcards, questions, and Anki-inspired spaced repetition.",
+        highlights: [
+          "Vocabulary practice with flashcards and questions",
+          "Spaced review to help learners retain new words",
+        ],
+      },
       pockly: {
         description:
           "Online toolkit for everyday development and productivity tasks.",
@@ -131,48 +163,6 @@ export const en: Translation = {
           "Text, JSON, image, developer, and calculator tools",
           "Fast modular Angular applications",
         ],
-      },
-      parrashub: {
-        description:
-          "Real-time multi-room chat platform with PIN access and multimedia support.",
-        highlights: [
-          "JWT admin authentication and protected rooms",
-          "Async file uploads with Redis, BullMQ, and MinIO",
-        ],
-      },
-      cinema: {
-        description:
-          "Web application for managing movie theater operations, including showtimes.",
-        highlights: [
-          "Comprehensive unit and integration testing",
-          "Stress testing for performance optimization",
-        ],
-      },
-      sagxup: {
-        description:
-          "Mobile application for personal financial management, including an AI assistant.",
-        highlights: [
-          "AI-driven financial insights",
-          "User-friendly mobile interface",
-        ],
-      },
-      sureno: {
-        description:
-          'Website designed to sell and manage products from the "Sureño" brand.',
-        highlights: [
-          "Full-stack e-commerce solution",
-          "Administrative dashboard for order tracking",
-        ],
-      },
-      carta: {
-        description:
-          "Interactive platform for children to create, customize, and send digital letters.",
-        highlights: ["Interactive UI for children", "Email automation"],
-      },
-      hospital: {
-        description:
-          "Web application for managing medical appointments and treatments.",
-        highlights: ["Complete CRUD operations", "Use of stored procedures"],
       },
     }),
     skillCategories: buildSkillCategories({

@@ -124,60 +124,44 @@ export const es: Translation = {
       },
     }),
     projects: buildProjects({
+      sureno: {
+        description:
+          "E-commerce para una licorería que permite comprar al por menor o al por mayor, con cajas de 12 unidades.",
+        highlights: [
+          "Catálogo y carrito para compras de bebidas",
+          "Precios y pedidos mayoristas por caja de 12 unidades",
+        ],
+      },
+      chiroless: {
+        description:
+          "App móvil para registrar ingresos y gastos personales rápidamente, incluso desde un widget.",
+        highlights: [
+          "La IA de Firebase interpreta texto o voz para detectar el valor y la categoría",
+          "Resumen de movimientos y control de finanzas personales",
+        ],
+      },
+      parrashub: {
+        description:
+          "Chat en tiempo real con salas privadas: un administrador las crea con un PIN y los demás se unen con el PIN y un nickname.",
+        highlights: [
+          "Mensajería en vivo mediante WebSockets",
+          "Salas privadas creadas y administradas por PIN",
+        ],
+      },
+      lotengo: {
+        description:
+          "App móvil para aprender vocabulario en inglés, desde nivel básico hasta avanzado, con tarjetas, preguntas y repetición espaciada inspirada en Anki.",
+        highlights: [
+          "Práctica de vocabulario con tarjetas y preguntas",
+          "Repaso espaciado para ayudar a retener lo aprendido",
+        ],
+      },
       pockly: {
         description:
           "Kit online de herramientas para tareas diarias de desarrollo y productividad.",
         highlights: [
           "Herramientas de texto, JSON, imagen, desarrollo y cálculo",
           "Aplicaciones Angular modulares y rápidas",
-        ],
-      },
-      parrashub: {
-        description:
-          "Plataforma de chat multi-sala en tiempo real con acceso por PIN y soporte multimedia.",
-        highlights: [
-          "Autenticación de administrador con JWT y salas protegidas",
-          "Subida asíncrona de archivos con Redis, BullMQ y MinIO",
-        ],
-      },
-      cinema: {
-        description:
-          "Aplicación web para gestionar operaciones de una sala de cine, incluyendo funciones y horarios.",
-        highlights: [
-          "Pruebas unitarias y de integración completas",
-          "Pruebas de estrés para optimización de rendimiento",
-        ],
-      },
-      sagxup: {
-        description:
-          "Aplicación móvil para gestión financiera personal, incluyendo un asistente con IA.",
-        highlights: [
-          "Insights financieros impulsados por IA",
-          "Interfaz móvil fácil de usar",
-        ],
-      },
-      sureno: {
-        description:
-          'Sitio web diseñado para vender y gestionar productos de la marca "Sureño".',
-        highlights: [
-          "Solución e-commerce full stack",
-          "Panel administrativo para seguimiento de pedidos",
-        ],
-      },
-      carta: {
-        description:
-          "Plataforma interactiva para que niños creen, personalicen y envíen cartas digitales.",
-        highlights: [
-          "Interfaz interactiva para niños",
-          "Automatización de correos",
-        ],
-      },
-      hospital: {
-        description:
-          "Aplicación web para gestionar citas médicas y tratamientos.",
-        highlights: [
-          "Operaciones CRUD completas",
-          "Aplicación de procedimientos almacenados",
         ],
       },
     }),

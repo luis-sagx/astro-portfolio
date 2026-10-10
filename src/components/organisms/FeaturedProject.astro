@@ -19,14 +19,23 @@ const { project, reverse = false, messages } = Astro.props;
   ]}
   data-animate="fade-up"
 >
-  <div class:list={['project-shot bg-sunken', { 'lg:order-2': reverse }]}>
-    <img
-      src={project.image}
-      alt={`${project.title} ${messages.projectsSection.screenshotAlt}`}
-      loading="lazy"
-      decoding="async"
-      class="h-full w-full object-contain"
-    />
+  <div
+    class:list={[
+      'flex snap-x snap-mandatory gap-4 overflow-x-auto pb-3',
+      { 'lg:order-2': reverse },
+    ]}
+  >
+    {project.images.map((image, index) => (
+      <figure class="project-shot bg-sunken w-[88%] shrink-0 snap-start sm:w-[72%] lg:w-[85%]">
+        <img
+          src={image}
+          alt={`${project.title} ${messages.projectsSection.screenshotAlt} ${index + 1}`}
+          loading="lazy"
+          decoding="async"
+          class="h-full w-full object-contain"
+        />
+      </figure>
+    ))}
   </div>
 
   <div>
