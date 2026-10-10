@@ -40,8 +40,6 @@ export const PROJECTS: ProjectMetadata[] = [
       "MongoDB",
       "PostgreSQL",
       "Redis",
-      "MinIO",
-      "BullMQ",
     ],
     link: "https://github.com/luis-sagx/parrahub",
     githubUrl: "https://github.com/luis-sagx/parrahub",

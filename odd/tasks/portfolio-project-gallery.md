@@ -2,7 +2,7 @@
 
 ## Objective
 
-Show five selected portfolio projects in the requested order, with accurate links, technologies, descriptions, and three screenshots per project.
+Show five selected portfolio projects in the requested order, with accurate links, technologies, descriptions, and a larger, auto-advancing three-image carousel per project.
 
 ## Problem and rationale
 
@@ -24,7 +24,10 @@ The user requested this project-list and screenshot-gallery update and approved 
 
 ## Task checklist
 
-- [x] **P1 — Refresh the selected project data and gallery.** Replaced the project IDs/order and metadata; added three image paths per project; updated Spanish and English project copy; rendered the screenshots as a responsive horizontal gallery.
+- [x] **P1 — Refresh the selected project data and screenshots.** Replaced the project IDs/order and metadata; added three image paths per project; updated Spanish and English project copy.
+- [x] **P1 correction — Fix technology icons and ParrasHub labels.** Map Expo to its Devicon, map React Native to the React Devicon, and remove unavailable MinIO/BullMQ labels from ParrasHub.
+- [x] **P2 — Replace horizontal screenshot strips with a carousel.** Expanded the active image area, added five-second auto-advance, and added three selectable dash indicators inside the image container at its lower edge. Auto-advance pauses on hover/focus and respects reduced-motion settings.
+- [x] **P2 correction — Keep gallery containers equal in size.** Use equal desktop grid columns so alternating project order cannot place a gallery in a narrower column; every gallery retains the same responsive height.
 
 ## Acceptance criteria
 
@@ -32,7 +35,10 @@ The user requested this project-list and screenshot-gallery update and approved 
 - Each project has three valid image paths and accurate repository links and technology labels.
 - Pockly retains its existing description, technology list, and live/GitHub links.
 - Removed projects have no stale localized content or ID references.
-- All three screenshots are viewable per project on desktop and mobile layouts.
+- Each project displays one large screenshot at a time, advances automatically, and provides three selectable dash indicators inside the image container without horizontal scrolling.
+- All project image containers use the same width and responsive height, including projects whose text/gallery order is reversed.
+- Keep the screenshot frame compact at the original 18rem mobile and 20rem desktop heights to avoid excess empty space around landscape screenshots.
+- Carousel interaction stops auto-advance while a user hovers over it or focuses a control, and honors the reduced-motion preference.
 - Astro production build succeeds.
 
 ## Route and triggers
@@ -41,6 +47,8 @@ The user requested this project-list and screenshot-gallery update and approved 
 - Trigger evidence: mapping required more than four files (shared model/metadata, two locale maps, renderer, and image assets); the task changes multiple non-trivial files, so the writer trigger applies.
 - Feature branch: `feat/portfolio-projects-gallery` (created from `main`).
 - Forecast at creation: approximately 180 authored changed lines. The staged work unit is currently 319 authored changed lines (additions plus deletions; binary screenshots excluded), below the approximately 400-line delivery budget. Strategy: `ask-on-risk` (default).
+- P2 route: **direct inline**. Trigger evidence: the behavior is localized to the existing project gallery component; one source file is sufficient.
+- P2 implementation diff: 176 authored changed lines. The cumulative feature branch is approximately 499 authored changed lines (including P1 and task documents, excluding binary images), above the approximately 400-line delivery budget. Strategy `ask-on-risk` requires a chain-strategy choice before the next commit; the choice is pending from the user.
 
 ## TDD and checks
 
@@ -59,7 +67,14 @@ The user requested this project-list and screenshot-gallery update and approved 
 - Engram mirror: **pending**; no Engram/memory tools are available in this session. Resynchronize the full document under topic `odd/portfolio-project-gallery/tasks` when available.
 - Work-unit commit: `27c3d4b` — `feat(portfolio): refresh projects and add screenshot galleries`.
 - Native review-mode check: unavailable because `gentle-ai` is not installed; no review was started.
+- P2 request: remove horizontal scrolling, give the image more space, auto-advance between screenshots, and show three selectable dash indicators beneath it.
+- P2 verification: `git diff --check` passed; `bun run build` passed and generated `/en/`, `/es/`, and `/`.
+- P2 size correction: the asymmetric `1.2fr / 0.8fr` grid made reversed galleries occupy the narrower column; changed to two equal desktop columns. `.project-shot` already defines the same responsive height for every project.
+- Equal-size correction verification: `git diff --check` passed; `bun run build` passed and generated `/en/`, `/es/`, `/`, and `/sitemap.xml`.
+- Indicator placement request: moved the three selectable dashes into the screenshot container and anchored them along its lower edge.
+- Height correction request: restored the original 18rem mobile and 20rem desktop screenshot frame heights; the carousel no longer increases the frame height beyond the pre-carousel layout.
+- Technology correction: added the Expo and React Native icon mappings and removed MinIO/BullMQ from ParrasHub. `bun run build` passed; generated Spanish HTML contains the Expo and React icons and omits MinIO/BullMQ; `git diff --check` passed.
 
 ## Next step
 
-Implementation and local verification are complete. The user can decide whether to push or open a pull request. Engram synchronization remains pending until its tools are available.
+Wait for the user's chain-strategy choice, then follow the selected delivery strategy before committing P2. Engram synchronization remains pending until its tools are available.
